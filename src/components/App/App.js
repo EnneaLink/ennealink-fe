@@ -42,13 +42,18 @@ function App() {
   const {error, loading, data} = useQuery(GET_USER)
   //create a findFriend function to trigger when we click on a friend card, then pass the return as prop to profile. 
 
+  useEffect(() => {
+      console.log(data);
+      setUser(data);
+  }, [data])
+
   return (
     <ApolloProvider client={client}>
       <div className="App">
         <header className="App-header">
           <h1>EnneaLink</h1>
         </header>
-        <Profile friend={} user={user} />
+        <Profile profileView={user} />
         <UserDisplay friends={friends} allUsers={allUsers} />
       </div>
     </ApolloProvider>

@@ -1,13 +1,13 @@
 import React from 'react';
 
-const Profile = ({ user, friend }) => {
+const Profile = ({ profileView }) => {
 
   //We will have a function that dynamically renders a link to show how a user and a friend would interact based off of bothe of their types. This will return a link that we can plug into an <a></a> tag in the return below. (Hayley has good concept for this)
 
   return (
     <article>
     hello from profile
-      {/* <h2 className="user-name">{profileView.attributes.username}</h2>
+      {/* <h2 className="user-name">{profileView.data.attributes.username}</h2>
       <div className="type-container">
         <h3 className="myers-briggs-type">{profileView.data.attributes.myers_briggs.type}</h3>
         <h4 className="myers-briggs-name">{profileView.data.attributes.myers_briggs.name}</h4>
