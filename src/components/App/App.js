@@ -6,7 +6,11 @@ import {ApolloClient,
         InMemoryCache, 
         ApolloProvider, 
         HttpLink, 
-        from} from '@apollo/client';
+        from,
+        useQuery,
+        gql,      
+      } from '@apollo/client';
+import {GET_USER} from '../../graphQL/queries';
 import {onError} from '@apollo/client/link/error';
 
 
@@ -35,6 +39,7 @@ function App() {
   const [friends, setFriends] = useState([]);
   const [allUsers, setAllUsers] = useState([]);
   
+  const {error, loading, data} = useQuery(GET_USER)
   //create a findFriend function to trigger when we click on a friend card, then pass the return as prop to profile. 
 
   return (
