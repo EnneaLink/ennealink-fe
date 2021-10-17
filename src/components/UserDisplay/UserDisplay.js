@@ -1,9 +1,9 @@
 import React from 'react';
 
-const UserDisplay = () => {
+const UserDisplay = ({ friends, allUsers }) => {
 
   return (
-    <div> I'm a user display!</div>
+    <p> I'm a user display!</p>
   )
 }
 

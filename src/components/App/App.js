@@ -41,7 +41,7 @@ function App() {
         <header className="App-header">
           <h1>EnneaLink</h1>
         </header>
-        <Profile user={user} />
+        <Profile profileView={user} />
         <UserDisplay friends={friends} allUsers={allUsers} />
       </div>
     </ApolloProvider>
