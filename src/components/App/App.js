@@ -39,13 +39,13 @@ function App() {
   const [friends, setFriends] = useState([]);
   const [allUsers, setAllUsers] = useState([]);
   
-  const {error, loading, data} = useQuery(GET_USER)
+  // const {error, loading, data} = useQuery(GET_USER)
   //create a findFriend function to trigger when we click on a friend card, then pass the return as prop to profile. 
 
-  useEffect(() => {
-      console.log(data);
-      setUser(data);
-  }, [data])
+  // useEffect(() => {
+  //     console.log(data);
+  //     setUser(data);
+  // }, [data])
 
   return (
     <ApolloProvider client={client}>
