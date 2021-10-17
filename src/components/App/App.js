@@ -1,5 +1,5 @@
 import './App.css';
-
+import UserDisplay from '../UserDisplay/UserDisplay';
 
 
 
@@ -9,6 +9,7 @@ function App() {
       <header className="App-header">
         <h1>EnneaLink</h1>
       </header>
+      <UserDisplay />
     </div>
   );
 }
