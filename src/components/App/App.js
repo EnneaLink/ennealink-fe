@@ -35,13 +35,15 @@ function App() {
   const [friends, setFriends] = useState([]);
   const [allUsers, setAllUsers] = useState([]);
   
+  //create a findFriend function to trigger when we click on a friend card, then pass the return as prop to profile. 
+
   return (
     <ApolloProvider client={client}>
       <div className="App">
         <header className="App-header">
           <h1>EnneaLink</h1>
         </header>
-        <Profile profileView={user} />
+        <Profile friend={} user={user} />
         <UserDisplay friends={friends} allUsers={allUsers} />
       </div>
     </ApolloProvider>
