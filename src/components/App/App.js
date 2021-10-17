@@ -1,4 +1,6 @@
 import './App.css';
+import { useState, useEffect } from 'react';
+import Profile from '../Profile/Profile';
 import UserDisplay from '../UserDisplay/UserDisplay';
 import {ApolloClient, 
         InMemoryCache, 
@@ -28,13 +30,19 @@ const client = new ApolloClient({
 
 
 function App() {
+  
+  const [user, setUser] = useState({});
+  const [friends, setFriends] = useState([]);
+  const [allUsers, setAllUsers] = useState([]);
+  
   return (
     <ApolloProvider client={client}>
       <div className="App">
         <header className="App-header">
           <h1>EnneaLink</h1>
         </header>
-        <UserDisplay />
+        <Profile user={user} />
+        <UserDisplay friends={friends} allUsers={allUsers} />
       </div>
     </ApolloProvider>
   );
