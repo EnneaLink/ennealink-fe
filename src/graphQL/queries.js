@@ -1,22 +1,22 @@
 import {gql} from '@apollo/client';
 
+//look into how to write parameters for getUserStats
 export const GET_USER = gql`
-  query {
-    getUser {
-      id
-      type
-      attributes {
-        username
-        myers_briggs {
-          type
-          name
-          descriptions
-        }
-        enneagram {
-          type
-          name
-          descriptions
-        }
+  query getUserStats($id: String!) {
+    getUserStats(id: $id) {
+      email
+      username
+      enneagram{
+        id
+        number
+        name
+        description
+      }
+      myersBrigg{
+        id
+        typeOf
+        name
+        description
       }
     }
   }
