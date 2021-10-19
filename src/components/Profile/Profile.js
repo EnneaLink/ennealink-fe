@@ -4,30 +4,34 @@ const Profile = ({ profileView }) => {
 
   //We will have a function that dynamically renders a link to show how a user and a friend would interact based off of bothe of their types. This will return a link that we can plug into an <a></a> tag in the return below. (Hayley has good concept for this)
 
-  return (
-    <article>
-    hello from profile
-      {/* <h2 className="user-name">{profileView.data.attributes.username}</h2>
-      <div className="type-container">
-        <h3 className="myers-briggs-type">{profileView.data.attributes.myers_briggs.type}</h3>
-        <h4 className="myers-briggs-name">{profileView.data.attributes.myers_briggs.name}</h4>
-        <p>{profileView.data.attributes.myers_briggs.descriptions}</p>
-        <div className="link-container">
-          <a className="myers-briggs-link" src={`https://www.16personalities.com/${profileView.data.attributes.myers_briggs.type}-personality`}>Learn More
-          </a>
+  // if (profileView !== {}) {
+    return (
+
+      <article>
+      <h2>{profileView.username}</h2>
+      {/* <h2>{profileView.data.attributes.username}</h2> */}
+        {/* <h2 className="user-name">{profileView.data.attributes.username}</h2>
+        <div className="type-container">
+          <h3 className="myers-briggs-type">{profileView.data.attributes.myers_briggs.type}</h3>
+          <h4 className="myers-briggs-name">{profileView.data.attributes.myers_briggs.name}</h4>
+          <p>{profileView.data.attributes.myers_briggs.descriptions}</p>
+          <div className="link-container">
+            <a className="myers-briggs-link" src={`https://www.16personalities.com/${profileView.data.attributes.myers_briggs.type}-personality`}>Learn More
+            </a>
+          </div>
         </div>
-      </div>
-      <div className="type-container">
-        <h3 className="enneagram-type">{profileView.data.attributes.enneagram.number}</h3>
-        <h4 className="myers-briggs-name">{profileView.data.attributes.enneagram.name}</h4>
-        <p>{profileView.data.attributes.enneagram.descriptions}</p>
-        <div className="link-container">
-          <a className="enneagram-link" src={`https://www.enneagraminstitute.com/type-${profileView.data.attributes.enneagram.number}`}>Learn More
-          </a>
-        </div>
-      </div> */}
-    </article>
-  )
+        <div className="type-container">
+          <h3 className="enneagram-type">{profileView.data.attributes.enneagram.number}</h3>
+          <h4 className="myers-briggs-name">{profileView.data.attributes.enneagram.name}</h4>
+          <p>{profileView.data.attributes.enneagram.descriptions}</p>
+          <div className="link-container">
+            <a className="enneagram-link" src={`https://www.enneagraminstitute.com/type-${profileView.data.attributes.enneagram.number}`}>Learn More
+            </a>
+          </div>
+        </div> */}
+      </article>
+    )
+  // }
 }
 
 export default Profile;

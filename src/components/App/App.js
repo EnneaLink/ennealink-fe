@@ -20,18 +20,18 @@ function App() {
   //create a findFriend function to trigger when we click on a friend card, then pass the return as prop to profile. 
 
   useEffect(() => {
-      console.log(data);
-      setUser(data);
+    console.log(data);
+    setUser(data);
   }, [data])
 
   return (
-      <div className="App">
-        <header className="App-header">
-          <h1>EnneaLink</h1>
-        </header>
-        <Profile profileView={user} />
-        <UserDisplay friends={friends} allUsers={allUsers} />
-      </div>
+    <div className="App">
+      <header className="App-header">
+        <h1>EnneaLink</h1>
+      </header>
+      {!loading && <Profile profileView={data.getUserStats} />}
+      <UserDisplay friends={friends} allUsers={allUsers} />
+    </div>
   );
 }
 
