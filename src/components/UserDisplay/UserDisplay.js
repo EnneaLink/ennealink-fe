@@ -5,6 +5,7 @@ const UserDisplay = ({ friends, allUsers }) => {
   const [searchActivated, setSearchActivated] = useState(false)
 
   const filterAllUsers = (event) => {
+    setSearchActivated(true)
     const { value } = event.target
     const foundUsers = allUsers.filter(user => {
       if (user.username.toLowerCase().includes(value.toLowerCase())) {
@@ -15,13 +16,13 @@ const UserDisplay = ({ friends, allUsers }) => {
 
   return (
     <>
-    <Search filterAllUsers={filterAllUsers} searchActivated={searchActivated}/>
+    <Search filterAllUsers={filterAllUsers} />
     <section className="list">
-      <h3>{friends.length} friends</h3>
       <div className="display-list">
         <DisplayList
           friends={friends}
           allUsers={allUsers}
+          searchActivated={searchActivated}
         />
       </div>
     </section>

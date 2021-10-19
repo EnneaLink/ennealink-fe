@@ -10,7 +10,7 @@ const Search = ({ friends, allUsers, filterAllUsers }) => {
           type='text'
           placeholder='Ex: imauser'
           name='search'
-          onChange={event => searchUsers(event)}
+          onChange={event => filterAllUsers(event)}
         />
       </div>
   )

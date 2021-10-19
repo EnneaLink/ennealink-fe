@@ -27,10 +27,13 @@ const DisplayList = ({ friends, allUsers, searchActivated }) => {
     <>
     { searchActivated ?
       <section className="allUsersCards">
-      {allUsersCards}
+        {allUsersCards}
       </section> :
-      <section className="friendsCards">
-        {friendsCards}
+      <section className="show-friends">
+        <h3>{friends.length} friends</h3>
+        <section className="friendsCards">
+          {friendsCards}
+        </section>
       </section>
     }
     </>
