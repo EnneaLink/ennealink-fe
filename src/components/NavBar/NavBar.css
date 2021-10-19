@@ -1,0 +1,16 @@
+.nav-bar {
+  display: flex;
+  justify-content: space-around;
+  width: 80vw;
+  padding: 0;
+}
+
+.nav-btn {
+  background-color: #efefef;
+  color: black;
+  height: 2em;
+  border-radius: 20px;
+  border: none;
+  padding: 0 1em;
+  box-shadow: 0 2px 7px #a9a9a9da;
+}
