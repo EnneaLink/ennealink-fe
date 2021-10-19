@@ -13,7 +13,7 @@ const UserDisplay = ({ friends, allUsers }) => {
 
   return (
     <>
-    <Search />
+    <Search filterAllUsers={filterAllUsers}/>
     <section className="list">
       <h3>{friends.length} friends</h3>
       <div className="display-list">

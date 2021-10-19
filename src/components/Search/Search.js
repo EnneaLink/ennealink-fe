@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Search = ({ friends, allUsers, searchUsers }) => {
+const Search = ({ friends, allUsers, filterAllUsers }) => {
 
   return (
     <div className='search-container'>
