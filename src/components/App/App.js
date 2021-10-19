@@ -1,5 +1,6 @@
 import './App.css';
 import { useState, useEffect } from 'react';
+import Header from '../Header/Header';
 import Profile from '../Profile/Profile';
 import UserDisplay from '../UserDisplay/UserDisplay';
 import {useQuery} from '@apollo/client';
@@ -26,9 +27,7 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
-        <h1>EnneaLink</h1>
-      </header>
+      <Header />
       {!loading && <Profile profileView={data.getUserStats} />}
       <UserDisplay friends={friends} allUsers={allUsers} />
     </div>
