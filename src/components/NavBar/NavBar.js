@@ -1,12 +1,13 @@
 import React from 'react';
+import './NavBar.css';
 
 const NavBar = () => {
 
   return (
     <ul className="nav-bar">
-      <button>my profile</button>
-      <button>friends</button>
-      <button>log out</button>
+      <button className="nav-btn">my profile</button>
+      <button className="nav-btn">friends</button>
+      <button className="nav-btn">log out</button>
     </ul>
   )
 }
