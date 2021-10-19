@@ -8,27 +8,25 @@ const Profile = ({ profileView }) => {
     return (
 
       <article>
-      <h2>{profileView.username}</h2>
-      {/* <h2>{profileView.data.attributes.username}</h2> */}
-        {/* <h2 className="user-name">{profileView.data.attributes.username}</h2>
+        <h2 className="user-name">{profileView.username}</h2>
         <div className="type-container">
-          <h3 className="myers-briggs-type">{profileView.data.attributes.myers_briggs.type}</h3>
-          <h4 className="myers-briggs-name">{profileView.data.attributes.myers_briggs.name}</h4>
-          <p>{profileView.data.attributes.myers_briggs.descriptions}</p>
+          <h3 className="myers-briggs-type">{profileView.myersBrigg.typeOf}</h3>
+          <h4 className="myers-briggs-name">{profileView.myersBrigg.name}</h4>
+          <p>{profileView.myersBrigg.description}</p>
           <div className="link-container">
-            <a className="myers-briggs-link" src={`https://www.16personalities.com/${profileView.data.attributes.myers_briggs.type}-personality`}>Learn More
+            <a className="myers-briggs-link" src={profileView.myersBrigg.link}>Learn More
             </a>
           </div>
         </div>
         <div className="type-container">
-          <h3 className="enneagram-type">{profileView.data.attributes.enneagram.number}</h3>
-          <h4 className="myers-briggs-name">{profileView.data.attributes.enneagram.name}</h4>
-          <p>{profileView.data.attributes.enneagram.descriptions}</p>
+          <h3 className="enneagram-type">{profileView.enneagram.number}</h3>
+          <h4 className="myers-briggs-name">{profileView.enneagram.name}</h4>
+          <p>{profileView.enneagram.description}</p>
           <div className="link-container">
-            <a className="enneagram-link" src={`https://www.enneagraminstitute.com/type-${profileView.data.attributes.enneagram.number}`}>Learn More
+            <a className="enneagram-link" src={`https://www.enneagraminstitute.com/type-${profileView.enneagram.number}`}>Learn More
             </a>
           </div>
-        </div> */}
+        </div>
       </article>
     )
   // }
@@ -46,7 +44,7 @@ export default Profile;
 //     "email": "shameka_goyette@bartell.co",
 //     "google_id": "1234",
 //     "google_image": ";lakdjflkjdfkdaj;lfkds",
-//     "myers_briggs": {
+//     "myersBriggs": {
 //       "id": "1",
 //       "type": "ENFP",
 //       "name": "The Campaigner",
