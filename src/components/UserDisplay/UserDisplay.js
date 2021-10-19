@@ -2,6 +2,8 @@ import React from 'react';
 
 const UserDisplay = ({ friends, allUsers }) => {
 
+  const [searchActivated, setSearchActivated] = useState(false)
+
   const filterAllUsers = (event) => {
     const { value } = event.target
     const foundUsers = allUsers.filter(user => {
