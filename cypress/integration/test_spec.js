@@ -15,7 +15,7 @@ describe('Test', () => {
 
   it('should render username', () => {
     cy.get('h2')
-      .contains('funbucket')
+      .contains('cypress test')
   })
 
   it('should render mbti info', () => {
