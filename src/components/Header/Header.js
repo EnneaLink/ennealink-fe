@@ -3,8 +3,8 @@ import React from 'react';
 const Header = () => {
 
   return (
-    <header>
-
+    <header className="App-header">
+      <h1>EnneaLink</h1>
     </header>
   )
 }
