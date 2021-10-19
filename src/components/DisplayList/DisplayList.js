@@ -1,6 +1,6 @@
 import React from 'react';
 
-const DisplayList = ({ friends, allUsers }) => {
+const DisplayList = ({ friends, allUsers, searchActivated }) => {
 
   const friendsCards = friends.map(friend => {
     return (
@@ -25,12 +25,12 @@ const DisplayList = ({ friends, allUsers }) => {
 
   return (
     <>
-    { clicked ?
+    { searchActivated ?
+      <section className="allUsersCards">
+      {allUsersCards}
+      </section> :
       <section className="friendsCards">
         {friendsCards}
-      </section> :
-      <section className="allUsersCards">
-        {allUsersCards}
       </section>
     }
     </>
