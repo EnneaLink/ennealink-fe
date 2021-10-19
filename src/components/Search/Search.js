@@ -1,9 +1,18 @@
 import React from 'react';
 
-const Search = ({ friends, allUsers }) => {
+const Search = ({ friends, allUsers, searchUsers }) => {
 
   return (
-    <p> I'm a user display!</p>
+    <div className='search-container'>
+        <label for='search'>Search Users</label>
+        <input
+          className='search-bar'
+          type='text'
+          placeholder='Ex: imauser'
+          name='search'
+          onChange={event => searchUsers(event)}
+        />
+      </div>
   )
 }
 
