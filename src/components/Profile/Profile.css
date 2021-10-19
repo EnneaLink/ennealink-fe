@@ -1,3 +1,5 @@
 .profile-view {
   margin: 0 5rem 0 5rem;
+  border: 1px solid black;
+  padding: 1rem;
 }

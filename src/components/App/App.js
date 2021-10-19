@@ -1,6 +1,7 @@
 import './App.css';
 import { useState, useEffect } from 'react';
 import Profile from '../Profile/Profile';
+import EditProfile from '../EditProfile/EditProfile';
 import UserDisplay from '../UserDisplay/UserDisplay';
 import {useQuery} from '@apollo/client';
 import {GET_USER} from '../../graphQL/queries';
@@ -29,6 +30,7 @@ function App() {
       <header className="App-header">
         <h1>EnneaLink</h1>
       </header>
+      {!loading && <EditProfile user={data.getUserStats} /> }
       {!loading && <Profile profileView={data.getUserStats} />}
       <UserDisplay friends={friends} allUsers={allUsers} />
     </div>
