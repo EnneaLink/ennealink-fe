@@ -5,10 +5,15 @@ import Form from '../Form/Form';
 const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [newUser, setNewUser] = useState(false);
 
   const handleClick = (e) => {
     e.preventDefault();
 
+  }
+
+  const toggleCreate = () => {
+    setNewUser(true)
   }
 
   const signIn = (
@@ -19,7 +24,7 @@ const Login = () => {
           <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="enter your password" minlength={8} required/>
           <button type="submit" className="submit-btn" onClick={handleClick}>sign in</button>
         </form>
-        <p className="create-btn">create account</p>
+        <button onClick={toggleCreate} className="create-btn">create account</button>
     </section>
 
   );
@@ -32,10 +37,9 @@ const Login = () => {
   );
 
   return (
-    <article className="login-box">
+    <div>
       {signIn}
-    
-    </article>
+    </div>
   )
 }
 
