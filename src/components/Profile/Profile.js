@@ -1,4 +1,5 @@
 import React from 'react';
+import './Profile.css';
 
 const Profile = ({ profileView }) => {
 
@@ -8,7 +9,7 @@ const Profile = ({ profileView }) => {
 
   return (
 
-    <article>
+    <article className='profile-view'>
       <h2 className="user-name">{username}</h2>
       <div className="type-container">
         <h3 className="myers-briggs-type">{myersBrigg.typeOf}</h3>
