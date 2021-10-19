@@ -2,35 +2,42 @@ import React, { Component } from 'react';
 import './EditProfile.css';
 
 class EditProfile extends Component {
-  constructor({ user }) {
+  constructor() {
     super();
 
-    const {myersBrigg, enneagram, username} = user;
+    // do we need this with graphql?
 
-    this.state = {
-      usernameInput: username,
-      mbtiTypeInput: myersBrigg.typeOf,
-      enneagramTypeInput: enneagram.number
-    };
+    // const {myersBrigg, enneagram} = user;
+
+    // this.state = {
+    //   mbtiTypeInput: myersBrigg.typeOf,
+    //   enneagramTypeInput: enneagram.number
+    // };
   }
+
+
+  // do we need this with graphql?
+
+  // handleChange = e => {
+  //   this.setState({ [e.target.name]: e.target.value });
+  // }
+
+  handleSubmit = e => {
+    e.preventDefault();
+
+    // save user type & set state in App to match inputs
+  }    
+
+  // maybe later add a cancel-btn or back-btn
 
   render() {
     return (
       <form className='edit-profile-form'>
-        <h2>Choose a username</h2>
-
-        <input
-          type='text'
-          placeholder={this.state.usernameInput}
-          name='username'
-          value={this.state.usernameInput}
-          onChange={e => this.handleChange(e)}
-        />
 
         <h2>Know your personality types?</h2>
         <h3>Choose them below</h3>
 
-        <select name='type-list' defaultValue={this.state.mbtiTypeInput}>
+        <select name='type-list'>
 
           <option value='enfj'>ENFJ</option>
           <option value='infj'>INFJ</option>
@@ -54,7 +61,7 @@ class EditProfile extends Component {
         
         </select>
 
-        <select name='type-list' defaultValue={this.state.enneagramTypeInput}>
+        <select name='type-list'>
 
           <option value='en-1'>1</option>
           <option value='en-2'>2</option>
@@ -67,6 +74,12 @@ class EditProfile extends Component {
           <option value='en-9'>9</option>
         
         </select>  
+
+        <button
+          className='submit-btn'
+          onClick={e => this.handleSubmit(e)}>
+          Save
+        </button>
 
         <h2>Don't know your types?</h2>
         <h3>That's okay!</h3>   

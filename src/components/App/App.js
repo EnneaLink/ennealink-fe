@@ -30,9 +30,9 @@ function App() {
       <header className="App-header">
         <h1>EnneaLink</h1>
       </header>
-      {!loading && <EditProfile user={data.getUserStats} /> }
-      {!loading && <Profile profileView={data.getUserStats} />}
-      <UserDisplay friends={friends} allUsers={allUsers} />
+      {!loading && <EditProfile /> }
+      {/* {!loading && <Profile profileView={data.getUserStats} />} */}
+      {/* <UserDisplay friends={friends} allUsers={allUsers} /> */}
     </div>
   );
 }
