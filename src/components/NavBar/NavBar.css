@@ -14,3 +14,12 @@
   padding: 0 1em;
   box-shadow: 0 2px 7px #a9a9a9da;
 }
+
+.nav-btn:hover {
+  background-color: #f9d3d3;
+  box-shadow: 0 2px 7px #939292da;
+}
+
+li {
+  list-style: none;
+}
