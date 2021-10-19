@@ -1,7 +1,7 @@
 describe('Test', () => {
 
   beforeEach(() => {
-    cy.loadApp()
+    cy.loadProfile()
   })
 
   it('should go to localhost', () => {
