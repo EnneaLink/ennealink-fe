@@ -5,6 +5,12 @@ const UserDisplay = ({ friends, allUsers }) => {
   return (
     <section className="list">
       <h3>{friends.length} friends</h3>
+      <div className="display-list">
+        <DisplayList
+          friends={friends}
+          allUsers={allUsers}
+        />
+      </div>
     </section>
   )
 }
