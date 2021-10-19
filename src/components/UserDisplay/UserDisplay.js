@@ -3,7 +3,9 @@ import React from 'react';
 const UserDisplay = ({ friends, allUsers }) => {
 
   return (
-    <p> I'm a user display!</p>
+    <section className="list">
+      <h3>{friends.length} friends</h3>
+    </section>
   )
 }
 
