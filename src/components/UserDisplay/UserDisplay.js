@@ -15,7 +15,7 @@ const UserDisplay = ({ friends, allUsers }) => {
 
   return (
     <>
-    <Search filterAllUsers={filterAllUsers}/>
+    <Search filterAllUsers={filterAllUsers} searchActivated={searchActivated}/>
     <section className="list">
       <h3>{friends.length} friends</h3>
       <div className="display-list">
