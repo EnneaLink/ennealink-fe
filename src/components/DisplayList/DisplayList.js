@@ -1,4 +1,5 @@
 import React from 'react';
+import Cards from '../Cards/Cards';
 
 const DisplayList = ({ friends, allUsers, searchActivated }) => {
 
@@ -12,7 +13,7 @@ const DisplayList = ({ friends, allUsers, searchActivated }) => {
       />
     )
   })
-  const allUsersCards = user.map(user => {
+  const allUsersCards = allUsers.map(user => {
     return (
       <Cards
         icon={user.icon}
@@ -25,7 +26,7 @@ const DisplayList = ({ friends, allUsers, searchActivated }) => {
 
   return (
     <>
-    { searchActivated ?
+    { searchActivated ? //change this to filteredUsers.length?
       <section className="allUsersCards">
         {allUsersCards}
       </section> :

@@ -1,4 +1,6 @@
 import React from 'react';
+import Search from '../Search/Search';
+import DisplayList from '../DisplayList/DisplayList';
 
 const UserDisplay = ({ friends, allUsers }) => {
 
