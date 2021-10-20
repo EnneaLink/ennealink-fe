@@ -16,6 +16,10 @@ const UserDisplay = ({ friends, allUsers }) => {
     setFilteredUsers(foundUsers)
   }
 
+  const determineUsersToShow = () => {
+    return !filteredUsers.length ? allUsers : filteredUsers
+  }
+
   return (
     <>
     <Search filterAllUsers={filterAllUsers} />
