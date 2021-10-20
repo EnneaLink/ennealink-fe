@@ -16,20 +16,21 @@ function App() {
   const [allUsers, setAllUsers] = useState([]);
 
   const {error, loading, data} = useQuery(GET_USER, {
-    variables: {id: "1"}
+    variables: {id: "2"}
   })
   //create a findFriend function to trigger when we click on a friend card, then pass the return as prop to profile.
 
   useEffect(() => {
     console.log(data);
     setUser(data);
+    setFriends(data.getUserStats.friends)
   }, [data])
 
   return (
     <div className="App">
       <Header />
       {!loading && <Profile profileView={data.getUserStats} />}
-      // <UserDisplay friends={friends} allUsers={allUsers} />
+      {!loading && <UserDisplay friends={data.getUserStats.friends} allUsers={allUsers} />}
     </div>
   );
 }
