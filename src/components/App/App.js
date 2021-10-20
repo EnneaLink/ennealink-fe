@@ -27,9 +27,7 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
-        <h1>EnneaLink</h1>
-      </header>
+      
       <Login />
       {/* {!loading && <Profile profileView={data.getUserStats} />}
       <UserDisplay friends={friends} allUsers={allUsers} /> */}
