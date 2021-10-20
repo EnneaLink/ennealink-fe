@@ -4,7 +4,6 @@ export const GET_USER = gql `
   query getUserStats($id: ID!) {
     getUserStats(id: $id) {
       id
-      email
       username
       enneagram{
         id
@@ -20,7 +19,23 @@ export const GET_USER = gql `
         description
         link
       }
+      friends{
+        id
+        username
+        enneagram{
+          id
+          number
+          name
+          description
+          link
+        }
+        myersBrigg{
+          id
+          typeOf
+          name
+          description
+          link
+        }
+      }
     }
   }`
-
-
