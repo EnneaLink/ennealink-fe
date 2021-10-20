@@ -12,8 +12,8 @@ import {onError} from '@apollo/client/link/error';
 function App() {
 
   const [user, setUser] = useState({});
-  const [friends, setFriends] = useState([]);
-  const [allUsers, setAllUsers] = useState([]);
+  // const [friends, setFriends] = useState([]);
+
 
   const {error, loading, data} = useQuery(GET_USER, {
     variables: {id: "2"}
@@ -23,14 +23,14 @@ function App() {
   useEffect(() => {
     console.log(data);
     setUser(data);
-    setFriends(data.getUserStats.friends)
+    // setFriends(user.getUserStats.friends)
   }, [data])
 
   return (
     <div className="App">
       <Header />
       {!loading && <Profile profileView={data.getUserStats} />}
-      {!loading && <UserDisplay friends={data.getUserStats.friends} allUsers={allUsers} />}
+      {!loading && <UserDisplay friends={data.getUserStats.friends} />}
     </div>
   );
 }
