@@ -9,9 +9,9 @@ const Login = () => {
   const [newPassword, setNewPassword] = useState('');
   const [passCheck, setPassCheck] = useState('');
 
-  const handleClick = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-
+    // this can fetch our user stats from BE
   }
 
   const toggleCreate = () => {
@@ -25,9 +25,11 @@ const Login = () => {
   const createAccount = (e) => {
     e.preventDefault();
     if (newPassword === passCheck) {
-      //this can be where we send a POST to the BE to make a new user
+      setPassword(newPassword)
+      //redirrect to type inputs
     } else {
-      //return error
+      // alert('your password did not match')
+      //do some sort of error handling
     }
   }
 
@@ -37,7 +39,7 @@ const Login = () => {
         <form className="sign-in-box">
           <input className="login-input" type="text" value={username} onChange={(e) => setUsername(e.target.value)} placeholder="enter your username"/>
           <input className="login-input" type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="enter your password" minlength={8} required/>
-          <button className="submit-btn" type="submit" className="submit-btn" onClick={handleClick}>sign in</button>
+          <button className="submit-btn" type="submit" className="submit-btn" onClick={handleSubmit}>sign in</button>
         </form>
         <button onClick={toggleCreate} className="create-btn">create account</button>
     </section>
