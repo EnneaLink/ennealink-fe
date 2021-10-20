@@ -27,7 +27,7 @@ const UserDisplay = ({ friends, allUsers }) => {
       <div className="display-list">
         <DisplayList
           friends={friends}
-          allUsers={allUsers}
+          theUsers={determineUsersToShow}
           searchActivated={searchActivated}
         />
       </div>
