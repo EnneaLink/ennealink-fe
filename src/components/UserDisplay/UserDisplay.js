@@ -3,6 +3,7 @@ import React from 'react';
 const UserDisplay = ({ friends, allUsers }) => {
 
   const [searchActivated, setSearchActivated] = useState(false)
+  const [filteredUsers, setFilteredUsers] = useState()
 
   const filterAllUsers = (event) => {
     setSearchActivated(true)
@@ -12,6 +13,7 @@ const UserDisplay = ({ friends, allUsers }) => {
         return user
       }
     })
+    setFilteredUsers(foundUsers)
   }
 
   return (
