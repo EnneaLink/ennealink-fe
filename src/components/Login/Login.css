@@ -1,4 +1,5 @@
 .sign-in, .create-account {
+  background-color: #caebf2;
   height: 40vh;
   margin: 10vh 5vw;
   display: flex;
@@ -35,4 +36,8 @@
   width: 60vw;
   height: 1.9em;
   background-color: #76CC66;
+}
+
+h1 {
+  color: #ff3b3f;
 }
