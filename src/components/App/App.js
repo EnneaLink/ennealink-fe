@@ -1,10 +1,7 @@
 import './App.css';
 import { useState, useEffect } from 'react';
-<<<<<<< HEAD
 import Login from '../Login/Login';
-=======
 import Header from '../Header/Header';
->>>>>>> main
 import Profile from '../Profile/Profile';
 import Loader from '../Loader/Loader';
 import UserDisplay from '../UserDisplay/UserDisplay';
