@@ -6,37 +6,28 @@ const DisplayList = ({ friends, allUsers, searchActivated }) => {
   const friendsCards = friends.map(friend => {
     return (
       <Cards
-        icon={friend.icon}
         username={friend.username}
-        myersBriggs={friend.myersBriggs}
-        enneagram={friend.enneagram}
+        myersBriggs={friend.myersBrigg.typeOf}
+        enneagram={friend.enneagram.number}
       />
     )
   })
-  const allUsersCards = allUsers.map(user => {
+  if (allUsers) {
+    const allUsersCards = allUsers.map(user => {
     return (
       <Cards
-        icon={user.icon}
         username={user.username}
-        myersBriggs={user.myersBriggs}
-        enneagram={user.enneagram}
+        myersBriggs={user.myersBrigg.typeOf}
+        enneagram={user.enneagram.number}
       />
     )
-  })
-
+   })
+  }
   return (
     <>
-    { searchActivated ? //change this to filteredUsers.length?
-      <section className="allUsersCards">
-        {allUsersCards}
-      </section> :
-      <section className="show-friends">
-        <h3>{friends.length} friends</h3>
-        <section className="friendsCards">
-          {friendsCards}
-        </section>
-      </section>
-    }
+    <section className="friendsCards">
+      {[friendsCards]}
+    </section>
     </>
   )
 }

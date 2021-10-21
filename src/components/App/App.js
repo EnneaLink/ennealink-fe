@@ -31,8 +31,7 @@ function App() {
   return (
     <div className="App">
       <Header />
-      {!loading && <EditProfile /> }
-      {!loading && <Profile profileView={data.getUserStats} />}
+      
       {!loading && <UserDisplay friends={data.getUserStats.friends} />}
     </div>
   );
