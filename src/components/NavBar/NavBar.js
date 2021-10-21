@@ -10,7 +10,7 @@ const NavBar = () => {
       </li>
       <li>
         <button className="nav-btn">friends</button>
-      </li>  
+      </li>
       <li>
         <button className="nav-btn">log out</button>
       </li>
