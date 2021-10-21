@@ -2,6 +2,7 @@ import './App.css';
 import { useState, useEffect } from 'react';
 import Header from '../Header/Header';
 import Profile from '../Profile/Profile';
+import Loader from '../Loader/Loader';
 import UserDisplay from '../UserDisplay/UserDisplay';
 import {useQuery} from '@apollo/client';
 import {GET_USER} from '../../graphQL/queries';
