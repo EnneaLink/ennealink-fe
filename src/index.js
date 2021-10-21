@@ -3,12 +3,12 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './components/App/App';
 import reportWebVitals from './reportWebVitals';
-import {ApolloClient, 
-  InMemoryCache, 
-  ApolloProvider, 
-  HttpLink, 
+import {ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+  HttpLink,
   from,
-  useQuery      
+  useQuery
 } from '@apollo/client';
 import {onError} from '@apollo/client/link/error';
 
