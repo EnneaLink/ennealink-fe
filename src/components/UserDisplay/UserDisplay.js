@@ -6,7 +6,6 @@ import {useState} from 'react';
 const UserDisplay = ({ friends }) => {
 
   const [allUsers, setAllUsers] = useState([]);
-
   const [searchActivated, setSearchActivated] = useState(false)
   const [filteredUsers, setFilteredUsers] = useState()
 

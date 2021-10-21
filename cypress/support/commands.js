@@ -19,5 +19,3 @@ Cypress.Commands.add('loadProfile', (g) => {
     .interceptAPI('profile', 'http://localhost:4500/graphql')
 })
 
-
-

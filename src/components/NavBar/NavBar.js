@@ -10,11 +10,7 @@ const NavBar = () => {
       </li>
       <li>
         <button className="nav-btn">friends</button>
-<<<<<<< HEAD
-      </li>
-=======
       </li>  
->>>>>>> ab7e5cf (Add li tags to nav bar for tabbing accessability)
       <li>
         <button className="nav-btn">log out</button>
       </li>
