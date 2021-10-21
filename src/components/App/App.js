@@ -12,19 +12,20 @@ import {onError} from '@apollo/client/link/error';
 
 
 function App() {
-  
+
   const [user, setUser] = useState({});
-  const [friends, setFriends] = useState([]);
-  const [allUsers, setAllUsers] = useState([]);
-  
+  // const [friends, setFriends] = useState([]);
+
+
   const {error, loading, data} = useQuery(GET_USER, {
     variables: {id: "2"}
   })
-  //create a findFriend function to trigger when we click on a friend card, then pass the return as prop to profile. 
+  //create a findFriend function to trigger when we click on a friend card, then pass the return as prop to profile.
 
   useEffect(() => {
     console.log(data);
     setUser(data);
+    // setFriends(user.getUserStats.friends)
   }, [data])
 
   return (
