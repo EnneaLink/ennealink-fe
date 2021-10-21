@@ -1,8 +1,11 @@
 import React from 'react';
 import Search from '../Search/Search';
 import DisplayList from '../DisplayList/DisplayList';
+import {useState} from 'react';
 
-const UserDisplay = ({ friends, allUsers }) => {
+const UserDisplay = ({ friends }) => {
+
+  const [allUsers, setAllUsers] = useState([]);
 
   const [searchActivated, setSearchActivated] = useState(false)
   const [filteredUsers, setFilteredUsers] = useState()
