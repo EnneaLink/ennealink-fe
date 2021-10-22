@@ -1,6 +1,9 @@
 import './Login.css';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Form from '../Form/Form';
+import {CREATE_USER} from '../../graphQL/mutations';
+import {useMutation} from '@apollo/client';
+import {onError} from '@apollo/client/link/error';
 
 const Login = () => {
   const [username, setUsername] = useState('');
@@ -8,6 +11,19 @@ const Login = () => {
   const [newUser, setNewUser] = useState(true);
   const [newPassword, setNewPassword] = useState('');
   const [passCheck, setPassCheck] = useState('');
+
+  const [createUser, { error, loading }] = useMutation(CREATE_USER);
+
+  const errorLink = onError(({ graphQLErrors, networkError }) => {
+    if (graphQLErrors)
+      graphQLErrors.forEach(({ message, locations, path }) =>
+        console.log(
+          `[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`,
+        ),
+      );
+  
+    if (networkError) console.log(`[Network error]: ${networkError}`);
+  });
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -21,14 +37,20 @@ const Login = () => {
       setNewUser(false)
     }
   }
-
+  
   const createAccount = (e) => {
     e.preventDefault();
     if (newPassword === passCheck) {
-      setPassword(newPassword)
+      createUser({
+        variables: {
+          username: username,
+          password: newPassword
+        }
+      })
+    
       //redirrect to type inputs
     } else {
-      // alert('your password did not match')
+      alert('your password did not match')
       //do some sort of error handling
     }
   }
