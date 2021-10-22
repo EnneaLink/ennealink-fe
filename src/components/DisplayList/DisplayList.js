@@ -1,7 +1,7 @@
 import React from 'react';
 import Cards from '../Cards/Cards';
 
-const DisplayList = ({ friends, allUsers, searchActivated }) => {
+const DisplayList = ({ friends, allUsers, searchActivated, theUsers, filteredUsers }) => {
 
   const friendsCards = friends.map(friend => {
     return (
@@ -12,22 +12,35 @@ const DisplayList = ({ friends, allUsers, searchActivated }) => {
       />
     )
   })
-  if (allUsers) {
-    const allUsersCards = allUsers.map(user => {
-    return (
-      <Cards
-        username={user.username}
-        myersBriggs={user.myersBrigg.typeOf}
-        enneagram={user.enneagram.number}
-      />
-    )
+
+    if (filteredUsers.length) {
+    var allUsersCards = filteredUsers.map(user => {
+      return (
+        <Cards
+          username={user.username}
+          myersBriggs={user.myersBrigg}
+          enneagram={user.enneagram}
+        />
+      )
    })
-  }
+ }
+
+
+
   return (
     <>
-    <section className="friendsCards">
-      {[friendsCards]}
-    </section>
+    { filteredUsers.length ?
+          <section className="allUsersCards">
+            {[allUsersCards]}
+            {console.log(allUsersCards)}
+          </section> :
+          <section className="show-friends">
+            <h3>{friends.length} friends</h3>
+            <section className="friendsCards">
+              {[friendsCards]}
+            </section>
+          </section>
+        }
     </>
   )
 }

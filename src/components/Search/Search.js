@@ -4,7 +4,7 @@ const Search = ({ friends, allUsers, filterAllUsers }) => {
 
   return (
     <div className='search-container'>
-        <label className='the-label' for='search'>Find New Friend</label>
+        <label className='the-label' for='search'>Search New Friends: </label>
         <input
           className='search-bar'
           type='text'

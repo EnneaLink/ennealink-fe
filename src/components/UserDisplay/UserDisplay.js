@@ -3,9 +3,9 @@ import Search from '../Search/Search';
 import DisplayList from '../DisplayList/DisplayList';
 import {useState} from 'react';
 
-const UserDisplay = ({ friends }) => {
+const UserDisplay = ({ friends, allUsers }) => {
 
-  const [allUsers, setAllUsers] = useState([]);
+  // const [allUsers, setAllUsers] = useState([]);
   const [searchActivated, setSearchActivated] = useState(false)
   const [filteredUsers, setFilteredUsers] = useState()
 
@@ -21,7 +21,7 @@ const UserDisplay = ({ friends }) => {
   }
 
   const determineUsersToShow = () => {
-    return !filteredUsers.length ? allUsers : filteredUsers
+    return filteredUsers ? allUsers : filteredUsers
   }
 
   return (
@@ -33,6 +33,7 @@ const UserDisplay = ({ friends }) => {
           friends={friends}
           theUsers={determineUsersToShow}
           searchActivated={searchActivated}
+          filteredUsers={filteredUsers}
         />
       </div>
     </section>

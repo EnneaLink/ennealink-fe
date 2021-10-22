@@ -15,6 +15,7 @@ function App() {
 
   const [user, setUser] = useState({});
   // const [friends, setFriends] = useState([]);
+  const [allUsers, setAllUsers] = useState([{username: "personOne", enneagram: "100", myersBrigg: "EFTP"}])
 
 
   const {error, loading, data} = useQuery(GET_USER, {
@@ -31,8 +32,8 @@ function App() {
   return (
     <div className="App">
       <Header />
-      
-      {!loading && <UserDisplay friends={data.getUserStats.friends} />}
+
+      {!loading && <UserDisplay friends={data.getUserStats.friends} allUsers={allUsers}/>}
     </div>
   );
 }
