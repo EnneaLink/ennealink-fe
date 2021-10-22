@@ -16,7 +16,7 @@ const Profile = ({ profileView }) => {
         <h4 className="myers-briggs-name">{myersBrigg.name}</h4>
         <p>{myersBrigg.description}</p>
         <div className="link-container">
-          <a className="myers-briggs-link" src={myersBrigg.link}>Learn More
+          <a className="myers-briggs-link" href={myersBrigg.link}>Learn More
           </a>
         </div>
       </div>
@@ -25,7 +25,7 @@ const Profile = ({ profileView }) => {
         <h4 className="myers-briggs-name">{enneagram.name}</h4>
         <p>{enneagram.description}</p>
         <div className="link-container">
-          <a className="enneagram-link" src={enneagram.link}>Learn More
+          <a className="enneagram-link" href={enneagram.link}>Learn More
           </a>
         </div>
       </div>

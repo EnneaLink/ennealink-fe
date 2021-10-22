@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import Login from '../Login/Login';
 import Header from '../Header/Header';
 import Profile from '../Profile/Profile';
+import EditProfile from '../EditProfile/EditProfile';
 import Loader from '../Loader/Loader';
 import UserDisplay from '../UserDisplay/UserDisplay';
 import {useQuery} from '@apollo/client';
