@@ -16,24 +16,23 @@ function App() {
   const [user, setUser] = useState({});
   // const [friends, setFriends] = useState([]);
 
+  
 
   const {error, loading, data} = useQuery(GET_USER, {
-    variables: {id: "2"}
+    variables: {id: "2"} //dynamically change id number with data from the create user mutation
   })
   //create a findFriend function to trigger when we click on a friend card, then pass the return as prop to profile.
 
   useEffect(() => {
     console.log(data);
     setUser(data);
-    // setFriends(user.getUserStats.friends)
   }, [data])
 
   return (
     <div className="App">
       
       <Login />
-      {/* {!loading && <Profile profileView={data.getUserStats} />}
-      <UserDisplay friends={friends} allUsers={allUsers} /> */}
+  
     </div>
   );
 }
