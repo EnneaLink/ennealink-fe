@@ -2,6 +2,7 @@ import './App.css';
 import { useState, useEffect } from 'react';
 import Header from '../Header/Header';
 import Profile from '../Profile/Profile';
+import EditProfile from '../EditProfile/EditProfile';
 import Loader from '../Loader/Loader';
 import UserDisplay from '../UserDisplay/UserDisplay';
 import {useQuery} from '@apollo/client';
@@ -30,6 +31,7 @@ function App() {
   return (
     <div className="App">
       <Header />
+      {!loading && <EditProfile /> }
       {!loading && <Profile profileView={data.getUserStats} />}
       {!loading && <UserDisplay friends={data.getUserStats.friends} />}
     </div>
