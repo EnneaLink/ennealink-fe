@@ -14,17 +14,12 @@ import { Route } from "react-router";
 function App() {
 
   const [user, setUser] = useState({});
-  const [friends, setFriends] = useState([]);
-  const [allUsers, setAllUsers] = useState([]);
-
+  const [id, setID] = useState(0);
   const {error, loading, data} = useQuery(GET_USER, {
-    variables: {id: "2"} //dynamically change id number with data from the create user mutation
+    variables: {id: id} 
   })
 
-  //create a findFriend function to trigger when we click on a friend card, then pass the return as prop to profile.
-
   useEffect(() => {
-    console.log(data);
     setUser(data);
   }, [data])
 
@@ -33,7 +28,7 @@ function App() {
 
       <Route exact path='/' 
         render={() => 
-          <Login />
+          <Login assignUser={setID} />
         }
       />
 
@@ -45,7 +40,7 @@ function App() {
 
       <Route exact path='/friends' 
         render={() => 
-          <UserDisplay friends={friends} allUsers={allUsers} /> 
+          <UserDisplay friends={data.getUserStats.friends} /> 
         }
       />
 

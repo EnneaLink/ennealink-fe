@@ -1,0 +1,6 @@
+.all-users-cards,
+.show-friends {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
