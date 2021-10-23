@@ -1,5 +1,6 @@
 import React from 'react';
 import Cards from '../Cards/Cards';
+import './DisplayList.css';
 
 const DisplayList = ({ friends, filteredUsers}) => {
 
