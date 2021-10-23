@@ -5,29 +5,32 @@ import {CREATE_USER} from '../../graphQL/mutations';
 import {useMutation} from '@apollo/client';
 import {onError} from '@apollo/client/link/error';
 
-const Login = () => {
+const Login = ({assignUser}) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [newUser, setNewUser] = useState(true);
   const [newPassword, setNewPassword] = useState('');
   const [passCheck, setPassCheck] = useState('');
 
-  const [createUser, { error, loading }] = useMutation(CREATE_USER);
+  const [createUser, { error, loading, data }] = useMutation(CREATE_USER);
 
-  const errorLink = onError(({ graphQLErrors, networkError }) => {
-    if (graphQLErrors)
-      graphQLErrors.forEach(({ message, locations, path }) =>
-        console.log(
-          `[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`,
-        ),
-      );
+  if (data) { assignUser(data.createUser.id)
+    console.log('data from mutation', data.createUser)}
+
+  // const errorLink = onError(({ graphQLErrors, networkError }) => {
+  //   if (graphQLErrors)
+  //     graphQLErrors.forEach(({ message, locations, path }) =>
+  //       console.log(
+  //         `[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`,
+  //       ),
+  //     );
   
-    if (networkError) console.log(`[Network error]: ${networkError}`);
-  });
+  //   if (networkError) console.log(`[Network error]: ${networkError}`);
+  // });
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // this can fetch our user stats from BE
+    // this can fetch our user stats from BE for existing users
   }
 
   const toggleCreate = () => {
@@ -47,13 +50,13 @@ const Login = () => {
           password: newPassword
         }
       })
-    
       //redirrect to type inputs
     } else {
       alert('your password did not match')
       //do some sort of error handling
     }
   }
+
 
   const signIn = (
     <section className="sign-in">
