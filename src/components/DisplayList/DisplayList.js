@@ -13,7 +13,7 @@ const DisplayList = ({ friends, allUsers, searchActivated, theUsers, filteredUse
     )
   })
 
-    const allUsersCards = theUsers.map(user => {
+    const allUsersCards = allUsers.map(user => {
       return (
         <Cards
           username={user.username}
@@ -28,7 +28,7 @@ const DisplayList = ({ friends, allUsers, searchActivated, theUsers, filteredUse
 
   return (
     <>
-    { filteredUsers.length ?
+    { searchActivated ?
           <section className="allUsersCards">
             {[allUsersCards]}
             {console.log(allUsersCards)}

@@ -1,14 +1,22 @@
 import React from 'react';
 import Search from '../Search/Search';
 import DisplayList from '../DisplayList/DisplayList';
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
+import {useQuery} from '@apollo/client';
 import {GET_ALL_USERS} from '../../graphQL/queries';
 
-const UserDisplay = ({ friends, allUsers }) => {
+const UserDisplay = ({ friends }) => {
 
-  // const [allUsers, setAllUsers] = useState([]);
+  const [allUsers, setAllUsers] = useState([]);
   const [searchActivated, setSearchActivated] = useState(false)
   const [filteredUsers, setFilteredUsers] = useState()
+  const {error, loading, data} = useQuery(GET_ALL_USERS)
+
+
+  useEffect(() => {
+    console.log(data);
+    (!loading && setAllUsers(data.getAllUsers));
+  }, [data])
 
   const filterAllUsers = (event) => {
     setSearchActivated(true)
@@ -30,12 +38,13 @@ const UserDisplay = ({ friends, allUsers }) => {
     <Search filterAllUsers={filterAllUsers} />
     <section className="list">
       <div className="display-list">
-        <DisplayList
+        {!loading && <DisplayList
           friends={friends}
-          theUsers={determineUsersToShow}
+          theUsers={determineUsersToShow()}
           searchActivated={searchActivated}
           filteredUsers={filteredUsers}
-        />
+          allUsers={data.getAllUsers}
+        /> }
       </div>
     </section>
     </>

@@ -16,7 +16,7 @@ function App() {
 
   const [user, setUser] = useState({});
   // const [friends, setFriends] = useState([]);
-  const [allUsers, setAllUsers] = useState([{username: "personOne", enneagram: "100", myersBrigg: "EFTP"}])
+
 
 
 
@@ -32,9 +32,9 @@ function App() {
 
   return (
     <div className="App">
-    
 
-      <Login />
+
+      {!loading && <UserDisplay friends={data.getUserStats.friends} />}
 
     </div>
   );
