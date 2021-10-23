@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Search = ({ friends, allUsers, filterAllUsers, setSearchInput, searchInput }) => {
+const Search = ({ filterAllUsers, setSearchInput, searchInput }) => {
 
   const handleChange = event => {
     event.preventDefault()
