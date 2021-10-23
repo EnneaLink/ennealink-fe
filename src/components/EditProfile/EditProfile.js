@@ -1,21 +1,8 @@
 import React, { Component } from 'react';
 import './EditProfile.css';
 
-class EditProfile extends Component {
-  constructor() {
-    super();
-
-    // do we need this with graphql?
-
-    // const {myersBrigg, enneagram} = user;
-
-    // this.state = {
-    //   mbtiTypeInput: myersBrigg.typeOf,
-    //   enneagramTypeInput: enneagram.number
-    // };
-  }
-
-
+const EditProfile = ({username, id}) => {
+  
   // do we need this with graphql?
 
   // handleChange = e => {
@@ -30,7 +17,6 @@ class EditProfile extends Component {
 
   // maybe later add a cancel-btn or back-btn
 
-  render() {
     return (
       <form className='edit-profile-form'>
 
@@ -90,6 +76,6 @@ class EditProfile extends Component {
       </form>
     )
   }
-}
+
 
 export default EditProfile;
