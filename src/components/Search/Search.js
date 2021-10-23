@@ -1,6 +1,12 @@
 import React from 'react';
 
-const Search = ({ friends, allUsers, filterAllUsers }) => {
+const Search = ({ friends, allUsers, filterAllUsers, setSearchInput, searchInput }) => {
+
+  const handleChange = event => {
+    event.preventDefault()
+    setSearchInput(event.target.value)
+    filterAllUsers(event)
+  }
 
   return (
     <div className='search-container'>
@@ -10,7 +16,8 @@ const Search = ({ friends, allUsers, filterAllUsers }) => {
           type='text'
           placeholder='Ex: imauser'
           name='search'
-          onChange={event => filterAllUsers(event)}
+          value={searchInput}
+          onChange={event => handleChange(event)}
         />
       </div>
   )

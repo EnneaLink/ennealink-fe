@@ -10,6 +10,7 @@ const UserDisplay = ({ friends }) => {
   const [allUsers, setAllUsers] = useState([]);
   const [searchActivated, setSearchActivated] = useState(false)
   const [filteredUsers, setFilteredUsers] = useState()
+  const [searchInput, setSearchInput] = useState('')
   const {error, loading, data} = useQuery(GET_ALL_USERS)
 
 
@@ -19,8 +20,7 @@ const UserDisplay = ({ friends }) => {
   }, [data])
 
   const filterAllUsers = (event) => {
-    setSearchActivated(true)
-    console.log("all users", allUsers)
+    console.log("searchInput", searchInput)
     const { value } = event.target
     const foundUsers = allUsers.filter(user => {
       if (user.username.toLowerCase().includes(value.toLowerCase())) {
@@ -36,7 +36,7 @@ const UserDisplay = ({ friends }) => {
 
   return (
     <>
-    <Search filterAllUsers={filterAllUsers} />
+    <Search filterAllUsers={filterAllUsers} setSearchInput={setSearchInput} searchInput={searchInput}/>
     <section className="list">
       <div className="display-list">
         {!loading && <DisplayList
@@ -45,6 +45,7 @@ const UserDisplay = ({ friends }) => {
           searchActivated={searchActivated}
           filteredUsers={filteredUsers}
           allUsers={data.getAllUsers}
+          searchInput={searchInput}
         /> }
       </div>
     </section>
