@@ -15,7 +15,6 @@ const UserDisplay = ({ friends }) => {
 
 
   useEffect(() => {
-    console.log(data);
     (!loading && setAllUsers(data.getAllUsers));
   }, [data])
 

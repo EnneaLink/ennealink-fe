@@ -1,12 +1,7 @@
 import React from 'react';
 import Cards from '../Cards/Cards';
-import {useState, useEffect} from 'react';
 
 const DisplayList = ({ friends, allUsers, searchActivated, theUsers, filteredUsers, searchInput }) => {
-
-  useEffect(() => {
-    console.log("useEffect happened!");
-  }, [filteredUsers])
 
   const friendsCards = friends.map(friend => {
     return (
@@ -35,13 +30,10 @@ const DisplayList = ({ friends, allUsers, searchActivated, theUsers, filteredUse
 
   return (
     <>
-    {console.log("filteredUsers", filteredUsers)}
-    {console.log("searchActivated", searchActivated)}
     { filteredUsers ?
           <section className="all-users-cards">
           {console.log("searchActivated2", searchActivated)}
             {[allUsersCards]}
-            {console.log(allUsersCards)}
           </section> :
           <section className="show-friends">
             <h3>{friends.length} friends</h3>
