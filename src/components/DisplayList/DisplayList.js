@@ -7,6 +7,7 @@ const DisplayList = ({ friends, filteredUsers}) => {
   const friendsCards = friends.map(friend => {
     return (
       <Cards
+        key={friend.id}
         username={friend.username}
         myersBriggs={friend.myersBrigg.typeOf}
         enneagram={friend.enneagram.number}
@@ -19,6 +20,7 @@ const DisplayList = ({ friends, filteredUsers}) => {
         <>
           {user.myersBrigg &&
           <Cards
+            key={user.id}
             username={user.username}
             myersBriggs={user.myersBrigg.typeOf}
             enneagram={user.enneagram.number}
