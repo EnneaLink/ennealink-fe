@@ -11,8 +11,6 @@ import {GET_USER} from '../../graphQL/queries';
 import {onError} from '@apollo/client/link/error';
 import { Route } from "react-router";
 
-
-
 function App() {
 
   const [user, setUser] = useState({});
@@ -21,6 +19,7 @@ function App() {
   const {error, loading, data} = useQuery(GET_USER, {
     variables: {id: "2"} //dynamically change id number with data from the create user mutation
   })
+
   //create a findFriend function to trigger when we click on a friend card, then pass the return as prop to profile.
 
   useEffect(() => {
@@ -30,13 +29,19 @@ function App() {
 
   return (
     <div className="App">
-    
+
       <Route exact path='/' 
         render={() => 
           <Login />
         }
       />
-  
+
+      <Route exact path='/profile' 
+        render={() => 
+          <Profile profileView={data.getUserStats} />
+        }
+      />
+
     </div>
   );
 }
