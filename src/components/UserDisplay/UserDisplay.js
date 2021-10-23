@@ -20,6 +20,7 @@ const UserDisplay = ({ friends }) => {
 
   const filterAllUsers = (event) => {
     setSearchActivated(true)
+    console.log("all users", allUsers)
     const { value } = event.target
     const foundUsers = allUsers.filter(user => {
       if (user.username.toLowerCase().includes(value.toLowerCase())) {
