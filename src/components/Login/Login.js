@@ -4,6 +4,7 @@ import Form from '../Form/Form';
 import {CREATE_USER} from '../../graphQL/mutations';
 import {useMutation} from '@apollo/client';
 import {onError} from '@apollo/client/link/error';
+import { Link } from 'react-router-dom';
 
 const Login = ({assignUser}) => {
   const [username, setUsername] = useState('');
@@ -27,11 +28,6 @@ const Login = ({assignUser}) => {
   
   //   if (networkError) console.log(`[Network error]: ${networkError}`);
   // });
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // this can fetch our user stats from BE for existing users
-  }
 
   const toggleCreate = () => {
     if (!newUser){
@@ -61,12 +57,47 @@ const Login = ({assignUser}) => {
   const signIn = (
     <section className="sign-in">
       <h1>EnneaLink</h1>
-        <form className="sign-in-box">
-          <input className="login-input" type="text" value={username} onChange={(e) => setUsername(e.target.value)} placeholder="enter your username"/>
-          <input className="login-input" type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="enter your password" minlength={8} required/>
-          <button className="submit-btn" type="submit" className="submit-btn" onClick={handleSubmit}>sign in</button>
-        </form>
-        <button onClick={toggleCreate} className="create-btn">create account</button>
+
+      <form className="sign-in-box">
+
+        <input
+          className="login-input"
+          type="text" value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          placeholder="enter your username"
+        />
+
+        <input
+          className="login-input"
+          type="password"
+          value={password} onChange={(e) => setPassword(e.target.value)}
+          placeholder="enter your password"
+          minlength={8} required
+        />
+
+        <Link
+          to={'/profile'}
+          key='1'  
+        >
+
+          <button
+            className="submit-btn"
+            type="submit"
+          >
+            sign in
+          </button>
+
+        </Link>
+
+      </form>
+
+      <button
+        onClick={toggleCreate}
+        className="create-btn"
+      >
+        create account
+      </button>
+
     </section>
 
   );
@@ -74,13 +105,52 @@ const Login = ({assignUser}) => {
   const makeAccount = (
     <section className="create-account">
       <h1>EnneaLink</h1>
-        <form className="sign-in-box">
-          <input className="login-input" type="text" value={username} onChange={(e) => setUsername(e.target.value)} placeholder="choose a username"/>
-          <input className="login-input" type="password" value={newPassword} onChange={(e) => setNewPassword(e.target.value)} placeholder="create a password (min 8 characters)" minlength={8} required/>
-          <input className="login-input" type="password" value={passCheck} onChange={(e) => setPassCheck(e.target.value)} placeholder="create a password (min 8 characters)" minlength={8} required/>
-          <button className="submit-btn" type="submit" className="submit-btn" onClick={createAccount}>next</button>
-        </form>
-        <button onClick={toggleCreate} className="create-btn">already a user? sign in</button>
+
+      <form className="sign-in-box">
+
+        <input 
+          className="login-input"
+          type="text"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          placeholder="choose a username"
+        />
+
+        <input
+          className="login-input"
+          type="password"
+          value={newPassword}
+          onChange={(e) => setNewPassword(e.target.value)}
+          placeholder="create a password (min 8 characters)"
+          minlength={8} required
+        />
+
+        <input
+          className="login-input"
+          type="password"
+          value={passCheck}
+          onChange={(e) => setPassCheck(e.target.value)}
+          placeholder="create a password (min 8 characters)"
+          minlength={8} required
+        />
+
+          <button
+            className="submit-btn"
+            type="submit"
+            className="submit-btn"
+            onClick={createAccount}
+          >
+            next
+          </button>
+      </form>
+
+      <button
+        onClick={toggleCreate}
+        className="create-btn"
+      >
+        Already a user? Sign in
+      </button>
+
     </section>
   );
 

@@ -9,16 +9,14 @@ import UserDisplay from '../UserDisplay/UserDisplay';
 import {useQuery} from '@apollo/client';
 import {GET_USER} from '../../graphQL/queries';
 import {onError} from '@apollo/client/link/error';
+import { Route } from "react-router";
 
 function App() {
 
   const [user, setUser] = useState({});
   const [id, setID] = useState(0);
-  // const [friends, setFriends] = useState([]);
-  
-const {error, loading, data} = useQuery(GET_USER, {
+  const {error, loading, data} = useQuery(GET_USER, {
     variables: {id: id} 
-
   })
 
   useEffect(() => {
@@ -27,8 +25,24 @@ const {error, loading, data} = useQuery(GET_USER, {
 
   return (
     <div className="App">
-      
-      <Login assignUser={setID} />
+
+      <Route exact path='/' 
+        render={() => 
+          <Login assignUser={setID} />
+        }
+      />
+
+      <Route exact path='/profile' 
+        render={() => 
+          <Profile profileView={data.getUserStats} />
+        }
+      />
+
+      <Route exact path='/friends' 
+        render={() => 
+          <UserDisplay friends={data.getUserStats.friends} /> 
+        }
+      />
 
     </div>
   );

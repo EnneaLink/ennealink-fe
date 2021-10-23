@@ -1,5 +1,6 @@
 import React from 'react';
 import Search from '../Search/Search';
+import Header from '../Header/Header';
 import DisplayList from '../DisplayList/DisplayList';
 import {useState, useEffect} from 'react';
 import {useQuery} from '@apollo/client';
@@ -32,17 +33,18 @@ const UserDisplay = ({ friends }) => {
   }
 
   return (
-    <>
-    <Search filterAllUsers={filterAllUsers} setSearchInput={setSearchInput} searchInput={searchInput}/>
-    <section className="list">
-      <div className="display-list">
-        {!loading && <DisplayList
-          friends={friends}
-          filteredUsers={filteredUsers}
-        /> }
-      </div>
-    </section>
-    </>
+    <div>
+      <Header />
+      <Search filterAllUsers={filterAllUsers} setSearchInput={setSearchInput} searchInput={searchInput}/>
+      <section className="list">
+        <div className="display-list">
+          {!loading && <DisplayList
+            friends={friends}
+            filteredUsers={filteredUsers}
+          /> }
+        </div>
+      </section>
+    </div>
   )
 }
 
