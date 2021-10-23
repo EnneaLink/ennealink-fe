@@ -42,6 +42,12 @@ function App() {
         }
       />
 
+      <Route exact path='/following' 
+        render={() => 
+          <UserDisplay friends={friends} allUsers={allUsers} /> 
+        }
+      />
+
     </div>
   );
 }
