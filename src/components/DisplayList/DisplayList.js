@@ -9,24 +9,20 @@ const DisplayList = ({ friends, filteredUsers}) => {
       <Cards
         key={friend.id}
         username={friend.username}
-        myersBriggs={friend.myersBrigg.typeOf}
-        enneagram={friend.enneagram.number}
+        myersBriggs={friend.myersBrigg ? friend.myersBrigg.typeOf : null}
+        enneagram={friend.enneagram ? friend.enneagram.number : null}
       />
     )
   })
 
     const allUsersCards = (filteredUsers && filteredUsers.map(user => {
       return (
-        <>
-          {user.myersBrigg &&
           <Cards
             key={user.id}
             username={user.username}
-            myersBriggs={user.myersBrigg.typeOf}
-            enneagram={user.enneagram.number}
+            myersBriggs={user.myersBrigg ? user.myersBrigg.typeOf : null}
+            enneagram={user.enneagram ? user.enneagram.number : null}
           />
-        }
-        </>
       )
    }))
 
