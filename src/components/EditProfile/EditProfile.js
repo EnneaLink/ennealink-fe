@@ -4,16 +4,14 @@ import './EditProfile.css';
 const EditProfile = ({username, id}) => {
   const [enneagramType, setEnneagramType] = useState('')
   const [mbtiType, setMbtiType] = useState('');
-  // do we need this with graphql?
-
-  // handleChange = e => {
-  //   this.setState({ [e.target.name]: e.target.value });
-  // }
 
   const handleSubmit = e => {
     e.preventDefault();
-    
-    // save user type & set state in App to match inputs
+    if (!enneagramType || !mbtiType) {
+      alert('please choose both personality types')
+    } else {
+      //this is where we can set off our UPDATE_USER_STATS mutation!
+    }
   }    
 
   // maybe later add a cancel-btn or back-btn
@@ -24,7 +22,7 @@ const EditProfile = ({username, id}) => {
         <h2>Know your personality types?</h2>
         <h3>Choose them below</h3>
 
-        <select name='type-list' className="type-list">
+        <select name='type-list' className="type-list" onChange={e => setMbtiType(e.target.value)}>
           <option value='null'>mbti</option>
           <option value='enfj'>ENFJ</option>
           <option value='infj'>INFJ</option>
@@ -48,8 +46,8 @@ const EditProfile = ({username, id}) => {
         
         </select>
 
-        <select name='type-list' className="num-list">
-        <option value='null'>enneagram</option>
+        <select name='type-list' className="num-list" onChange={e => setEnneagramType(e.target.value)}>
+          <option value='null'>enneagram</option>
           <option value='en-1'>1</option>
           <option value='en-2'>2</option>
           <option value='en-3'>3</option>
