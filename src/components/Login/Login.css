@@ -1,0 +1,43 @@
+.sign-in, .create-account {
+  background-color: #caebf2;
+  height: 40vh;
+  margin: 10vh 5vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 20px;
+  box-shadow: 0 1px 3px #00000073;
+}
+
+.sign-in-box {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  height: 60%;
+}
+
+.login-input {
+  margin: 1vh;
+  border-radius: 14px;
+  height: 2em;
+}
+
+.submit-btn, .create-btn {
+  margin: 1vh;
+  border-radius: 14px;
+  height: 2.5em;
+  background-color: coral;
+  border: none;
+  box-shadow: 0 1px 2px #282c34;
+}
+
+.create-btn {
+  width: 60vw;
+  height: 1.9em;
+  background-color: #76CC66;
+}
+
+h1 {
+  color: #ff3b3f;
+}
