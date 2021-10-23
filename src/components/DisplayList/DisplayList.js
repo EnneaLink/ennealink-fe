@@ -20,12 +20,15 @@ const DisplayList = ({ friends, allUsers, searchActivated, theUsers, filteredUse
 
     const allUsersCards = (filteredUsers && filteredUsers.map(user => {
       return (
-
-        <Cards
-          username={user.username}
-          myersBriggs={user.myersBrigg.typeOf}
-          enneagram={user.enneagram.number}
-        />
+        <>
+          {user.myersBrigg &&
+          <Cards
+            username={user.username}
+            myersBriggs={user.myersBrigg.typeOf}
+            enneagram={user.enneagram.number}
+          />
+        }
+        </>
       )
    }))
 

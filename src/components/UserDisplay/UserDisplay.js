@@ -9,7 +9,7 @@ const UserDisplay = ({ friends }) => {
 
   const [allUsers, setAllUsers] = useState([]);
   const [searchActivated, setSearchActivated] = useState(false)
-  const [filteredUsers, setFilteredUsers] = useState()
+  const [filteredUsers, setFilteredUsers] = useState(null)
   const [searchInput, setSearchInput] = useState('')
   const {error, loading, data} = useQuery(GET_ALL_USERS)
 
@@ -20,14 +20,19 @@ const UserDisplay = ({ friends }) => {
   }, [data])
 
   const filterAllUsers = (event) => {
-    console.log("searchInput", searchInput)
+    console.log("allusers", allUsers)
     const { value } = event.target
-    const foundUsers = allUsers.filter(user => {
-      if (user.username.toLowerCase().includes(value.toLowerCase())) {
-        return user
-      }
-    })
-    setFilteredUsers(foundUsers)
+    if (value.length) {
+      const foundUsers = allUsers.filter(user => {
+        if (user.username.toLowerCase().includes(value.toLowerCase())) {
+          return user
+        }
+      })
+      setFilteredUsers(foundUsers)
+    } else {
+      setFilteredUsers(null)
+    }
+
   }
 
   const determineUsersToShow = () => {
