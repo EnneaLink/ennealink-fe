@@ -13,8 +13,7 @@ const DisplayList = ({ friends, allUsers, searchActivated, theUsers, filteredUse
     )
   })
 
-    if (filteredUsers.length) {
-    var allUsersCards = filteredUsers.map(user => {
+    const allUsersCards = theUsers.map(user => {
       return (
         <Cards
           username={user.username}
@@ -23,7 +22,7 @@ const DisplayList = ({ friends, allUsers, searchActivated, theUsers, filteredUse
         />
       )
    })
- }
+
 
 
 

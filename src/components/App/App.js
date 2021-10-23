@@ -32,8 +32,8 @@ function App() {
 
   return (
     <div className="App">
-      <Header />
-      {!loading && <UserDisplay friends={data.getUserStats.friends} allUsers={allUsers}/>}
+    
+
       <Login />
 
     </div>

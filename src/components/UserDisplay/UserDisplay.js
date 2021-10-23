@@ -21,7 +21,7 @@ const UserDisplay = ({ friends, allUsers }) => {
   }
 
   const determineUsersToShow = () => {
-    return filteredUsers ? allUsers : filteredUsers
+    return !filteredUsers ? allUsers : filteredUsers
   }
 
   return (
