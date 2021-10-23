@@ -1,5 +1,6 @@
 import React from 'react';
 import Search from '../Search/Search';
+import Header from '../Header/Header';
 import DisplayList from '../DisplayList/DisplayList';
 import {useState} from 'react';
 
@@ -25,18 +26,19 @@ const UserDisplay = ({ friends }) => {
   }
 
   return (
-    <>
-    <Search filterAllUsers={filterAllUsers} />
-    <section className="list">
-      <div className="display-list">
-        <DisplayList
-          friends={friends}
-          theUsers={determineUsersToShow}
-          searchActivated={searchActivated}
-        />
-      </div>
-    </section>
-    </>
+    <div>
+      <Header />
+      <Search filterAllUsers={filterAllUsers} />
+      <section className="list">
+        <div className="display-list">
+          <DisplayList
+            friends={friends}
+            theUsers={determineUsersToShow}
+            searchActivated={searchActivated}
+          />
+        </div>
+      </section>
+    </div>
   )
 }
 
