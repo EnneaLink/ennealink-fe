@@ -8,8 +8,9 @@ const EditProfile = ({username, id}) => {
   const handleSubmit = e => {
     e.preventDefault();
     if (!enneagramType || !mbtiType) {
-      alert('please choose both personality types')
+      console.log('please choose both personality types')
     } else {
+      console.log('success!')
       //this is where we can set off our UPDATE_USER_STATS mutation!
     }
   }    
@@ -46,23 +47,23 @@ const EditProfile = ({username, id}) => {
         
         </select>
 
-        <select name='type-list' className="num-list" onChange={e => setEnneagramType(e.target.value)}>
+        <select name='type-list' className="num-list" onChange={e => setEnneagramType(parseInt(e.target.value))}>
           <option value='null'>enneagram</option>
-          <option value='en-1'>1</option>
-          <option value='en-2'>2</option>
-          <option value='en-3'>3</option>
-          <option value='en-4'>4</option>
-          <option value='en-5'>5</option>
-          <option value='en-6'>6</option>
-          <option value='en-7'>7</option>
-          <option value='en-8'>8</option>
-          <option value='en-9'>9</option>
+          <option value='1'>1</option>
+          <option value='2'>2</option>
+          <option value='3'>3</option>
+          <option value='4'>4</option>
+          <option value='5'>5</option>
+          <option value='6'>6</option>
+          <option value='7'>7</option>
+          <option value='8'>8</option>
+          <option value='9'>9</option>
         
         </select>  
 
         <button
           className='save-btn'
-          onClick={e => this.handleSubmit(e)}>
+          onClick={e => handleSubmit(e)}>
           Save
         </button>
 
