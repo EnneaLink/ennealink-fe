@@ -9,6 +9,7 @@ import UserDisplay from '../UserDisplay/UserDisplay';
 import {useQuery} from '@apollo/client';
 import {GET_USER} from '../../graphQL/queries';
 import {onError} from '@apollo/client/link/error';
+import { Route } from "react-router";
 
 
 
@@ -16,8 +17,6 @@ function App() {
 
   const [user, setUser] = useState({});
   // const [friends, setFriends] = useState([]);
-
-  
 
   const {error, loading, data} = useQuery(GET_USER, {
     variables: {id: "2"} //dynamically change id number with data from the create user mutation
@@ -31,8 +30,12 @@ function App() {
 
   return (
     <div className="App">
-      
-      <Login />
+    
+      <Route exact path='/' 
+        render={() => 
+          <Login />
+        }
+      />
   
     </div>
   );
