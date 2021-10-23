@@ -14,7 +14,8 @@ import { Route } from "react-router";
 function App() {
 
   const [user, setUser] = useState({});
-  // const [friends, setFriends] = useState([]);
+  const [friends, setFriends] = useState([]);
+  const [allUsers, setAllUsers] = useState([]);
 
   const {error, loading, data} = useQuery(GET_USER, {
     variables: {id: "2"} //dynamically change id number with data from the create user mutation
@@ -42,7 +43,7 @@ function App() {
         }
       />
 
-      <Route exact path='/following' 
+      <Route exact path='/friends' 
         render={() => 
           <UserDisplay friends={friends} allUsers={allUsers} /> 
         }

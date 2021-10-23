@@ -15,13 +15,13 @@ const NavBar = () => {
 
           <button className="nav-btn">my profile</button>
 
-      </Link>
+        </Link>
 
       </li>
       <li>
 
         <Link
-          to={'/following'}
+          to={'/friends'}
           key='1'  
         >
 
@@ -33,7 +33,7 @@ const NavBar = () => {
       <li>
 
         <Link
-          to={'/l'}
+          to={'/'}
           key='1'  
         >
 
