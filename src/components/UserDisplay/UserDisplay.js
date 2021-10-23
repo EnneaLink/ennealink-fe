@@ -29,11 +29,6 @@ const UserDisplay = ({ friends }) => {
     } else {
       setFilteredUsers(null)
     }
-
-  }
-
-  const determineUsersToShow = () => {
-    return !filteredUsers ? allUsers : filteredUsers
   }
 
   return (
