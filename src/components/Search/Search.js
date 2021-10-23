@@ -1,19 +1,29 @@
 import React from 'react';
+import './Search.css';
 
-const Search = ({ friends, allUsers, filterAllUsers }) => {
+const Search = ({ filterAllUsers, setSearchInput, searchInput }) => {
+
+  const handleChange = event => {
+    event.preventDefault()
+    setSearchInput(event.target.value)
+    filterAllUsers(event)
+  }
 
   return (
     <div className='search-container'>
-        <label className='the-label' for='search'>Find New Friend</label>
+
         <input
           className='search-bar'
           type='text'
-          placeholder='Ex: imauser'
+          placeholder='Find New Friends'
           name='search'
-          onChange={event => filterAllUsers(event)}
+          value={searchInput}
+          onChange={event => handleChange(event)}
         />
       </div>
   )
 }
 
 export default Search;
+
+/*// <label className='the-label' for='search'>Find New Friends: </label>*/

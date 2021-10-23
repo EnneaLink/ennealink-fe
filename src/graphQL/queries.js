@@ -39,3 +39,25 @@ export const GET_USER = gql `
       }
     }
   }`
+
+  export const GET_ALL_USERS = gql `
+    query getAllUsers {
+      getAllUsers {
+        id
+        username
+        enneagram{
+          id
+          number
+          name
+          description
+          link
+        }
+        myersBrigg{
+          id
+          typeOf
+          name
+          description
+          link
+        }
+      }
+  }`

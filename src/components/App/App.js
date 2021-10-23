@@ -17,7 +17,8 @@ function App() {
   const [user, setUser] = useState({});
   // const [friends, setFriends] = useState([]);
 
-  
+
+
 
   const {error, loading, data} = useQuery(GET_USER, {
     variables: {id: "2"} //dynamically change id number with data from the create user mutation
@@ -31,9 +32,10 @@ function App() {
 
   return (
     <div className="App">
-      
-      <Login />
-  
+      <Header />
+
+      {!loading && <UserDisplay friends={data.getUserStats.friends} />}
+
     </div>
   );
 }
