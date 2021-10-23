@@ -74,7 +74,7 @@ const Login = ({assignUser}) => {
   );
 
   return (
-    <div>
+    <div className="login-container">
       {newUser ? makeAccount : signIn}
     </div>
   )

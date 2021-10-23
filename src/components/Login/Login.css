@@ -1,3 +1,7 @@
+.login-container {
+  width: 100vw;
+}
+
 .sign-in, .create-account {
   background-color: #caebf2;
   height: 40vh;
