@@ -2,6 +2,7 @@ import React from 'react';
 import Search from '../Search/Search';
 import DisplayList from '../DisplayList/DisplayList';
 import {useState} from 'react';
+import {GET_ALL_USERS} from '../../graphQL/queries';
 
 const UserDisplay = ({ friends, allUsers }) => {
 
