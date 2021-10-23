@@ -10,18 +10,15 @@ import {useQuery} from '@apollo/client';
 import {GET_USER} from '../../graphQL/queries';
 import {onError} from '@apollo/client/link/error';
 
-
-
 function App() {
 
   const [user, setUser] = useState({});
   const [id, setID] = useState(0);
   // const [friends, setFriends] = useState([]);
-
-  
   
 const {error, loading, data} = useQuery(GET_USER, {
     variables: {id: id} 
+
   })
 
   useEffect(() => {
@@ -32,7 +29,7 @@ const {error, loading, data} = useQuery(GET_USER, {
     <div className="App">
       
       <Login assignUser={setID} />
-  
+
     </div>
   );
 }
