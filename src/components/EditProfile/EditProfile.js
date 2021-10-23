@@ -1,30 +1,31 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import './EditProfile.css';
 
 const EditProfile = ({username, id}) => {
-  
+  const [enneagramType, setEnneagramType] = useState('')
+  const [mbtiType, setMbtiType] = useState('');
   // do we need this with graphql?
 
   // handleChange = e => {
   //   this.setState({ [e.target.name]: e.target.value });
   // }
 
-  handleSubmit = e => {
+  const handleSubmit = e => {
     e.preventDefault();
-
+    
     // save user type & set state in App to match inputs
   }    
 
   // maybe later add a cancel-btn or back-btn
 
     return (
-      <form className='edit-profile-form'>
-
+      <form className='sign-in-box sign-in'>
+        <h1>EnneaLink</h1>
         <h2>Know your personality types?</h2>
         <h3>Choose them below</h3>
 
-        <select name='type-list'>
-
+        <select name='type-list' className="type-list">
+          <option value='null'>mbti</option>
           <option value='enfj'>ENFJ</option>
           <option value='infj'>INFJ</option>
           <option value='enfp'>ENFP</option>
@@ -47,8 +48,8 @@ const EditProfile = ({username, id}) => {
         
         </select>
 
-        <select name='type-list'>
-
+        <select name='type-list' className="num-list">
+        <option value='null'>enneagram</option>
           <option value='en-1'>1</option>
           <option value='en-2'>2</option>
           <option value='en-3'>3</option>
@@ -62,16 +63,19 @@ const EditProfile = ({username, id}) => {
         </select>  
 
         <button
-          className='submit-btn'
+          className='save-btn'
           onClick={e => this.handleSubmit(e)}>
           Save
         </button>
 
         <h2>Don't know your types?</h2>
         <h3>That's okay!</h3>   
-
-        <a className="test-link" href='https://www.idrlabs.com/cognitive-function/test.php '>Take MBTI Test</a>
-        <a className="test-link" href='https://similarminds.com/cgi-bin/sminds2/similarminds3.pl '>Take Enneagram Test</a>        
+        <div className="link-container">
+          <a className="test-link" href='https://www.idrlabs.com/cognitive-function/test.php' target="_blank"
+          rel="noopener noreferrer">Take MBTI Test</a>
+          <a className="test-link" href='https://similarminds.com/cgi-bin/sminds2/similarminds3.pl' target="_blank"
+          rel="noopener noreferrer">Take Enneagram Test</a>        
+        </div>
 
       </form>
     )
