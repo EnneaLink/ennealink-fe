@@ -8,7 +8,6 @@ import {GET_ALL_USERS} from '../../graphQL/queries';
 const UserDisplay = ({ friends }) => {
 
   const [allUsers, setAllUsers] = useState([]);
-  const [searchActivated, setSearchActivated] = useState(false)
   const [filteredUsers, setFilteredUsers] = useState(null)
   const [searchInput, setSearchInput] = useState('')
   const {error, loading, data} = useQuery(GET_ALL_USERS)
@@ -19,7 +18,6 @@ const UserDisplay = ({ friends }) => {
   }, [data])
 
   const filterAllUsers = (event) => {
-    console.log("allusers", allUsers)
     const { value } = event.target
     if (value.length) {
       const foundUsers = allUsers.filter(user => {
@@ -45,11 +43,7 @@ const UserDisplay = ({ friends }) => {
       <div className="display-list">
         {!loading && <DisplayList
           friends={friends}
-          theUsers={determineUsersToShow()}
-          searchActivated={searchActivated}
           filteredUsers={filteredUsers}
-          allUsers={data.getAllUsers}
-          searchInput={searchInput}
         /> }
       </div>
     </section>

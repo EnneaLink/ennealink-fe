@@ -1,7 +1,7 @@
 import React from 'react';
 import Cards from '../Cards/Cards';
 
-const DisplayList = ({ friends, allUsers, searchActivated, theUsers, filteredUsers, searchInput }) => {
+const DisplayList = ({ friends, filteredUsers}) => {
 
   const friendsCards = friends.map(friend => {
     return (
@@ -27,12 +27,10 @@ const DisplayList = ({ friends, allUsers, searchActivated, theUsers, filteredUse
       )
    }))
 
-
   return (
     <>
     { filteredUsers ?
           <section className="all-users-cards">
-          {console.log("searchActivated2", searchActivated)}
             {[allUsersCards]}
           </section> :
           <section className="show-friends">
