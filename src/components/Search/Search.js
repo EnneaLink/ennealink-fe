@@ -1,4 +1,5 @@
 import React from 'react';
+import './Search.css';
 
 const Search = ({ filterAllUsers, setSearchInput, searchInput }) => {
 
@@ -10,11 +11,11 @@ const Search = ({ filterAllUsers, setSearchInput, searchInput }) => {
 
   return (
     <div className='search-container'>
-        <label className='the-label' for='search'>Search New Friends: </label>
+
         <input
           className='search-bar'
           type='text'
-          placeholder='Ex: imauser'
+          placeholder='Find New Friends'
           name='search'
           value={searchInput}
           onChange={event => handleChange(event)}
@@ -24,3 +25,5 @@ const Search = ({ filterAllUsers, setSearchInput, searchInput }) => {
 }
 
 export default Search;
+
+/*// <label className='the-label' for='search'>Find New Friends: </label>*/
