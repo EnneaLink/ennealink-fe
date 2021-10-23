@@ -34,13 +34,13 @@ function App() {
 
       <Route exact path='/profile' 
         render={() => 
-          <Profile profileView={data.getUserStats} />
+          {!loading && <Profile profileView={data.getUserStats} />}
         }
       />
 
       <Route exact path='/friends' 
         render={() => 
-          <UserDisplay friends={data.getUserStats.friends} /> 
+          {!loading && <UserDisplay friends={data.getUserStats.friends} />}
         }
       />
 
