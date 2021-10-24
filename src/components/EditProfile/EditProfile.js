@@ -32,7 +32,7 @@ const EditProfile = ({updateTypes, id, username}) => {
           enneagram: enneagramType
         }
       })
-      history.push("/profile")
+      setTimeout(() => { history.push(`/profile/${id}`) }, 1000)
     }
   }
 

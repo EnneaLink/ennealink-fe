@@ -25,6 +25,7 @@ function App() {
   }, [data])
 
   return (
+
     <div className="App">
 
       <Route exact path='/'
@@ -33,9 +34,9 @@ function App() {
         }
       />
 
-      <Route exact path='/profile'
-        render={() =>
-          <Profile profileView={ user } />
+      <Route exact path='/profile/:id'
+        render={({match}) =>
+          <Profile profileView={ match.params.id } />
       }
       />
 
@@ -46,6 +47,7 @@ function App() {
       />
 
     </div>
+
   );
 }
 

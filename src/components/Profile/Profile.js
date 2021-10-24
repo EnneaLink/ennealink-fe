@@ -10,20 +10,19 @@ const Profile = ({ profileView }) => {
 
   // const {myersBrigg, enneagram, username} = profileView
   const {error, loading, data} = useQuery(GET_USER, {
-    variables: {id: profileView.getUserStats.id}
+    variables: {id: profileView}
   })
 
   useEffect(() => {
     console.log("PV", profileView)
     console.log("data", profileView)
-  }, [])
+  }, [data])
 
   //We will have a function that dynamically renders a link to show how a user and a friend would interact based off of bothe of their types. This will return a link that we can plug into an <a></a> tag in the return below. (Hayley has good concept for this)
 
   return (
 
     <div>
-
       <Header />
       { data ? (
         <article className='profile-view'>
