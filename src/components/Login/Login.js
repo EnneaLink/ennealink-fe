@@ -4,20 +4,27 @@ import {CREATE_USER} from '../../graphQL/mutations';
 import {useMutation} from '@apollo/client';
 import {onError} from '@apollo/client/link/error';
 import { Link } from 'react-router-dom';
+import EditProfile from '../EditProfile/EditProfile';
 
-const Login = ({assignUser}) => {
+const Login = ({assignUser, user, updateTypes}) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [newUser, setNewUser] = useState(true);
   const [newPassword, setNewPassword] = useState('');
   const [passCheck, setPassCheck] = useState('');
-  
+  const [id, setId] = useState('');
+
 
   const [createUser, { error, loading, data }] = useMutation(CREATE_USER);
 
   if (data) { assignUser(data.createUser.id)
-    console.log('data from mutation', data.createUser)}
+    }
 
+  if (data) {
+    if (!id) {
+      setId(data.createUser.id)
+    }
+  }
   const handleSubmit = (e) => {
     e.preventDefault();
     // this can fetch our user stats from BE for existing users
@@ -30,7 +37,7 @@ const Login = ({assignUser}) => {
       setNewUser(false)
     }
   }
-  
+
   const createAccount = (e) => {
     e.preventDefault();
     if (newPassword === passCheck) {
@@ -71,7 +78,7 @@ const Login = ({assignUser}) => {
 
         <Link
           to={'/profile'}
-          key='1'  
+          key='1'
         >
 
           <button
@@ -96,61 +103,67 @@ const Login = ({assignUser}) => {
 
   );
 
-  const makeAccount = (
-    <section className="create-account">
-      <h1>EnneaLink</h1>
+  const makeAccount = () => {
+    
+    if (user === undefined) {
+      return (
+      <section className="create-account">
+        <h1>EnneaLink</h1>
 
-      <form className="sign-in-box">
+        <form className="sign-in-box">
 
-        <input 
-          className="login-input"
-          type="text"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          placeholder="choose a username"
-        />
+          <input
+            className="login-input"
+            type="text"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            placeholder="choose a username"
+          />
 
-        <input
-          className="login-input"
-          type="password"
-          value={newPassword}
-          onChange={(e) => setNewPassword(e.target.value)}
-          placeholder="create a password (min 8 characters)"
-          minlength={8} required
-        />
+          <input
+            className="login-input"
+            type="password"
+            value={newPassword}
+            onChange={(e) => setNewPassword(e.target.value)}
+            placeholder="create a password (min 8 characters)"
+            minlength={8} required
+          />
 
-        <input
-          className="login-input"
-          type="password"
-          value={passCheck}
-          onChange={(e) => setPassCheck(e.target.value)}
-          placeholder="create a password (min 8 characters)"
-          minlength={8} required
-        />
+          <input
+            className="login-input"
+            type="password"
+            value={passCheck}
+            onChange={(e) => setPassCheck(e.target.value)}
+            placeholder="create a password (min 8 characters)"
+            minlength={8} required
+          />
 
-          <button
-            className="submit-btn"
-            type="submit"
-            className="submit-btn"
-            onClick={createAccount}
-          >
-            next
-          </button>
-      </form>
+            <button
+              className="submit-btn"
+              type="submit"
+              className="submit-btn"
+              onClick={createAccount}
+            >
+              next
+            </button>
+        </form>
 
-      <button
-        onClick={toggleCreate}
-        className="create-btn"
-      >
-        Already a user? Sign in
-      </button>
+        <button
+          onClick={toggleCreate}
+          className="create-btn"
+        >
+          Already a user? Sign in
+        </button>
 
-    </section>
-  );
+      </section> )
+    } else {
+      return <EditProfile updateTypes={updateTypes} id={id} username={username}/>
+    }
+  }
 
   return (
     <div className="login-container">
-      {newUser ? makeAccount : signIn}
+      {newUser ? makeAccount() : signIn}
     </div>
   )
 }
