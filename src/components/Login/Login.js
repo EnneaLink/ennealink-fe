@@ -4,6 +4,7 @@ import {CREATE_USER} from '../../graphQL/mutations';
 import {useMutation} from '@apollo/client';
 import {onError} from '@apollo/client/link/error';
 import { Link } from 'react-router-dom';
+import EditProfile from '../EditProfile/EditProfile';
 
 const Login = ({assignUser, user, updateTypes}) => {
   const [username, setUsername] = useState('');
@@ -96,63 +97,67 @@ const Login = ({assignUser, user, updateTypes}) => {
 
   );
 
-  const makeAccount = (
-    {!user ?
-    <section className="create-account">
-      <h1>EnneaLink</h1>
+  const makeAccount = () => {
+    console.log("user", user)
+    if (user === undefined) {
+      return (
+      <section className="create-account">
+        <h1>EnneaLink</h1>
 
-      <form className="sign-in-box">
+        <form className="sign-in-box">
 
-        <input
-          className="login-input"
-          type="text"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          placeholder="choose a username"
-        />
+          <input
+            className="login-input"
+            type="text"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            placeholder="choose a username"
+          />
 
-        <input
-          className="login-input"
-          type="password"
-          value={newPassword}
-          onChange={(e) => setNewPassword(e.target.value)}
-          placeholder="create a password (min 8 characters)"
-          minlength={8} required
-        />
+          <input
+            className="login-input"
+            type="password"
+            value={newPassword}
+            onChange={(e) => setNewPassword(e.target.value)}
+            placeholder="create a password (min 8 characters)"
+            minlength={8} required
+          />
 
-        <input
-          className="login-input"
-          type="password"
-          value={passCheck}
-          onChange={(e) => setPassCheck(e.target.value)}
-          placeholder="create a password (min 8 characters)"
-          minlength={8} required
-        />
+          <input
+            className="login-input"
+            type="password"
+            value={passCheck}
+            onChange={(e) => setPassCheck(e.target.value)}
+            placeholder="create a password (min 8 characters)"
+            minlength={8} required
+          />
 
-          <button
-            className="submit-btn"
-            type="submit"
-            className="submit-btn"
-            onClick={createAccount}
-          >
-            next
-          </button>
-      </form>
+            <button
+              className="submit-btn"
+              type="submit"
+              className="submit-btn"
+              onClick={createAccount}
+            >
+              next
+            </button>
+        </form>
 
-      <button
-        onClick={toggleCreate}
-        className="create-btn"
-      >
-        Already a user? Sign in
-      </button>
+        <button
+          onClick={toggleCreate}
+          className="create-btn"
+        >
+          Already a user? Sign in
+        </button>
 
-    </section>
-   : <EditProfile user={user} updateTypes={updateTypes}/>}
-  );
+      </section> )
+    } else {
+      return <EditProfile user={user} updateTypes={updateTypes}/>
+    }
+  }
 
   return (
     <div className="login-container">
-      {newUser ? makeAccount : signIn}
+      {newUser ? makeAccount() : signIn}
     </div>
   )
 }
