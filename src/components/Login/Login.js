@@ -12,13 +12,19 @@ const Login = ({assignUser, user, updateTypes}) => {
   const [newUser, setNewUser] = useState(true);
   const [newPassword, setNewPassword] = useState('');
   const [passCheck, setPassCheck] = useState('');
+  const [id, setId] = useState('');
 
 
   const [createUser, { error, loading, data }] = useMutation(CREATE_USER);
 
   if (data) { assignUser(data.createUser.id)
-    console.log('data from mutation', data.createUser)}
+    }
 
+  if (data) {
+    if (!id) {
+      setId(data.createUser.id)
+    }
+  }
   const handleSubmit = (e) => {
     e.preventDefault();
     // this can fetch our user stats from BE for existing users
@@ -98,7 +104,7 @@ const Login = ({assignUser, user, updateTypes}) => {
   );
 
   const makeAccount = () => {
-    console.log("user", user)
+    
     if (user === undefined) {
       return (
       <section className="create-account">
@@ -151,7 +157,7 @@ const Login = ({assignUser, user, updateTypes}) => {
 
       </section> )
     } else {
-      return <EditProfile user={user} updateTypes={updateTypes}/>
+      return <EditProfile updateTypes={updateTypes} id={id} username={username}/>
     }
   }
 

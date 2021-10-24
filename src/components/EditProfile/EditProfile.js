@@ -1,13 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { UPDATE_USER } from '../../graphQL/mutations';
-import { useMutation } from '@apollo/client';
+import { GET_USER } from '../../graphQL/queries';
+import { useMutation, useQuery } from '@apollo/client';
 import './EditProfile.css';
 import { Link, useHistory } from "react-router-dom";
 
-const EditProfile = ({user, updateTypes}) => {
+const EditProfile = ({updateTypes, id, username}) => {
   const [enneagramType, setEnneagramType] = useState('')
   const [mbtiType, setMbtiType] = useState('');
-  const [updateUser, { error, loading, data }] = useMutation(UPDATE_USER);
+  const [updateUser] = useMutation(UPDATE_USER);
+  const {error, loading, data} = useQuery(GET_USER, {
+    variables: {id: id}
+  })
 
   const history = useHistory()
 
@@ -17,24 +21,23 @@ const EditProfile = ({user, updateTypes}) => {
   const handleSubmit = e => {
     e.preventDefault();
     if (!enneagramType || !mbtiType) {
-      console.log('put in both types')
+
     } else {
-      console.log("Update", user.updateUser.id)
+
       updateUser({
         variables: {
-          id: user.updateUser.id,
-          username: user.updateUser.username,
+          id: id,
+          username: username,
           myersBrigg: mbtiType,
           enneagram: enneagramType
         }
       })
       history.push("/profile")
-
     }
   }
 
   useEffect(() => {
-    console.log('updated data in edit profile', data)
+
   }, [data])
   // maybe later add a cancel-btn or back-btn
 
@@ -84,9 +87,7 @@ const EditProfile = ({user, updateTypes}) => {
           <button
             className='save-btn'
             onClick={e => handleSubmit(e)}>
-
             Save
-
           </button>
 
         <h2>Don't know your types?</h2>

@@ -20,6 +20,7 @@ function App() {
   })
 
   useEffect(() => {
+
     setUser(data);
   }, [data])
 
@@ -34,8 +35,8 @@ function App() {
 
       <Route exact path='/profile'
         render={() =>
-          <Profile profileView={data.getUserStats} />
-        }
+          <Profile profileView={ user } />
+      }
       />
 
       <Route exact path='/friends'
