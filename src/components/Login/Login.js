@@ -1,6 +1,5 @@
 import './Login.css';
 import React, { useState, useEffect } from 'react';
-import Form from '../Form/Form';
 import {CREATE_USER} from '../../graphQL/mutations';
 import {useMutation} from '@apollo/client';
 import {onError} from '@apollo/client/link/error';
@@ -12,22 +11,17 @@ const Login = ({assignUser}) => {
   const [newUser, setNewUser] = useState(true);
   const [newPassword, setNewPassword] = useState('');
   const [passCheck, setPassCheck] = useState('');
+  
 
   const [createUser, { error, loading, data }] = useMutation(CREATE_USER);
 
   if (data) { assignUser(data.createUser.id)
     console.log('data from mutation', data.createUser)}
 
-  // const errorLink = onError(({ graphQLErrors, networkError }) => {
-  //   if (graphQLErrors)
-  //     graphQLErrors.forEach(({ message, locations, path }) =>
-  //       console.log(
-  //         `[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`,
-  //       ),
-  //     );
-  
-  //   if (networkError) console.log(`[Network error]: ${networkError}`);
-  // });
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // this can fetch our user stats from BE for existing users
+  }
 
   const toggleCreate = () => {
     if (!newUser){
@@ -46,7 +40,7 @@ const Login = ({assignUser}) => {
           password: newPassword
         }
       })
-      //redirrect to type inputs
+      //redirect to Edit Profile
     } else {
       alert('your password did not match')
       //do some sort of error handling
@@ -155,8 +149,8 @@ const Login = ({assignUser}) => {
   );
 
   return (
-    <div>
-      { newUser ? makeAccount : signIn}
+    <div className="login-container">
+      {newUser ? makeAccount : signIn}
     </div>
   )
 }

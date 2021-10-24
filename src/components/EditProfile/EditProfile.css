@@ -1,11 +1,44 @@
-.edit-profile-form {
-  margin: 1rem 5rem 1rem 5rem;  
-  padding: 1rem;
-  border: 1px solid black;
+a {
+  font-size: small;
+}
+
+h2 {
+  margin: 2vh 2vw;
+}
+
+h3 {
+  margin: 0 0 2vh 0;
+}
+
+.save-btn {
+  margin: 1vh;
+  border-radius: 14px;
+  height: 2.5em;
+  width: 60vw;
+  background-color: coral;
+  border: none;
+  box-shadow: 0 1px 2px #282c34;
+}
+
+.num-list,
+.type-list {
+  margin-bottom: 1em;
+  padding: .25em;
+  height: 4vh;
+  width: 30vw;
+  border-top: 1px solid green;
+  border-bottom: 1px solid coral;
+  letter-spacing: .15em;
+  text-align: center;
+  border-radius: 14px;
 }
 
 .test-link,
 select,
 .submit-btn {
   margin: 0 .5rem 0 .5rem;
+}
+
+.link-container {
+  margin-bottom: 1vh;
 }
