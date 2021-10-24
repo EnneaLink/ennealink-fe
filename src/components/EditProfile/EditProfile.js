@@ -3,12 +3,12 @@ import { UPDATE_USER } from '../../graphQL/mutations';
 import { useMutation } from '@apollo/client';
 import './EditProfile.css';
 
-const EditProfile = ({user}) => {
+const EditProfile = ({user, updateTypes}) => {
   const [enneagramType, setEnneagramType] = useState('')
   const [mbtiType, setMbtiType] = useState('');
   const [updateUser, { error, loading, data }] = useMutation(UPDATE_USER);
 
-  if (error) console.log('editprofile data', error)
+  if (data) updateTypes(data)
   
 
   const handleSubmit = e => {

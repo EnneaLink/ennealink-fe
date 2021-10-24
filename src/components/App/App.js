@@ -32,7 +32,7 @@ const {error, loading, data} = useQuery(GET_USER, {
     <div className="App">
       
       <Login assignUser={setID} />
-  
+      {user && <EditProfile user={user} updateTypes={setUser} />}
     </div>
   );
 }
