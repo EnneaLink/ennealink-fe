@@ -33,15 +33,19 @@ const UserDisplay = ({ friends }) => {
   }
 
   return (
-    <div>
+    <div className='user-display'>
       <Header />
-      <Search filterAllUsers={filterAllUsers} setSearchInput={setSearchInput} searchInput={searchInput}/>
+      <Search
+        filterAllUsers={filterAllUsers}
+        setSearchInput={setSearchInput}
+        searchInput={searchInput}
+      />
       <section className="list">
         <div className="display-list">
           {!loading && <DisplayList
             friends={friends}
             filteredUsers={filteredUsers}
-          /> }
+          />}
         </div>
       </section>
     </div>

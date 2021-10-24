@@ -1,12 +1,12 @@
 .profile-view {
-  margin: 2rem 5rem 0 5rem;
+  margin: 2rem 2rem 0 2rem;
   padding: 1rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   background-color: #caebf2;
-  height: 55vh;
+  height: 62vh;
   border-radius: 20px;
   box-shadow: 0 1px 3px #00000073;
 }
@@ -16,7 +16,7 @@
   color: #ff3b3f;
   text-shadow: 1px 0px rgb(119 119 119 / 74%);
   font-weight: 800;
-  margin-bottom: -.05rem;
+  margin: 0 0 -.05rem 0;
 }
 
 .profile-type {

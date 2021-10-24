@@ -108,7 +108,7 @@ const Login = ({assignUser, user, updateTypes}) => {
     if (user === undefined) {
       return (
       <section className="create-account">
-        <h1 className='ennealink'>EnneaLink</h1>
+        <h1 className='ennealink-login'>EnneaLink</h1>
 
         <form className="sign-in-box">
 
