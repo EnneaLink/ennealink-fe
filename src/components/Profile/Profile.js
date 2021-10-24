@@ -1,4 +1,5 @@
 import React from 'react';
+import Header from '../Header/Header';
 import './Profile.css';
 
 const Profile = ({ profileView }) => {
@@ -9,27 +10,39 @@ const Profile = ({ profileView }) => {
 
   return (
 
-    <article className='profile-view'>
-      <h2 className="user-name">{username}</h2>
-      <div className="type-container">
-        <h3 className="myers-briggs-type">{myersBrigg.typeOf}</h3>
-        <h4 className="myers-briggs-name">{myersBrigg.name}</h4>
-        <p>{myersBrigg.description}</p>
-        <div className="link-container">
-          <a className="myers-briggs-link" href={myersBrigg.link}>Learn More
-          </a>
+    <div>
+
+      <Header />
+
+      <article className='profile-view'>
+        <h2 className="user-name">{username}</h2>
+
+        <div className="type-container">
+
+          <h3 className="myers-briggs-type">{myersBrigg.typeOf}</h3>
+          <h4 className="myers-briggs-name">{myersBrigg.name}</h4>
+          <p>{myersBrigg.description}</p>
+
+          <div className="link-container">
+            <a className="myers-briggs-link" href={myersBrigg.link}>Learn More</a>
+          </div>
+
         </div>
-      </div>
-      <div className="type-container">
-        <h3 className="enneagram-type">{enneagram.number}</h3>
-        <h4 className="myers-briggs-name">{enneagram.name}</h4>
-        <p>{enneagram.description}</p>
-        <div className="link-container">
-          <a className="enneagram-link" href={enneagram.link}>Learn More
-          </a>
+
+        <div className="type-container">
+
+          <h3 className="enneagram-type">{enneagram.number}</h3>
+          <h4 className="myers-briggs-name">{enneagram.name}</h4>
+          <p>{enneagram.description}</p>
+
+          <div className="link-container">
+            <a className="enneagram-link" href={enneagram.link}>Learn More</a>
+          </div>
+
         </div>
-      </div>
-    </article>
+
+      </article>
+    </div>
   )
 }
 
