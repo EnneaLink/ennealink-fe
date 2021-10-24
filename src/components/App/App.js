@@ -16,7 +16,7 @@ function App() {
   const [user, setUser] = useState({});
   const [id, setID] = useState(0);
   const {error, loading, data} = useQuery(GET_USER, {
-    variables: {id: id} 
+    variables: {id: id}
   })
 
   useEffect(() => {
@@ -26,21 +26,21 @@ function App() {
   return (
     <div className="App">
 
-      <Route exact path='/' 
-        render={() => 
-          <Login assignUser={setID} />
+      <Route exact path='/'
+        render={() =>
+          <Login assignUser={setID} user={user} updateTypes={setUser}/>
         }
       />
 
-      <Route exact path='/profile' 
-        render={() => 
+      <Route exact path='/profile'
+        render={() =>
           <Profile profileView={data.getUserStats} />
         }
       />
 
-      <Route exact path='/friends' 
-        render={() => 
-          <UserDisplay friends={data.getUserStats.friends} /> 
+      <Route exact path='/friends'
+        render={() =>
+          <UserDisplay friends={data.getUserStats.friends} />
         }
       />
 

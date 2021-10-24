@@ -5,13 +5,13 @@ import {useMutation} from '@apollo/client';
 import {onError} from '@apollo/client/link/error';
 import { Link } from 'react-router-dom';
 
-const Login = ({assignUser}) => {
+const Login = ({assignUser, user, updateTypes}) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [newUser, setNewUser] = useState(true);
   const [newPassword, setNewPassword] = useState('');
   const [passCheck, setPassCheck] = useState('');
-  
+
 
   const [createUser, { error, loading, data }] = useMutation(CREATE_USER);
 
@@ -30,7 +30,7 @@ const Login = ({assignUser}) => {
       setNewUser(false)
     }
   }
-  
+
   const createAccount = (e) => {
     e.preventDefault();
     if (newPassword === passCheck) {
@@ -71,7 +71,7 @@ const Login = ({assignUser}) => {
 
         <Link
           to={'/profile'}
-          key='1'  
+          key='1'
         >
 
           <button
@@ -97,12 +97,13 @@ const Login = ({assignUser}) => {
   );
 
   const makeAccount = (
+    {!user ?
     <section className="create-account">
       <h1>EnneaLink</h1>
 
       <form className="sign-in-box">
 
-        <input 
+        <input
           className="login-input"
           type="text"
           value={username}
@@ -146,6 +147,7 @@ const Login = ({assignUser}) => {
       </button>
 
     </section>
+   : <EditProfile user={user} updateTypes={updateTypes}/>}
   );
 
   return (
