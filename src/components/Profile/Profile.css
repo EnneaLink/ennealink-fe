@@ -1,5 +1,40 @@
 .profile-view {
-  margin: 0 5rem 0 5rem;
-  border: 1px solid black;
+  margin: 2rem 5rem 0 5rem;
   padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #caebf2;
+  height: 55vh;
+  border-radius: 20px;
+  box-shadow: 0 1px 3px #00000073;
+}
+
+.user-name {
+  font-size: 2rem;
+  color: #ff3b3f;
+  text-shadow: 1px 0px rgb(119 119 119 / 74%);
+  font-weight: 800;
+  margin-bottom: -.05rem;
+}
+
+.profile-type {
+  margin-top: 1rem;
+  font-size: 1.5rem;
+  color: #00000073;
+  text-shadow: 1px 0px rgb(255 255 255 / 74%);
+  font-weight: 800;
+}
+
+.type-name {
+  margin-top: -.5rem;
+}
+
+.type-link {
+  color: #00000073;
+}
+
+.link-container {
+  margin-top: -.8rem;
 }
