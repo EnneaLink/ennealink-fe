@@ -52,3 +52,19 @@ export const CREATE_USER = gql`
       }
     }
   `
+
+  export const LOGIN_USER = gql `
+  mutation loginUser(
+    username: String!
+    password: String!
+  ){
+    loginUser(
+      username: $username
+      password: $password
+    )
+      {
+        success
+        id
+      }
+    }
+  `
