@@ -2,32 +2,36 @@ import React, { useState, useEffect } from 'react';
 import { UPDATE_USER } from '../../graphQL/mutations';
 import { useMutation } from '@apollo/client';
 import './EditProfile.css';
+import { Link, useHistory } from "react-router-dom";
 
 const EditProfile = ({user, updateTypes}) => {
   const [enneagramType, setEnneagramType] = useState('')
   const [mbtiType, setMbtiType] = useState('');
   const [updateUser, { error, loading, data }] = useMutation(UPDATE_USER);
 
+  const history = useHistory()
+
   if (data) updateTypes(data)
-  
+
 
   const handleSubmit = e => {
     e.preventDefault();
     if (!enneagramType || !mbtiType) {
       console.log('put in both types')
     } else {
-      console.log(user.getUserStats.id)
+      console.log("Update", user.updateUser.id)
       updateUser({
         variables: {
-          id: user.getUserStats.id,
-          username: user.getUserStats.username,
+          id: user.updateUser.id,
+          username: user.updateUser.username,
           myersBrigg: mbtiType,
           enneagram: enneagramType
         }
       })
-  
+      history.push("/profile")
+
     }
-  }  
+  }
 
   useEffect(() => {
     console.log('updated data in edit profile', data)
@@ -58,10 +62,10 @@ const EditProfile = ({user, updateTypes}) => {
           <option value='ISFP'>ISFP</option>
 
           <option value='ESTJ'>ESTJ</option>
-          <option value='ISTJ'>ISTJ</option>  
+          <option value='ISTJ'>ISTJ</option>
           <option value='ESTP'>ESTP</option>
           <option value='ISTP'>ISTP</option>
-        
+
         </select>
 
         <select name='type-list' className="num-list" onChange={e => setEnneagramType(e.target.value)}>
@@ -75,22 +79,23 @@ const EditProfile = ({user, updateTypes}) => {
           <option value='7'>7</option>
           <option value='8'>8</option>
           <option value='9'>9</option>
-        
-        </select>  
 
-        <button
-          className='save-btn'
-          onClick={e => handleSubmit(e)}>
-          Save
-        </button>
+        </select>
+          <button
+            className='save-btn'
+            onClick={e => handleSubmit(e)}>
+
+            Save
+
+          </button>
 
         <h2>Don't know your types?</h2>
-        <h3>That's okay!</h3>   
+        <h3>That's okay!</h3>
         <div className="link-container">
           <a className="test-link" href='https://www.idrlabs.com/cognitive-function/test.php' target="_blank"
           rel="noopener noreferrer">Take MBTI Test</a>
           <a className="test-link" href='https://similarminds.com/cgi-bin/sminds2/similarminds3.pl' target="_blank"
-          rel="noopener noreferrer">Take Enneagram Test</a>        
+          rel="noopener noreferrer">Take Enneagram Test</a>
         </div>
 
       </form>
