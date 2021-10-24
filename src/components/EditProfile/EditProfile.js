@@ -1,20 +1,37 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { UPDATE_USER } from '../../graphQL/mutations';
+import { useMutation } from '@apollo/client';
 import './EditProfile.css';
 
-const EditProfile = ({username, id}) => {
+const EditProfile = ({user}) => {
   const [enneagramType, setEnneagramType] = useState('')
   const [mbtiType, setMbtiType] = useState('');
+  const [updateUser, { error, loading, data }] = useMutation(UPDATE_USER);
+
+  if (error) console.log('editprofile data', error)
+  
 
   const handleSubmit = e => {
     e.preventDefault();
     if (!enneagramType || !mbtiType) {
-      console.log('please choose both personality types')
+      console.log('put in both types')
     } else {
-      console.log('success!')
-      //this is where we can set off our UPDATE_USER_STATS mutation!
+      console.log(user.getUserStats.id)
+      updateUser({
+        variables: {
+          id: user.getUserStats.id,
+          username: user.getUserStats.username,
+          myersBrigg: mbtiType,
+          enneagram: enneagramType
+        }
+      })
+  
     }
-  }    
+  }  
 
+  useEffect(() => {
+    console.log('updated data in edit profile', data)
+  }, [data])
   // maybe later add a cancel-btn or back-btn
 
     return (
@@ -25,29 +42,29 @@ const EditProfile = ({username, id}) => {
 
         <select name='type-list' className="type-list" onChange={e => setMbtiType(e.target.value)}>
           <option value='null'>mbti</option>
-          <option value='enfj'>ENFJ</option>
-          <option value='infj'>INFJ</option>
-          <option value='enfp'>ENFP</option>
-          <option value='infp'>INFP</option>
+          <option value='ENFJ'>ENFJ</option>
+          <option value='INFJ'>INFJ</option>
+          <option value='ENFP'>ENFP</option>
+          <option value='INFP'>INFP</option>
 
-          <option value='entj'>ENTJ</option>
-          <option value='intj'>INTJ</option>
-          <option value='entp'>ENTP</option>
-          <option value='intp'>INTP</option>
+          <option value='ENTJ'>ENTJ</option>
+          <option value='INTJ'>INTJ</option>
+          <option value='ENTP'>ENTP</option>
+          <option value='INTP'>INTP</option>
 
-          <option value='esfj'>ESFJ</option>
-          <option value='isfj'>ISFJ</option>
-          <option value='esfp'>ESFP</option>
-          <option value='isfp'>ISFP</option>
+          <option value='ESFJ'>ESFJ</option>
+          <option value='ISFJ'>ISFJ</option>
+          <option value='ESFP'>ESFP</option>
+          <option value='ISFP'>ISFP</option>
 
-          <option value='estj'>ESTJ</option>
-          <option value='istj'>ISTJ</option>  
-          <option value='estp'>ESTP</option>
-          <option value='istp'>ISTP</option>
+          <option value='ESTJ'>ESTJ</option>
+          <option value='ISTJ'>ISTJ</option>  
+          <option value='ESTP'>ESTP</option>
+          <option value='ISTP'>ISTP</option>
         
         </select>
 
-        <select name='type-list' className="num-list" onChange={e => setEnneagramType(parseInt(e.target.value))}>
+        <select name='type-list' className="num-list" onChange={e => setEnneagramType(e.target.value)}>
           <option value='null'>enneagram</option>
           <option value='1'>1</option>
           <option value='2'>2</option>
