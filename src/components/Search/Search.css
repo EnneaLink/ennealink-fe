@@ -20,4 +20,6 @@
   border-radius: 20px;
   box-shadow: 0 1px 3px #00000073;
   padding-left: .7rem;
+  background: url('../../Assets/search.png') no-repeat scroll 3px 3px;
+  padding-left:30px;
 }

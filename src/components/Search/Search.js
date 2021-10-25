@@ -1,5 +1,6 @@
 import React from 'react';
 import './Search.css';
+import search from '../../Assets/search.png'
 
 const Search = ({ filterAllUsers, setSearchInput, searchInput }) => {
 
