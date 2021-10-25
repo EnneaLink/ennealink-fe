@@ -68,3 +68,18 @@ export const CREATE_USER = gql`
       }
     }
   `
+
+  export const ADD_FRIEND = gql `
+  mutation addFriend(
+    $userId: ID!
+    $friendId: ID!
+  ){
+    addFriend(
+        userId: $userId
+        friendId: $friendId
+      )
+      {
+        success
+      }
+    }
+  `
