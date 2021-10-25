@@ -9,15 +9,12 @@ workflows:
   heroku_deploy:
     jobs:
       - node/run
-      - build
       - cypress/run:
-          start: npm start
-          wait-on: 'http://localhost:3000/'      
+          start: npm start 
       - heroku/deploy-via-git:
           filters:
             branches:
               only: main
           requires:
             - node/run
-            - build
             - cypress/run    
