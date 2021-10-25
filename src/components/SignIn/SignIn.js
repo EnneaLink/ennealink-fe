@@ -20,7 +20,6 @@ const SignIn = ({toggleCreate, assignUser}) => {
     if (data.loginUser.success){
       assignUser(data.loginUser.id);
       history.push(`/profile/${data.loginUser.id}`); 
-      console.log("data in sign in", data);
     } else {
       setMessage('Please check that your username or password are correct, or click the button below create a new account')
     }
