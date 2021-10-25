@@ -2,7 +2,7 @@ import React from 'react';
 import './NavBar.css';
 import { Link } from 'react-router-dom';
 
-const NavBar = () => {
+const NavBar = ({logOut}) => {
 
   return (
     <ul className="nav-bar">
@@ -10,7 +10,7 @@ const NavBar = () => {
 
         <Link
           to={'/profile'}
-          key='1'  
+          key='1'
         >
 
           <button className="nav-btn">my profile</button>
@@ -22,22 +22,22 @@ const NavBar = () => {
 
         <Link
           to={'/friends'}
-          key='1'  
+          key='1'
         >
 
           <button className="nav-btn">friends</button>
 
         </Link>
 
-      </li>  
+      </li>
       <li>
 
         <Link
           to={'/'}
-          key='1'  
+          key='1'
         >
 
-          <button className="nav-btn">log out</button>
+          <button className="nav-btn" onClick={logOut}>log out </button>
 
         </Link>
 
