@@ -24,35 +24,37 @@ const Profile = ({ profileView }) => {
 
     <div>
       <Header />
+      
       { data ? (
         <article className='profile-view'>
-        <h2 className="user-name">{data.getUserStats.username}</h2>
+          <h2 className="user-name">{data.getUserStats.username}</h2>
 
-        <div className="type-container">
+          <div className="type-container">
 
-          <h3 className="myers-briggs-type">{data.getUserStats.myersBrigg.typeOf}</h3>
-          <h4 className="myers-briggs-name">{data.getUserStats.myersBrigg.name}</h4>
-          <p>{data.getUserStats.myersBrigg.description}</p>
+            <h3 className="profile-type">{data.getUserStats.myersBrigg.typeOf}</h3>
+            <h4 className="type-name">{data.getUserStats.myersBrigg.name}</h4>
+            <p>{data.getUserStats.myersBrigg.description}</p>
 
-          <div className="link-container">
-            <a className="myers-briggs-link" href={data.getUserStats.myersBrigg.link}>Learn More</a>
+            <div className="link-container">
+              <a className="type-link" href={data.getUserStats.myersBrigg.link}>Learn More</a>
+            </div>
+
           </div>
 
-        </div>
+          <div className="type-container">
 
-        <div className="type-container">
+            <h3 className="profile-type">Type {data.getUserStats.enneagram.number}</h3>
+            <h4 className="type-name">{data.getUserStats.enneagram.name}</h4>
+            <p>{data.getUserStats.enneagram.description}</p>
 
-          <h3 className="enneagram-type">{data.getUserStats.enneagram.number}</h3>
-          <h4 className="myers-briggs-name">{data.getUserStats.enneagram.name}</h4>
-          <p>{data.getUserStats.enneagram.description}</p>
+            <div className="link-container">
+              <a className="type-link" href={data.getUserStats.enneagram.link}>Learn More</a>
+            </div>
 
-          <div className="link-container">
-            <a className="enneagram-link" href={data.getUserStats.enneagram.link}>Learn More</a>
           </div>
 
-        </div>
-
-      </article>) : <Loader />}
+        </article>) : <Loader />
+      }
     </div>
   )
 }

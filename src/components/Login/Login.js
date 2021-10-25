@@ -108,7 +108,7 @@ const Login = ({assignUser, user, updateTypes}) => {
     if (user === undefined) {
       return (
       <section className="create-account">
-        <h1>EnneaLink</h1>
+        <h1 className='ennealink-login'>EnneaLink</h1>
 
         <form className="sign-in-box">
 
@@ -130,7 +130,7 @@ const Login = ({assignUser, user, updateTypes}) => {
           />
 
           <input
-            className="login-input"
+            className="login-input password"
             type="password"
             value={passCheck}
             onChange={(e) => setPassCheck(e.target.value)}
@@ -139,12 +139,12 @@ const Login = ({assignUser, user, updateTypes}) => {
           />
 
             <button
-              className="submit-btn"
+              className="submit-btn next"
               type="submit"
-              className="submit-btn"
+              className="submit-btn next"
               onClick={createAccount}
             >
-              next
+              Create Account
             </button>
         </form>
 
@@ -152,7 +152,7 @@ const Login = ({assignUser, user, updateTypes}) => {
           onClick={toggleCreate}
           className="create-btn"
         >
-          Already a user? Sign in
+          Already a user? Sign in!
         </button>
 
       </section> )
