@@ -6,7 +6,7 @@ import {useState, useEffect} from 'react';
 import {useQuery} from '@apollo/client';
 import {GET_ALL_USERS} from '../../graphQL/queries';
 
-const UserDisplay = ({ friends }) => {
+const UserDisplay = ({ friends, logOut, id }) => {
 
   const [allUsers, setAllUsers] = useState([]);
   const [filteredUsers, setFilteredUsers] = useState(null)
@@ -33,15 +33,19 @@ const UserDisplay = ({ friends }) => {
   }
 
   return (
-    <div>
-      <Header />
-      <Search filterAllUsers={filterAllUsers} setSearchInput={setSearchInput} searchInput={searchInput}/>
+    <div className='user-display'>
+      <Header logOut={logOut} id={id} />
+      <Search
+        filterAllUsers={filterAllUsers}
+        setSearchInput={setSearchInput}
+        searchInput={searchInput}
+      />
       <section className="list">
         <div className="display-list">
           {!loading && <DisplayList
             friends={friends}
             filteredUsers={filteredUsers}
-          /> }
+          />}
         </div>
       </section>
     </div>

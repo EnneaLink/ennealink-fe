@@ -1,10 +1,10 @@
 import './Login.css';
 import React, { useState, useEffect } from 'react';
-import {CREATE_USER} from '../../graphQL/mutations';
+import {CREATE_USER, LOGIN_USER} from '../../graphQL/mutations';
 import {useMutation} from '@apollo/client';
-import {onError} from '@apollo/client/link/error';
-import { Link } from 'react-router-dom';
 import EditProfile from '../EditProfile/EditProfile';
+import SignIn from '../SignIn/SignIn';
+import Error from '../Error/Error';
 
 const Login = ({assignUser, user, updateTypes}) => {
   const [username, setUsername] = useState('');
@@ -16,6 +16,8 @@ const Login = ({assignUser, user, updateTypes}) => {
 
 
   const [createUser, { error, loading, data }] = useMutation(CREATE_USER);
+ 
+  if (error) console.log(error)
 
   if (data) { assignUser(data.createUser.id)
     }
@@ -24,10 +26,6 @@ const Login = ({assignUser, user, updateTypes}) => {
     if (!id) {
       setId(data.createUser.id)
     }
-  }
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // this can fetch our user stats from BE for existing users
   }
 
   const toggleCreate = () => {
@@ -47,7 +45,6 @@ const Login = ({assignUser, user, updateTypes}) => {
           password: newPassword
         }
       })
-      //redirect to Edit Profile
     } else {
       alert('your password did not match')
       //do some sort of error handling
@@ -55,60 +52,14 @@ const Login = ({assignUser, user, updateTypes}) => {
   }
 
 
-  const signIn = (
-    <section className="sign-in">
-      <h1>EnneaLink</h1>
-
-      <form className="sign-in-box">
-
-        <input
-          className="login-input"
-          type="text" value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          placeholder="enter your username"
-        />
-
-        <input
-          className="login-input"
-          type="password"
-          value={password} onChange={(e) => setPassword(e.target.value)}
-          placeholder="enter your password"
-          minlength={8} required
-        />
-
-        <Link
-          to={'/profile'}
-          key='1'
-        >
-
-          <button
-            className="submit-btn"
-            type="submit"
-          >
-            sign in
-          </button>
-
-        </Link>
-
-      </form>
-
-      <button
-        onClick={toggleCreate}
-        className="create-btn"
-      >
-        create account
-      </button>
-
-    </section>
-
-  );
+  const signIn = <SignIn toggleCreate={toggleCreate} assignUser={assignUser} />
 
   const makeAccount = () => {
-    
+
     if (user === undefined) {
       return (
       <section className="create-account">
-        <h1>EnneaLink</h1>
+        <h1 className='ennealink-login'>EnneaLink</h1>
 
         <form className="sign-in-box">
 
@@ -130,7 +81,7 @@ const Login = ({assignUser, user, updateTypes}) => {
           />
 
           <input
-            className="login-input"
+            className="login-input password"
             type="password"
             value={passCheck}
             onChange={(e) => setPassCheck(e.target.value)}
@@ -139,12 +90,12 @@ const Login = ({assignUser, user, updateTypes}) => {
           />
 
             <button
-              className="submit-btn"
+              className="submit-btn next"
               type="submit"
-              className="submit-btn"
+              className="submit-btn next"
               onClick={createAccount}
             >
-              next
+              Create Account
             </button>
         </form>
 
@@ -152,7 +103,7 @@ const Login = ({assignUser, user, updateTypes}) => {
           onClick={toggleCreate}
           className="create-btn"
         >
-          Already a user? Sign in
+          Already a user? Sign in!
         </button>
 
       </section> )
@@ -164,6 +115,7 @@ const Login = ({assignUser, user, updateTypes}) => {
   return (
     <div className="login-container">
       {newUser ? makeAccount() : signIn}
+      {error && <Error message={error}/>}
     </div>
   )
 }

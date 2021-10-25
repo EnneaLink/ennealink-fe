@@ -10,6 +10,7 @@ import {useQuery} from '@apollo/client';
 import {GET_USER} from '../../graphQL/queries';
 import {onError} from '@apollo/client/link/error';
 import { Route } from "react-router";
+import { Link, useHistory } from "react-router-dom";
 
 function App() {
 
@@ -19,9 +20,15 @@ function App() {
     variables: {id: id}
   })
 
+
   useEffect(() => {
     setUser(data);
   }, [data])
+
+  const logOut = () => {
+    setUser(null)
+    setID(null)
+  }
 
   return (
 
@@ -29,19 +36,19 @@ function App() {
 
       <Route exact path='/'
         render={() =>
-          <Login assignUser={setID} user={user} updateTypes={setUser}/>
+          <Login assignUser={setID} user={user} updateTypes={setUser} />
         }
       />
 
       <Route exact path='/profile/:id'
         render={({match}) =>
-          <Profile profileView={ match.params.id } />
+          <Profile profileView={ match.params.id } logOut={logOut} id={id}/>
       }
       />
 
       <Route exact path='/friends'
         render={() =>
-          <UserDisplay friends={data.getUserStats.friends} />
+          <UserDisplay friends={data.getUserStats.friends} logOut={logOut} id={id} />
         }
       />
 
