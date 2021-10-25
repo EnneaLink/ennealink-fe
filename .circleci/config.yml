@@ -5,6 +5,8 @@ version: 2.1
 orbs:
   node: circleci/node@4.7.0
   heroku: circleci/heroku@1.2.6
+  cypress: cypress-io/cypress@1
+  
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
@@ -17,7 +19,11 @@ workflows:
               only: main
           requires:
             - node/run
-
+            - cypress/run            
+      - cypress/run:
+          npm: true
+          start: npm start
+          wait-on: 'http://localhost:3000'
 
 
 
