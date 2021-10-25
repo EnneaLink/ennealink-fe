@@ -1,6 +1,9 @@
 {
   "name": "ennealink",
   "version": "0.1.0",
+  "engines": {
+    "node": "16.11.1"
+  },
   "private": true,
   "dependencies": {
     "@apollo/client": "^3.4.16",
