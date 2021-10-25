@@ -20,8 +20,6 @@ const DisplayList = ({ friends, filteredUsers}) => {
           <Cards
             key={user.id}
             username={user.username}
-            myersBriggs={user.myersBrigg ? user.myersBrigg.typeOf : null}
-            enneagram={user.enneagram ? user.enneagram.number : null}
           />
       )
    }))
