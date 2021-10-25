@@ -43,13 +43,13 @@ function App() {
 
       <Route exact path='/profile/:id'
         render={({match}) =>
-          <Profile profileView={ match.params.id } logOut={logOut}/>
+          <Profile profileView={ match.params.id } logOut={logOut} id={id}/>
       }
       />
 
       <Route exact path='/friends'
         render={() =>
-          <UserDisplay friends={data.getUserStats.friends} />
+          <UserDisplay friends={data.getUserStats.friends} logOut={logOut} id={id} />
         }
       />
 
