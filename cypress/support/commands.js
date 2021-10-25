@@ -6,16 +6,16 @@ Cypress.Commands.add('loadApp', () => {
 
 // dynamic stubbing
 
-Cypress.Commands.add('interceptAPI', (fixturePage, url) => {
-  cy.intercept(`${url}`, {
-    fixture: `${fixturePage}_test_data.json`,
-  })
-})
+// Cypress.Commands.add('interceptAPI', (fixturePage, url) => {
+//   cy.intercept(`${url}`, {
+//     fixture: `${fixturePage}_test_data.json`,
+//   })
+// })
 
 // stubbing endpoints
 
-Cypress.Commands.add('loadProfile', (g) => {
-  cy.loadApp()
-    .interceptAPI('profile', 'http://localhost:4500/graphql')
-})
+// Cypress.Commands.add('loadProfile', (g) => {
+//   cy.loadApp()
+//     .interceptAPI('profile', 'http://localhost:4500/graphql')
+// })
 

@@ -1,7 +1,7 @@
 describe('Test', () => {
 
   beforeEach(() => {
-    cy.loadProfile()
+    cy.loadApp()
   })
 
   it('should go to localhost', () => {
@@ -13,7 +13,22 @@ describe('Test', () => {
       .contains('EnneaLink')
   })
 
-  // move these to user profile test
+  it('should render input fields', () => {
+    cy.get('input')
+      .should('be.visible')
+  })
+
+  it('should render create acount button', () => {
+    cy.get('button[type="submit"]')
+      .should('be.visible')
+  })
+
+  it('should render sign in button', () => {
+    cy.get('button[class="create-btn"]')
+      .should('be.visible')
+  })
+
+  // move to profiles
 
   // it('should render username', () => {
   //   cy.get('h2')
