@@ -2,13 +2,30 @@ import React, {useState, useEffect} from 'react';
 import './SignIn.css';
 import { LOGIN_USER } from '../../graphQL/mutations';
 import { useMutation } from '@apollo/client';
+import { useHistory } from "react-router-dom";
 
-const SignIn = ({toggleCreate}) => {
+const SignIn = ({toggleCreate, assignUser}) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [message, setMessage] = useState('')
   const [loginUser, {error, loading, data}] =useMutation(LOGIN_USER);
+  const history = useHistory();
 
-  if (data) console.log('after sign in mut data return', data)
+
+  if (data) {
+    setTimeout(() => {handleLoad(data)}, 1000)
+  }
+
+  const handleLoad = (data) => {
+    if (data.loginUser.success){
+      assignUser(data.loginUser.id);
+      history.push(`/profile/${data.loginUser.id}`); 
+      console.log("data in sign in", data);
+    } else {
+      setMessage('Please check that your username or password are correct, or click the button below create a new account')
+    }
+
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -18,8 +35,6 @@ const SignIn = ({toggleCreate}) => {
         password: password
       }
     })
-
-
   }
 
   return (
@@ -43,6 +58,7 @@ const SignIn = ({toggleCreate}) => {
           minlength={8} required
         />
 
+        { message && <p className="message" >{message}</p>}
   
         <button
           className="submit-btn"

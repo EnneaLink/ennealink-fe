@@ -51,7 +51,7 @@ const Login = ({assignUser, user, updateTypes}) => {
   }
 
 
-  const signIn = <SignIn toggleCreate={toggleCreate} />
+  const signIn = <SignIn toggleCreate={toggleCreate} assignUser={assignUser} />
 
   const makeAccount = () => {
     

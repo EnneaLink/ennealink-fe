@@ -3,7 +3,7 @@ import { UPDATE_USER } from '../../graphQL/mutations';
 import { GET_USER } from '../../graphQL/queries';
 import { useMutation, useQuery } from '@apollo/client';
 import './EditProfile.css';
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 const EditProfile = ({updateTypes, id, username}) => {
   const [enneagramType, setEnneagramType] = useState('')
