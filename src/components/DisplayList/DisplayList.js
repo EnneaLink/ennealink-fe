@@ -8,6 +8,7 @@ const DisplayList = ({ friends, filteredUsers}) => {
     return (
       <Cards
         key={friend.id}
+        id={friend.id}
         username={friend.username}
         myersBriggs={friend.myersBrigg ? friend.myersBrigg.typeOf : null}
         enneagram={friend.enneagram ? friend.enneagram.number : null}
@@ -19,6 +20,7 @@ const DisplayList = ({ friends, filteredUsers}) => {
       return (
           <Cards
             key={user.id}
+            id={user.id}
             username={user.username}
             myersBriggs={user.myersBrigg ? user.myersBrigg.typeOf : null}
             enneagram={user.enneagram ? user.enneagram.number : null}
