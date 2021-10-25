@@ -6,7 +6,7 @@ import './Profile.css';
 import {useQuery} from '@apollo/client';
 import {GET_USER} from '../../graphQL/queries';
 
-const Profile = ({ profileView }) => {
+const Profile = ({ profileView, logOut }) => {
 
   // const {myersBrigg, enneagram, username} = profileView
   const {error, loading, data} = useQuery(GET_USER, {
@@ -23,8 +23,8 @@ const Profile = ({ profileView }) => {
   return (
 
     <div>
-      <Header />
-      
+      <Header setUser={logOut}/>
+
       { data ? (
         <article className='profile-view'>
           <h2 className="user-name">{data.getUserStats.username}</h2>

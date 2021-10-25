@@ -55,7 +55,7 @@ const Login = ({assignUser, user, updateTypes}) => {
   const signIn = <SignIn toggleCreate={toggleCreate} assignUser={assignUser} />
 
   const makeAccount = () => {
-    
+
     if (user === undefined) {
       return (
       <section className="create-account">
