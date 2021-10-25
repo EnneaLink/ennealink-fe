@@ -22,7 +22,6 @@ function App() {
 
 
   useEffect(() => {
-
     setUser(data);
   }, [data])
 
