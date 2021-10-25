@@ -13,17 +13,17 @@ const Profile = ({ profileView, logOut, id }) => {
     variables: {id: profileView}
   })
 
-  useEffect(() => {
-    console.log("PV", profileView)
-    console.log("data", profileView)
-  }, [data])
+  // useEffect(() => {
+  //   console.log("PV", profileView)
+  //   console.log("data", profileView)
+  // }, [data])
 
   //We will have a function that dynamically renders a link to show how a user and a friend would interact based off of bothe of their types. This will return a link that we can plug into an <a></a> tag in the return below. (Hayley has good concept for this)
 
   return (
 
     <div>
-      <Header setUser={logOut} id={id} />
+      <Header logOut={logOut} id={id} />
 
       { data ? (
         <article className='profile-view'>
