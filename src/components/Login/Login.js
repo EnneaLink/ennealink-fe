@@ -104,7 +104,7 @@ const Login = ({assignUser, user, updateTypes}) => {
   );
 
   const makeAccount = () => {
-    
+
     if (user === undefined) {
       return (
       <section className="create-account">
