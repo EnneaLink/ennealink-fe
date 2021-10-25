@@ -18,6 +18,7 @@ function App() {
   const {error, loading, data} = useQuery(GET_USER, {
     variables: {id: id}
   })
+  
 
   useEffect(() => {
 
@@ -30,7 +31,7 @@ function App() {
 
       <Route exact path='/'
         render={() =>
-          <Login assignUser={setID} user={user} updateTypes={setUser}/>
+          <Login assignUser={setID} user={user} updateTypes={setUser} />
         }
       />
 
