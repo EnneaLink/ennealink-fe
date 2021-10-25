@@ -1,31 +1,39 @@
-import React from 'react';
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import Header from '../Header/Header';
 import Loader from '../Loader/Loader';
+import Error from '../Error/Error';
 import './Profile.css';
-import {useQuery} from '@apollo/client';
-import {GET_USER} from '../../graphQL/queries';
+import { useQuery } from '@apollo/client';
+import { GET_USER } from '../../graphQL/queries';
 
-const Profile = ({ profileView, logOut, id }) => {
-
-  // const {myersBrigg, enneagram, username} = profileView
+const Profile = ({ profileView, logOut, userId }) => {
+  
   const {error, loading, data} = useQuery(GET_USER, {
-    variables: {id: profileView}
+    variables: {id: profileView }
   })
 
-  // useEffect(() => {
-  //   console.log("PV", profileView)
-  //   console.log("data", profileView)
-  // }, [data])
+  const friendButton = () => {
+    if (userId !== profileView){
+      return (
+        <button
+        type="submit"
+        onClick={addFriend}
+        >
+          add {profileView} to friends
+        </button>
+      )
+    } 
+  }
 
-  //We will have a function that dynamically renders a link to show how a user and a friend would interact based off of bothe of their types. This will return a link that we can plug into an <a></a> tag in the return below. (Hayley has good concept for this)
-
+  const addFriend = () => {
+    //friend mutation
+  }
   return (
 
     <div>
-      <Header logOut={logOut} id={id} />
+      <Header logOut={logOut} id={userId} />
 
-      { data ? (
+      { !loading ? (
         <article className='profile-view'>
           <h2 className="user-name">{data.getUserStats.username}</h2>
 
@@ -55,6 +63,7 @@ const Profile = ({ profileView, logOut, id }) => {
 
         </article>) : <Loader />
       }
+      { error && <Error /> }
     </div>
   )
 }
@@ -62,27 +71,3 @@ const Profile = ({ profileView, logOut, id }) => {
 export default Profile;
 
 
-// {
-//   "data": {
-//   "id": "133",
-//   "type": "user",
-//   "attributes": {
-//     "username": "funbucket89",
-//     "email": "shameka_goyette@bartell.co",
-//     "google_id": "1234",
-//     "google_image": ";lakdjflkjdfkdaj;lfkds",
-//     "myersBriggs": {
-//       "id": "1",
-//       "type": "ENFP",
-//       "name": "The Campaigner",
-//       "descriptions": "A Campaigner (ENFP) is someone with the Extraverted, Intuitive, Feeling, and Prospecting personality traits..."
-//       },
-//     "enneagram": {
-//       "id": "1",
-//       "number": "7",
-//       "name": "The Enthusiast",
-//       "descriptions": "Enneagram Sevens have the motivational need to experience life to the fullest and avoid pain. Sevens value a sense of freedom and focus on optimism..."
-//       }
-//     }
-//   }
-// }
