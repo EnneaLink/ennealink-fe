@@ -2,14 +2,14 @@ import React from 'react';
 import './NavBar.css';
 import { Link } from 'react-router-dom';
 
-const NavBar = ({logOut}) => {
+const NavBar = ({logOut, id}) => {
 
   return (
     <ul className="nav-bar">
       <li>
 
         <Link
-          to={'/profile'}
+          to={`/profile/${id}`}
           key='1'
         >
 

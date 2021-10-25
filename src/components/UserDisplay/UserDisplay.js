@@ -6,7 +6,7 @@ import {useState, useEffect} from 'react';
 import {useQuery} from '@apollo/client';
 import {GET_ALL_USERS} from '../../graphQL/queries';
 
-const UserDisplay = ({ friends }) => {
+const UserDisplay = ({ friends, logOut, id }) => {
 
   const [allUsers, setAllUsers] = useState([]);
   const [filteredUsers, setFilteredUsers] = useState(null)
@@ -34,7 +34,7 @@ const UserDisplay = ({ friends }) => {
 
   return (
     <div className='user-display'>
-      <Header />
+      <Header logOut={logOut} id={id} />
       <Search
         filterAllUsers={filterAllUsers}
         setSearchInput={setSearchInput}

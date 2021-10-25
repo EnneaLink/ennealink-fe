@@ -4,6 +4,7 @@ import {CREATE_USER, LOGIN_USER} from '../../graphQL/mutations';
 import {useMutation} from '@apollo/client';
 import EditProfile from '../EditProfile/EditProfile';
 import SignIn from '../SignIn/SignIn';
+import Error from '../Error/Error';
 
 const Login = ({assignUser, user, updateTypes}) => {
   const [username, setUsername] = useState('');
@@ -15,8 +16,8 @@ const Login = ({assignUser, user, updateTypes}) => {
 
 
   const [createUser, { error, loading, data }] = useMutation(CREATE_USER);
-  
-  
+ 
+  if (error) console.log(error)
 
   if (data) { assignUser(data.createUser.id)
     }
@@ -114,6 +115,7 @@ const Login = ({assignUser, user, updateTypes}) => {
   return (
     <div className="login-container">
       {newUser ? makeAccount() : signIn}
+      {error && <Error message={error}/>}
     </div>
   )
 }
