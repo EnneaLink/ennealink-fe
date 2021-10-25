@@ -33,8 +33,9 @@ const UserDisplay = ({ friends, logOut, id }) => {
   }
 
   return (
+    <>
+    <Header logOut={logOut} id={id} />
     <div className='user-display'>
-      <Header logOut={logOut} id={id} />
       <Search
         filterAllUsers={filterAllUsers}
         setSearchInput={setSearchInput}
@@ -49,6 +50,7 @@ const UserDisplay = ({ friends, logOut, id }) => {
         </div>
       </section>
     </div>
+    </>
   )
 }
 

@@ -14,4 +14,5 @@ h1 {
   font-size: calc(10px + 2vmin);
   color: white;
   box-shadow: 0 1px 3px #00000073;
+  width: 100%;
 }
