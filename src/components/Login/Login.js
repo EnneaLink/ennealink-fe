@@ -94,7 +94,7 @@ const Login = ({assignUser, user, updateTypes}) => {
               className="submit-btn next"
               onClick={createAccount}
             >
-              Create Account
+              create account
             </button>
         </form>
 
@@ -102,7 +102,7 @@ const Login = ({assignUser, user, updateTypes}) => {
           onClick={toggleCreate}
           className="create-btn"
         >
-          Already a user? Sign in!
+          already a user? sign in
         </button>
 
       </section> )

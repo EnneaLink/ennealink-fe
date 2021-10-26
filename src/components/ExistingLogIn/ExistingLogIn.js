@@ -61,7 +61,7 @@ const ExistingLogIn = ({ toggleCreate, assignUser }) => {
           type="submit"
           onClick={e => handleSubmit(e)}
         >
-          Sign In
+          sign in
         </button>
 
       </form>
@@ -70,7 +70,7 @@ const ExistingLogIn = ({ toggleCreate, assignUser }) => {
         onClick={toggleCreate}
         className="create-btn"
       >
-        Create Account
+        create account
       </button>
 
     </section>

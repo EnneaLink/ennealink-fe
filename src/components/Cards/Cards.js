@@ -15,6 +15,4 @@ const Cards = ({ username, myersBriggs, enneagram, id }) => {
   )
 }
 
-
-
 export default Cards;
