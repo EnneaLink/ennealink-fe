@@ -1,4 +1,4 @@
-describe('Signin', () => {
+describe('Existing Log In', () => {
 
   beforeEach(() => {
     cy.loadExistingUserPage()
@@ -23,10 +23,10 @@ describe('Signin', () => {
   it('should allow typing in inputs', () => {
     cy.get('input[class="login-input login-username"]')
       .type('a')
-        .should('have.value', 'a') 
+        .should('have.value', 'a')
     cy.get('input[class="login-input password"]')
       .type('b')
-        .should('have.value', 'b') 
+        .should('have.value', 'b')
   });
 
   it('should render create account button', () => {
@@ -34,8 +34,9 @@ describe('Signin', () => {
       .should('be.visible')
   })
 
-  it('should render sign in button', () => {
+  it('should render sign up button', () => {
     cy.get('button[class="create-btn"]')
       .should('be.visible')
   })
+
 })

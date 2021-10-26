@@ -1,15 +1,15 @@
-describe('Edit Profile', () => {
-
-  beforeEach(() => {
-    cy.loadEditProfilePage()
-  })
-
-  // these won't work until we can actually stub & create new accounts each test
-
-  it('should render header', () => {
-    cy.get('h1')
-      .contains('EnneaLink')
-  })
+// describe('Edit Profile', () => {
+//
+//   beforeEach(() => {
+//     cy.loadEditProfilePage()
+//   })
+//
+//   // these won't work until we can actually stub & create new accounts each test
+//
+//   it('should render header', () => {
+//     cy.get('h1')
+//       .contains('EnneaLink')
+//   })
 
   // it('should render 2 dropdowns', () => {
   //   cy.wait(1000)
@@ -27,14 +27,14 @@ describe('Edit Profile', () => {
   // it('should allow selecting mbti type', () => {
   //   cy.get('select[class="type-list"]')
   //     .select('ENFP')
-  //     .should('have.value', 'ENFP')      
+  //     .should('have.value', 'ENFP')
   // });
 
   // it('should allow selecting enneagram type', () => {
   //   cy.get('select[class="num-list"]')
   //     .select('1')
-  //     .should('have.value', '1')      
-  // }); 
+  //     .should('have.value', '1')
+  // });
 
   // it('should save profile', () => {
   //   cy.get('select[class="type-list"]')
@@ -53,4 +53,4 @@ describe('Edit Profile', () => {
   //   cy.get('input')
   //     .should('have.length', 2)
   // })
-})
+// })
