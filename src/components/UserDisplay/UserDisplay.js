@@ -28,7 +28,7 @@ const UserDisplay = ({ logOut, id }) => {
     const { value } = event.target
     if (value.length) {
       const foundUsers = allUsers.filter(user => {
-        if (user.username.toLowerCase().includes(value.toLowerCase())) {
+        if (user.username.toLowerCase().includes(value.toLowerCase()) && user.enneagram ) {
           return user
         }
       })
