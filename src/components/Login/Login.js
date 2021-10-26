@@ -13,6 +13,7 @@ const Login = ({assignUser, user, updateTypes}) => {
   const [newPassword, setNewPassword] = useState('');
   const [passCheck, setPassCheck] = useState('');
   const [id, setId] = useState('');
+  const [message, setMessage] = useState('');
 
   const [createUser, { error, loading, data }] = useMutation(CREATE_USER);
 
@@ -44,8 +45,8 @@ const Login = ({assignUser, user, updateTypes}) => {
         }
       })
     } else {
-      alert('your password did not match')
-      //do some sort of error handling
+      setMessage('your password did not match')
+      setTimeout(() => {setMessage('')}, 4000)
     }
   }
 
@@ -93,9 +94,13 @@ const Login = ({assignUser, user, updateTypes}) => {
               type="submit"
               className="submit-btn next"
               onClick={createAccount}
+              disabled={!username || !newPassword || !passCheck }
             >
               create account
             </button>
+
+            { message && <p className="message" >{message}</p>}
+
         </form>
 
         <button
