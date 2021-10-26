@@ -28,6 +28,7 @@ Cypress.Commands.add('loadProfilePage', () => {
       .type('11111111')
     .get('button[class="submit-btn"]')
       .click()
+      .interceptUserStats()
 })
 
 Cypress.Commands.add('loadUserDisplayPage', () => {
@@ -36,18 +37,39 @@ Cypress.Commands.add('loadUserDisplayPage', () => {
       .click()
 })
 
-
-// dynamic stubbing
-
-// Cypress.Commands.add('interceptAPI', (fixturePage, url) => {
-//   cy.intercept(`${url}`, {
-//     fixture: `${fixturePage}_test_data.json`,
-//   })
-// })
-
-// stubbing endpoints
-
-// Cypress.Commands.add('loadProfile', (g) => {
-//   cy.loadApp()
-//     .interceptAPI('profile', 'http://localhost:4500/graphql')
-// })
+Cypress.Commands.add('interceptUserStats', () => {
+  cy.intercept(
+    'POST',
+    'https://ennealink-be.herokuapp.com/graphql',
+    req => {
+      if (req.body.operationName === 'getUserStats') {
+        req.reply({
+          body: {
+            data: {
+              getUserStats: {
+                "id": "4",
+                "email": "dev@2105.com",
+                "username": "cypress test",
+                "enneagram": {
+                    "id": "46",
+                    "number": 1,
+                    "name": "The Reformer",
+                    "description": "Ones are conscientious and ethical, with a strong sense of right and wrong… Well-organized, orderly, and fastidious, they try to maintain high standards, but can slip into being critical and perfectionistic.",
+                    "link": "https://www.enneagraminstitute.com/type-1"
+                },
+                "myersBrigg": {
+                    "id": "54",
+                    "typeOf": "ISFP",
+                    "name": "The Adventurer",
+                    "description": "They tend to have open minds, approaching life, new experiences, and people with grounded warmth. Their ability to stay in the moment helps them uncover exciting potentials.",
+                    "link": "https://www.16personalities.com/isfp-personality"
+                },
+                "friends": []
+              }
+            }
+          }
+        })
+      }
+    }
+  )
+})
