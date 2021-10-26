@@ -1,9 +1,11 @@
 import {gql} from '@apollo/client';
 
-export const CREATE_USER = gql`
+export const CREATE_USER = gql `
   mutation createUser(
     $username: String!  
-    $password: String!) {
+    $password: String!
+  )
+  {
     createUser(
       authProvider: {
         credentials: {
@@ -16,85 +18,89 @@ export const CREATE_USER = gql`
       id
       username
     }
-    
   }
-  `
-  export const UPDATE_USER = gql `
-  mutation updateUser(
+`
+
+export const UPDATE_USER = gql `
+  mutation updateUser (
     $username: String!
     $id: ID!
     $myersBrigg: String!
     $enneagram: String!
-  ) {
+  )
+  {
     updateUser(
       username: $username
       id: $id
       myersBrigg: $myersBrigg
       enneagram: $enneagram
-      )
-      {
+    )
+    {
+      id
+      username
+      enneagram{
         id
-        username
-        enneagram{
-          id
-          number
-          name
-          description
-          link
-        }
-        myersBrigg{
-          id
-          typeOf
-          name
-          description
-          link
-        }
+        number
+        name
+        description
+        link
+      }
+      myersBrigg{
+        id
+        typeOf
+        name
+        description
+        link
       }
     }
-  `
+  }
+`
 
-  export const LOGIN_USER = gql `
+export const LOGIN_USER = gql `
   mutation loginUser(
     $username: String!
     $password: String!
-  ){
+  )
+  {
     loginUser(
       username: $username
       password: $password
     )
-      {
-        success
-        id
-      }
+    {
+      success
+      id
     }
-  `
+  }
+`
 
-  export const ADD_FRIEND = gql `
+export const ADD_FRIEND = gql `
   mutation addFriend(
     $userId: ID!
     $friendId: ID!
-  ){
+  )
+  {
     addFriend(
         userId: $userId
         friendId: $friendId
       )
-      {
-        success
-      }
+    {
+      success
     }
-  `
+  }
+`
 
-  export const DELETE_FRIEND = gql `
+export const DELETE_FRIEND = gql `
   mutation deleteFriend(
     $userId: ID!
     $friendId: ID!
-  ){
+  )
+  {
     deleteFriend(
-        userId: $userId
-        friendId: $friendId
-      )
-      {
-        success
-      }
+      userId: $userId
+      friendId: $friendId
+    )
+    {
+      success
     }
-  `
+  }
+`
