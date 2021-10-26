@@ -22,7 +22,7 @@ const errorLink = onError(({graphqlErrors, networkError}) => {
 
 const link = from([
   errorLink,
-  new HttpLink({uri:"http://localhost:4500/graphql"}) //This will be the link to our backend server when it is up and running! Ask BE team about if we should keep it local or deployed.
+  new HttpLink({uri:"https://ennealink-be.herokuapp.com/graphql"}) //This will be the link to our backend server when it is up and running! Ask BE team about if we should keep it local or deployed.
 ])
 
 const client = new ApolloClient({
