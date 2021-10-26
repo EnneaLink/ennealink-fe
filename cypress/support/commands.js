@@ -3,24 +3,33 @@ Cypress.Commands.add('loadApp', () => {
 })
 
 Cypress.Commands.add('loadExistingUserPage', () => {
-  cy.visit('http://localhost:3000')
+  cy.loadApp()
     .get('button[class="create-btn"]')
       .click()
 })
 
 Cypress.Commands.add('loadEditProfilePage', () => {
-  cy.visit('http://localhost:3000')
-  it('should allow typing in inputs', () => {
-    cy.get('input[class="login-input login-username"]')
-      .type('a')
+  cy.loadApp()
+    .get('input[class="login-input login-username"]')
+      .type('1')
     .get('input[class="login-input password-1"]')
       .type('b')
     .get('input[class="login-input password-2"]')
       .type('b')
     .get('button[class="submit-btn next"]')
       .click()
-  });  
 })
+
+Cypress.Commands.add('loadProfilePage', () => {
+  cy.loadExistingUserPage()
+    .get('input[class="login-input login-username"]')
+      .type('a')
+    .get('input[class="login-input password"]')
+      .type('b')
+    .get('button[class="create-btn"]')
+      .click()
+})
+
 
 // dynamic stubbing
 

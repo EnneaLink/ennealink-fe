@@ -27,7 +27,7 @@ describe('Signin', () => {
     cy.get('input[class="login-input password"]')
       .type('b')
         .should('have.value', 'b') 
-  });  
+  });
 
   it('should render create account button', () => {
     cy.get('button[type="submit"]')

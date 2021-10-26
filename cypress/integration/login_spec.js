@@ -24,10 +24,10 @@ describe('Login', () => {
     cy.get('input[class="login-input login-username"]')
       .type('a')
         .should('have.value', 'a') 
-    cy.get('input[class="login-input password-1"]')
+    .get('input[class="login-input password-1"]')
       .type('b')
         .should('have.value', 'b') 
-    cy.get('input[class="login-input password-2"]')
+    .get('input[class="login-input password-2"]')
       .type('c')
         .should('have.value', 'c') 
   });  
