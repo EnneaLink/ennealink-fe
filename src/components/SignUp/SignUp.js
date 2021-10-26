@@ -1,10 +1,10 @@
-import './SignIn.css';
+import './SignUp.css';
 import React, { useState } from 'react';
 import { LOGIN_USER } from '../../graphQL/mutations';
 import { useMutation } from '@apollo/client';
 import { useHistory } from "react-router-dom";
 
-const SignIn = ({ toggleCreate, assignUser }) => {
+const SignUp = ({ toggleCreate, assignUser }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('')
@@ -19,7 +19,7 @@ const SignIn = ({ toggleCreate, assignUser }) => {
   const handleLoad = (data) => {
     if (data.loginUser.success){
       assignUser(data.loginUser.id);
-      history.push(`/profile/${data.loginUser.id}`); 
+      history.push(`/profile/${data.loginUser.id}`);
     } else {
       setMessage('Please check that your username or password are correct, or click the button below create a new account')
     }
@@ -58,7 +58,7 @@ const SignIn = ({ toggleCreate, assignUser }) => {
         />
 
         { message && <p className="message" >{message}</p>}
-  
+
         <button
           className="submit-btn"
           type="submit"
@@ -80,4 +80,4 @@ const SignIn = ({ toggleCreate, assignUser }) => {
   )
 }
 
-export default SignIn;
+export default SignUp;
