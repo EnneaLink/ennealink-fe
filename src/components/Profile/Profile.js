@@ -23,7 +23,7 @@ const Profile = ({ profileView, logOut, id }) => {
   return (
 
     <div>
-      <Header logOut={logOut} profileView={profileView} />
+      <Header logOut={logOut} profileView={profileView} id={id}/>
 
       { data ? (
         <article className='profile-view'>
