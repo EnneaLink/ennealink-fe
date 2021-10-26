@@ -60,6 +60,7 @@ const ExistingLogIn = ({ toggleCreate, assignUser }) => {
           className="submit-btn"
           type="submit"
           onClick={e => handleSubmit(e)}
+          disabled={!username || !password }
         >
           sign in
         </button>
