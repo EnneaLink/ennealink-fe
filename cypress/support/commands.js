@@ -23,10 +23,10 @@ Cypress.Commands.add('loadEditProfilePage', () => {
 Cypress.Commands.add('loadProfilePage', () => {
   cy.loadExistingUserPage()
     .get('input[class="login-input login-username"]')
-      .type('a')
+      .type('bunnydog')
     .get('input[class="login-input password"]')
-      .type('b')
-    .get('button[class="sign-in"]')
+      .type('11111111')
+    .get('button[class="submit-btn"]')
       .click()
 })
 

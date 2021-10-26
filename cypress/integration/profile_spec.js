@@ -42,7 +42,7 @@ describe('Profile', () => {
 
   it('should render header', () => {
     cy.get('h1')
-      .contains('Ennealink')
+      .contains('EnneaLink')
   })
 
   it('should render navbar', () => {
@@ -54,12 +54,12 @@ describe('Profile', () => {
 
   it('should render username', () => {
     cy.get('h2')
-      .contains('a')
+      .contains('cypress test')
   })
 
   it('should render mbti info', () => {
     cy.get('h3')
-      .contains('ENFP')
+      .contains('ISFP')
   })
 
   it('should render enneagram info', () => {
@@ -68,16 +68,13 @@ describe('Profile', () => {
   })
 
   it('should render 2 links', () => {
-    cy.get('a')
-      .should('be.visible')
-    .get('input')
+    cy.get('a[class="type-link"]')
       .should('have.length', 2)
   })
 
   it('should logout', () => {
     cy.get('button[class="nav-btn logout-btn"]')
       .click()
-    .get('button[class="create-btn"]')
-      .should('be.visible')
+      .url().should('eq', 'http://localhost:3000/')
   })
 })
