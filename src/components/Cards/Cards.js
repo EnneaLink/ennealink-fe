@@ -8,8 +8,10 @@ const Cards = ({ username, myersBriggs, enneagram, id }) => {
     <Link to={`/profile/${id}`}>
       <section className="card">
         <p className="card-username">{username}</p>
-        <p className="card-myersBriggs">{myersBriggs}</p>
-        <p className="card-enneagram">{enneagram}</p>
+        <section className='types-friends'>
+          <p className="card-myersBriggs">{myersBriggs}</p>
+          <p className="card-enneagram">{enneagram}</p>
+        </section>
       </section>
     </Link>
   )

@@ -25,26 +25,35 @@ const DisplayList = ({ filteredUsers, id}) => {
     )
   })
 
-    const allUsersCards = (filteredUsers && filteredUsers.map(user => {
-      return (
-          <Cards
-            key={user.id}
-            id={user.id}
-            username={user.username}
-            myersBriggs={user.myersBrigg ? user.myersBrigg.typeOf : null}
-            enneagram={user.enneagram ? user.enneagram.number : null}
-          />
-      )
-    }))
+  const allUsersCards = (filteredUsers && filteredUsers.map(user => {
+    return (
+      <Cards
+        key={user.id}
+        id={user.id}
+        username={user.username}
+        myersBriggs={user.myersBrigg ? user.myersBrigg.typeOf : null}
+        enneagram={user.enneagram ? user.enneagram.number : null}
+      />
+    )
+  }))
+
+  const friendNumber = () => {
+    if (friends.length === 1) {
+      return `${friends.length} friend`;
+    } else {
+      return `${friends.length} friends`;
+    }
+  }
 
   return (
     <>
-    { filteredUsers ?
+      {
+        filteredUsers ?
           <section className="all-users-cards">
             {[allUsersCards]}
           </section> :
           <section className="show-friends">
-            <h3>{friends.length} friends</h3>
+            <h3 classname='friend-number'>{friendNumber()}</h3>
             <section className="friends-cards">
               {[friendsCards]}
             </section>

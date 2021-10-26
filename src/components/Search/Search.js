@@ -11,16 +11,15 @@ const Search = ({ filterAllUsers, setSearchInput, searchInput }) => {
 
   return (
     <div className='search-container'>
-
-        <input
-          className='search-bar'
-          type='text'
-          placeholder='find new friends'
-          name='search'
-          value={searchInput}
-          onChange={event => handleChange(event)}
-        />
-      </div>
+      <input
+        className='search-bar'
+        type='text'
+        placeholder='find new friends'
+        name='search'
+        value={searchInput}
+        onChange={event => handleChange(event)}
+      />
+    </div>
   )
 }
 
