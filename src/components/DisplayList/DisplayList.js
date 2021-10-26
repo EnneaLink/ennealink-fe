@@ -12,8 +12,6 @@ const DisplayList = ({ filteredUsers, id}) => {
   })
   
   const friends = getUserData.getUserStats.friends;
-  
-  console.log('Display list user data', getUserData.getUserStats.friends)
 
   const friendsCards = friends.map(friend => {
     return (
