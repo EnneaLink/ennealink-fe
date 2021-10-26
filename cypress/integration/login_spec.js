@@ -2,6 +2,8 @@ describe('Login', () => {
 
   beforeEach(() => {
     cy.loadApp()
+    
+
   })
 
   it('should go to localhost', () => {
@@ -23,14 +25,14 @@ describe('Login', () => {
   it('should allow typing in inputs', () => {
     cy.get('input[class="login-input login-username"]')
       .type('a')
-        .should('have.value', 'a') 
+        .should('have.value', 'a')
     .get('input[class="login-input password-1"]')
       .type('b')
-        .should('have.value', 'b') 
+        .should('have.value', 'b')
     .get('input[class="login-input password-2"]')
       .type('c')
-        .should('have.value', 'c') 
-  });  
+        .should('have.value', 'c')
+  });
 
   it('should render create account button', () => {
     cy.get('button[type="submit"]')
@@ -41,4 +43,6 @@ describe('Login', () => {
     cy.get('button[class="create-btn"]')
       .should('be.visible')
   })
+
+
 })

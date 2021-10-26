@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import {CREATE_USER, LOGIN_USER} from '../../graphQL/mutations';
 import {useMutation} from '@apollo/client';
 import EditProfile from '../EditProfile/EditProfile';
-import SignIn from '../SignIn/SignIn';
+import ExistingLogIn from '../ExistingLogIn/ExistingLogIn';
 import Error from '../Error/Error';
 
 const Login = ({assignUser, user, updateTypes}) => {
@@ -15,13 +15,11 @@ const Login = ({assignUser, user, updateTypes}) => {
   const [id, setId] = useState('');
   const [message, setMessage] = useState('');
 
-
   const [createUser, { error, loading, data }] = useMutation(CREATE_USER);
- 
+
   if (error) console.log(error)
 
-  if (data) { assignUser(data.createUser.id)
-    }
+  if (data) {assignUser(data.createUser.id)}
 
   if (data) {
     if (!id) {
@@ -53,7 +51,7 @@ const Login = ({assignUser, user, updateTypes}) => {
   }
 
 
-  const signIn = <SignIn toggleCreate={toggleCreate} assignUser={assignUser} />
+  const signIn = <ExistingLogIn toggleCreate={toggleCreate} assignUser={assignUser} />
 
   const makeAccount = () => {
 
@@ -68,8 +66,9 @@ const Login = ({assignUser, user, updateTypes}) => {
             className="login-input login-username"
             type="text"
             value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            placeholder="choose a username"
+            onChange={(e) => setUsername(e.target.value.replace(/[^a-z0-9]/gi,''))}
+            placeholder="username"
+            maxLength={10} required
           />
 
           <input
@@ -77,8 +76,8 @@ const Login = ({assignUser, user, updateTypes}) => {
             type="password"
             value={newPassword}
             onChange={(e) => setNewPassword(e.target.value)}
-            placeholder="create a password (min 8 characters)"
-            minlength={8} required
+            placeholder="password"
+            minLength={8} required
           />
 
           <input
@@ -86,8 +85,8 @@ const Login = ({assignUser, user, updateTypes}) => {
             type="password"
             value={passCheck}
             onChange={(e) => setPassCheck(e.target.value)}
-            placeholder="create a password (min 8 characters)"
-            minlength={8} required
+            placeholder="password"
+            minLength={8} required
           />
 
             <button
@@ -97,7 +96,7 @@ const Login = ({assignUser, user, updateTypes}) => {
               onClick={createAccount}
               disabled={!username || !newPassword || !passCheck }
             >
-              Create Account
+              create account
             </button>
 
             { message && <p className="message" >{message}</p>}
@@ -108,7 +107,7 @@ const Login = ({assignUser, user, updateTypes}) => {
           onClick={toggleCreate}
           className="create-btn"
         >
-          Already a user? Sign in!
+          already a user? sign in
         </button>
 
       </section> )

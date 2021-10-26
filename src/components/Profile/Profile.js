@@ -41,31 +41,33 @@ const Profile = ({ profileView, logOut, userId }) => {
     }]
   });
 
-
   const friendButton = () => {
     if (profileView !== userId && friendIds.includes(profileView)) {
       console.log(getUserData)
       return (
         <button
-        type="submit"
-        onClick={unfriendUser}
+          type="submit"
+          onClick={unfriendUser}
+          className='unfollow-btn'
         >
-          remove {getUserData.getUserStats.username} from friends
+          unfollow {getUserData.getUserStats.username}
         </button>
       )
     } else if (profileView !== userId && !friendIds.includes(profileView)){
       return (
         <button
-        type="submit"
-        onClick={friendUser}
+          type="submit"
+          onClick={friendUser}
+          className='follow-btn'
         >
-          add {getUserData.getUserStats.username} to friends
+          follow {getUserData.getUserStats.username}
         </button>
       )
     }
   }
 
   const friendUser = () => {
+    document.querySelector(".follow-btn").classList.add("hidden");
     addFriend({
       variables: {
         userId: userId,
@@ -75,6 +77,7 @@ const Profile = ({ profileView, logOut, userId }) => {
   }
 
   const unfriendUser = () => {
+    document.querySelector(".unfollow-btn").classList.add("hidden");    
     deleteFriend({
       variables: {
         userId: userId,
@@ -124,5 +127,3 @@ const Profile = ({ profileView, logOut, userId }) => {
 }
 
 export default Profile;
-
-

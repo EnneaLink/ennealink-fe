@@ -1,16 +1,15 @@
-import './SignIn.css';
+import './ExistingLogIn.css';
 import React, { useState } from 'react';
 import { LOGIN_USER } from '../../graphQL/mutations';
 import { useMutation } from '@apollo/client';
 import { useHistory } from "react-router-dom";
 
-const SignIn = ({ toggleCreate, assignUser }) => {
+const ExistingLogIn = ({ toggleCreate, assignUser }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('')
   const [loginUser, { data }] =useMutation(LOGIN_USER);
   const history = useHistory();
-
 
   if (data) {
     setTimeout(() => {handleLoad(data)}, 1000)
@@ -19,11 +18,10 @@ const SignIn = ({ toggleCreate, assignUser }) => {
   const handleLoad = (data) => {
     if (data.loginUser.success){
       assignUser(data.loginUser.id);
-      history.push(`/profile/${data.loginUser.id}`); 
+      history.push(`/profile/${data.loginUser.id}`);
     } else {
-      setMessage('Please check that your username or password are correct, or click the button below create a new account')
+      setMessage('Check your login info, or create a new account!')
     }
-
   }
 
   const handleSubmit = (e) => {
@@ -38,7 +36,7 @@ const SignIn = ({ toggleCreate, assignUser }) => {
 
   return (
     <section className="sign-in">
-      <h1>EnneaLink</h1>
+      <h1 className='login-title'>EnneaLink</h1>
 
       <form className="sign-in-box">
 
@@ -46,19 +44,18 @@ const SignIn = ({ toggleCreate, assignUser }) => {
           className="login-input login-username"
           type="text" value={username}
           onChange={(e) => setUsername(e.target.value)}
-          placeholder="enter your username"
+          placeholder="username"
         />
 
         <input
           className="login-input password"
           type="password"
           value={password} onChange={(e) => setPassword(e.target.value)}
-          placeholder="enter your password"
-          minlength={8} required
+          placeholder="password"
         />
 
         { message && <p className="message" >{message}</p>}
-  
+
         <button
           className="submit-btn"
           type="submit"
@@ -81,4 +78,4 @@ const SignIn = ({ toggleCreate, assignUser }) => {
   )
 }
 
-export default SignIn;
+export default ExistingLogIn;

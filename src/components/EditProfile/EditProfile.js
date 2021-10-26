@@ -44,7 +44,7 @@ const EditProfile = ({updateTypes, id, username}) => {
       <form className='sign-in-box sign-in'>
         <h1 className='ennealink-profile'>EnneaLink</h1>
         <h2>Know your personality types?</h2>
-        <h3>Choose them below:</h3>
+        <h3 className='heading3'>Choose them below:</h3>
 
         <select name='type-list' className="type-list" onChange={e => setMbtiType(e.target.value)}>
           <option value='null'>MBTI</option>
@@ -90,7 +90,7 @@ const EditProfile = ({updateTypes, id, username}) => {
           </button>
 
         <h2>Don't know your types?</h2>
-        <h3>That's okay!</h3>
+        <h3 className='heading3'>That's okay!</h3>
         <div className="link-container">
           <a className="test-link" href='https://www.idrlabs.com/cognitive-function/test.php' target="_blank"
           rel="noopener noreferrer">Take MBTI Test</a>
