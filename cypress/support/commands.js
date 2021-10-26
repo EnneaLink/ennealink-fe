@@ -30,6 +30,12 @@ Cypress.Commands.add('loadProfilePage', () => {
       .click()
 })
 
+Cypress.Commands.add('loadUserDisplayPage', () => {
+  cy.loadProfilePage()
+    .get('button[class="nav-btn friends-btn"]')
+      .click()
+})
+
 
 // dynamic stubbing
 

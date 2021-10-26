@@ -11,6 +11,13 @@ describe('Profile', () => {
       .contains('Ennealink')
   })
 
+  it('should render navbar', () => {
+    cy.get('button[class="nav-btn friends-btn"]')
+      .should('be.visible')
+    .get('button[class="nav-btn logout-btn"]')
+      .should('be.visible')
+  })
+
   it('should render username', () => {
     cy.get('h2')
       .contains('a')
@@ -31,5 +38,12 @@ describe('Profile', () => {
       .should('be.visible')
     .get('input')
       .should('have.length', 2)
-  })  
+  })
+
+  it('should logout', () => {
+    cy.get('button[class="nav-btn logout-btn"]')
+      .click()
+    .get('button[class="create-btn"]')
+      .should('be.visible')
+  })
 })
