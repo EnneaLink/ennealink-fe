@@ -1,60 +1,124 @@
-import React from 'react';
-import { useEffect } from 'react';
+import React, { useState } from 'react';
 import Header from '../Header/Header';
 import Loader from '../Loader/Loader';
+import Error from '../Error/Error';
 import './Profile.css';
-import {useQuery} from '@apollo/client';
-import {GET_USER} from '../../graphQL/queries';
+import { useQuery, useMutation } from '@apollo/client';
+import { GET_USER } from '../../graphQL/queries';
+import { ADD_FRIEND, DELETE_FRIEND } from '../../graphQL/mutations';
 
-const Profile = ({ profileView, logOut, id }) => {
-
-  // const {myersBrigg, enneagram, username} = profileView
-  const {error, loading, data} = useQuery(GET_USER, {
-    variables: {id: profileView}
+const Profile = ({ profileView, logOut, userId }) => {
+  
+  const [friendIds, setFriendIds] = useState([]);
+  
+  const {error: getUserError, loading: getUserLoading, data: getUserData} = useQuery(GET_USER, {
+    variables: {id: profileView }
   })
 
-  useEffect(() => {
-    console.log("PV", profileView)
-    console.log("data", profileView)
-  }, [data])
+  const {error: getMyError, loading: getMyLoading, data: getMyData} = useQuery(GET_USER, {
+    variables: {id: userId }
+  ,
+    onCompleted: getMyData => {
+      setFriendIds(getMyData.getUserStats.friends.map(friend => friend.id))
+    }
+  })
 
-  //We will have a function that dynamically renders a link to show how a user and a friend would interact based off of bothe of their types. This will return a link that we can plug into an <a></a> tag in the return below. (Hayley has good concept for this)
+  const [addFriend, { error: addFriendError, loading: addFriendLoading }] = useMutation(ADD_FRIEND, {
+    refetchQueries: [{ 
+      query: GET_USER, 
+      variables: { 
+        id: userId
+      }
+    }]
+  });
+
+  const [deleteFriend, { error: deleteFriendError, loading: deleteFriendLoading }] = useMutation(DELETE_FRIEND, {
+    refetchQueries: [{ 
+      query: GET_USER, 
+      variables: { 
+        id: userId
+      }
+    }]
+  });
+
+
+  const friendButton = () => {
+    if (profileView !== userId && friendIds.includes(profileView)) {
+      console.log(getUserData)
+      return (
+        <button
+        type="submit"
+        onClick={unfriendUser}
+        >
+          remove {getUserData.getUserStats.username} from friends
+        </button>
+      )
+    } else if (profileView !== userId && !friendIds.includes(profileView)){
+      return (
+        <button
+        type="submit"
+        onClick={friendUser}
+        >
+          add {getUserData.getUserStats.username} to friends
+        </button>
+      )
+    }
+  }
+
+  const friendUser = () => {
+    addFriend({
+      variables: {
+        userId: userId,
+        friendId: profileView
+      }
+    })
+  }
+
+  const unfriendUser = () => {
+    deleteFriend({
+      variables: {
+        userId: userId,
+        friendId: profileView
+      }
+    })
+  }
 
   return (
 
     <div>
-      <Header setUser={logOut} id={id} />
+      <Header logOut={logOut} id={userId} />
 
-      { data ? (
+      { !getUserLoading && !getMyLoading ? (
         <article className='profile-view'>
-          <h2 className="user-name">{data.getUserStats.username}</h2>
+          <h2 className="user-name">{getUserData.getUserStats.username}</h2>
 
           <div className="type-container">
 
-            <h3 className="profile-type">{data.getUserStats.myersBrigg.typeOf}</h3>
-            <h4 className="type-name">{data.getUserStats.myersBrigg.name}</h4>
-            <p>{data.getUserStats.myersBrigg.description}</p>
+            <h3 className="profile-type">{getUserData.getUserStats.myersBrigg.typeOf}</h3>
+            <h4 className="type-name">{getUserData.getUserStats.myersBrigg.name}</h4>
+            <p>{getUserData.getUserStats.myersBrigg.description}</p>
 
             <div className="link-container">
-              <a className="type-link" href={data.getUserStats.myersBrigg.link}>Learn More</a>
+              <a className="type-link" href={getUserData.getUserStats.myersBrigg.link}>Learn More</a>
             </div>
 
           </div>
 
           <div className="type-container">
 
-            <h3 className="profile-type">Type {data.getUserStats.enneagram.number}</h3>
-            <h4 className="type-name">{data.getUserStats.enneagram.name}</h4>
-            <p>{data.getUserStats.enneagram.description}</p>
+            <h3 className="profile-type">Type {getUserData.getUserStats.enneagram.number}</h3>
+            <h4 className="type-name">{getUserData.getUserStats.enneagram.name}</h4>
+            <p>{getUserData.getUserStats.enneagram.description}</p>
 
             <div className="link-container">
-              <a className="type-link" href={data.getUserStats.enneagram.link}>Learn More</a>
+              <a className="type-link" href={getUserData.getUserStats.enneagram.link}>Learn More</a>
             </div>
 
           </div>
-
+          {friendIds && friendButton()}
         </article>) : <Loader />
       }
+      { getUserError || addFriendError && <Error /> }
     </div>
   )
 }
@@ -62,27 +126,3 @@ const Profile = ({ profileView, logOut, id }) => {
 export default Profile;
 
 
-// {
-//   "data": {
-//   "id": "133",
-//   "type": "user",
-//   "attributes": {
-//     "username": "funbucket89",
-//     "email": "shameka_goyette@bartell.co",
-//     "google_id": "1234",
-//     "google_image": ";lakdjflkjdfkdaj;lfkds",
-//     "myersBriggs": {
-//       "id": "1",
-//       "type": "ENFP",
-//       "name": "The Campaigner",
-//       "descriptions": "A Campaigner (ENFP) is someone with the Extraverted, Intuitive, Feeling, and Prospecting personality traits..."
-//       },
-//     "enneagram": {
-//       "id": "1",
-//       "number": "7",
-//       "name": "The Enthusiast",
-//       "descriptions": "Enneagram Sevens have the motivational need to experience life to the fullest and avoid pain. Sevens value a sense of freedom and focus on optimism..."
-//       }
-//     }
-//   }
-// }
