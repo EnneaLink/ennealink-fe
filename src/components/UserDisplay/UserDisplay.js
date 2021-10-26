@@ -13,19 +13,19 @@ const UserDisplay = ({ friends, logOut, id, currentUserId }) => {
   const [filteredUsers, setFilteredUsers] = useState(null)
   const [searchInput, setSearchInput] = useState('')
   const [allFriends, setAllFriends] = useState(null)
-  const {error, loading, data} = useQuery(GET_ALL_USERS)
+  const {error: getAllUsers, loading: getAllUsersLoading, data: getAllUsersData} = useQuery(GET_ALL_USERS)
   const {error: getUserError, loading: getUserLoading, data: getUserData} = useQuery(GET_USER, {
     variables: {id: currentUserId}
   })
 
 
   useEffect(() => {
-    (!loading && setAllUsers(data.getAllUsers));
-  }, [data])
+    (!getAllUsersLoading && setAllUsers(getAllUsersData.getAllUsers));
+  }, [getAllUsersData])
 
   useEffect(() => {
     (!getUserLoading && setAllFriends(getUserData.getUserStats.friends));
-  }, [data])
+  }, [getUserData])
 
   const filterAllUsers = (event) => {
     const { value } = event.target
@@ -43,7 +43,7 @@ const UserDisplay = ({ friends, logOut, id, currentUserId }) => {
 
   return (
     <>
-    <Header logOut={logOut} id={id} />
+    <Header logOut={logOut} id={id} currentUserId={currentUserId}/>
     <div className='user-display'>
       <Search
         filterAllUsers={filterAllUsers}
@@ -52,7 +52,7 @@ const UserDisplay = ({ friends, logOut, id, currentUserId }) => {
       />
       <section className="list">
         <div className="display-list">
-          {(!loading && !getUserLoading) && <DisplayList
+          {(!getAllUsersLoading && !getUserLoading) && <DisplayList
             allFriends={getUserData.getUserStats.friends}
             filteredUsers={filteredUsers}
           />}

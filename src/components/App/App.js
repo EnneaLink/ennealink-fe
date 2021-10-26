@@ -15,14 +15,12 @@ import { Link, useHistory } from "react-router-dom";
 function App() {
 
   const [user, setUser] = useState({});
-  const [id, setID] = useState(0);
+  const [id, setID] = useState(null);
   const {error, loading, data} = useQuery(GET_USER, {
     variables: {id: id}
   })
 
-
   useEffect(() => {
-
     setUser(data);
   }, [data])
 
@@ -32,7 +30,6 @@ function App() {
   }
 
   return (
-
     <div className="App">
 
       <Route exact path='/'
@@ -49,7 +46,7 @@ function App() {
 
       <Route exact path='/friends/:id'
         render={({match}) =>
-          <UserDisplay  currentUserId={match.params.id} logOut={logOut} id={id} />
+          <UserDisplay currentUserId={match.params.id} logOut={logOut} id={id} />
         }
       />
 

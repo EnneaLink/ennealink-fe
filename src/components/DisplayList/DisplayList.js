@@ -2,7 +2,7 @@ import React from 'react';
 import Cards from '../Cards/Cards';
 import './DisplayList.css';
 
-const DisplayList = ({ friends, filteredUsers, allFriends}) => {
+const DisplayList = ({ filteredUsers, allFriends}) => {
 
   const friendsCards = allFriends.map(friend => {
     return (
