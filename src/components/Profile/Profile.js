@@ -46,9 +46,9 @@ const Profile = ({ profileView, logOut, userId }) => {
       console.log(getUserData)
       return (
         <button
-        type="submit"
-        onClick={unfriendUser}
-        className='unfollow-btn'
+          type="submit"
+          onClick={unfriendUser}
+          className='unfollow-btn'
         >
           unfollow {getUserData.getUserStats.username}
         </button>
@@ -56,9 +56,9 @@ const Profile = ({ profileView, logOut, userId }) => {
     } else if (profileView !== userId && !friendIds.includes(profileView)){
       return (
         <button
-        type="submit"
-        onClick={friendUser}
-        className='follow-btn'
+          type="submit"
+          onClick={friendUser}
+          className='follow-btn'
         >
           follow {getUserData.getUserStats.username}
         </button>

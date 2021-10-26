@@ -20,7 +20,7 @@ const ExistingLogIn = ({ toggleCreate, assignUser }) => {
       assignUser(data.loginUser.id);
       history.push(`/profile/${data.loginUser.id}`);
     } else {
-      setMessage('Please check that your username or password are correct, or click the button below create a new account.')
+      setMessage('Check your login info, or create a new account!')
     }
   }
 

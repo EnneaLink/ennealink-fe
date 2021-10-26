@@ -15,7 +15,7 @@ const Search = ({ filterAllUsers, setSearchInput, searchInput }) => {
         <input
           className='search-bar'
           type='text'
-          placeholder='Find New Friends'
+          placeholder='find new friends'
           name='search'
           value={searchInput}
           onChange={event => handleChange(event)}
