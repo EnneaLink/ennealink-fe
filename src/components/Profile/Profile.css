@@ -6,7 +6,7 @@
   justify-content: center;
   align-items: center;
   background-color: #caebf2;
-  height: 62vh;
+  min-height: 70vh;
   border-radius: 20px;
   box-shadow: 0 1px 3px #00000073;
 }
@@ -37,4 +37,21 @@
 
 .link-container {
   margin-top: -.8rem;
+}
+
+.follow-btn,
+.unfollow-btn {
+  height: 2rem;
+  background-color: #76CC66;
+  margin: 2rem 1rem 1rem 1rem;
+  border-radius: 20px;
+  padding: 0 1rem 0 1rem;
+  font-weight: bold;
+  color: white;
+  border: none;
+  box-shadow: 0 1px 3px #00000073;
+}
+
+.hidden {
+  display: none;
 }

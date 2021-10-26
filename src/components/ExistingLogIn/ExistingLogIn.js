@@ -11,7 +11,6 @@ const ExistingLogIn = ({ toggleCreate, assignUser }) => {
   const [loginUser, { data }] =useMutation(LOGIN_USER);
   const history = useHistory();
 
-
   if (data) {
     setTimeout(() => {handleLoad(data)}, 1000)
   }
@@ -21,9 +20,8 @@ const ExistingLogIn = ({ toggleCreate, assignUser }) => {
       assignUser(data.loginUser.id);
       history.push(`/profile/${data.loginUser.id}`);
     } else {
-      setMessage('Please check that your username or password are correct, or click the button below create a new account')
+      setMessage('Check your login info, or create a new account!')
     }
-
   }
 
   const handleSubmit = (e) => {
@@ -38,7 +36,7 @@ const ExistingLogIn = ({ toggleCreate, assignUser }) => {
 
   return (
     <section className="sign-in">
-      <h1>EnneaLink</h1>
+      <h1 className='login-title'>EnneaLink</h1>
 
       <form className="sign-in-box">
 
@@ -46,15 +44,14 @@ const ExistingLogIn = ({ toggleCreate, assignUser }) => {
           className="login-input login-username"
           type="text" value={username}
           onChange={(e) => setUsername(e.target.value)}
-          placeholder="enter your username"
+          placeholder="username"
         />
 
         <input
           className="login-input password"
           type="password"
           value={password} onChange={(e) => setPassword(e.target.value)}
-          placeholder="enter your password"
-          minlength={8} required
+          placeholder="password"
         />
 
         { message && <p className="message" >{message}</p>}

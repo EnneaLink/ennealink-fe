@@ -5,7 +5,7 @@
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  border-bottom: 1px solid black;
+  box-shadow: 0 1px 3px #00000073;
   /* padding-bottom: -1rem; */
 }
 
@@ -20,4 +20,6 @@
   border-radius: 20px;
   box-shadow: 0 1px 3px #00000073;
   padding-left: .7rem;
+  text-align: center;
+  border: 0;
 }

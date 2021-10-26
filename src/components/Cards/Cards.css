@@ -2,5 +2,21 @@
   display: flex;
   justify-content: space-between;
   width: 200px;
-  /* border: 2px solid black; */
+  font-weight: bold;
+  border-bottom: 1px solid 		#F0F0F0;
+}
+
+.card-username {
+  color: #76CC66;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.types-friends {
+  display: flex;
+  justify-content: space-between;
+}
+
+.card-enneagram {
+  margin-left: 1rem;
 }
