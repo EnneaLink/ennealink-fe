@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Header from '../Header/Header';
 import Loader from '../Loader/Loader';
 import Error from '../Error/Error';
@@ -13,7 +13,14 @@ const Profile = ({ profileView, logOut, userId }) => {
     variables: {id: profileView }
   })
 
-  const [addFriend, {error: addFriendError, loading: addFriendLoading, data: addFriendData}] = useMutation(ADD_FRIEND);
+  const [addFriend, { error: addFriendError, loading: addFriendLoading }] = useMutation(ADD_FRIEND, {
+    refetchQueries: [{ 
+      query: GET_USER, 
+      variables: { 
+        id: userId
+      }
+    }]
+  });
 
   const friendButton = () => {
     if (userId !== profileView){
@@ -29,8 +36,6 @@ const Profile = ({ profileView, logOut, userId }) => {
   }
 
   const friendUser = () => {
-    console.log(userId, profileView)
-    //friend mutation
     addFriend({
       variables: {
         userId: userId,
@@ -39,16 +44,12 @@ const Profile = ({ profileView, logOut, userId }) => {
     })
   }
 
-  useEffect(() => {
-    console.log('addFriendData', addFriendData)
-  }, [addFriendData])
-
   return (
 
     <div>
       <Header logOut={logOut} id={userId} />
 
-      { !getUserLoading ? (
+      { !getUserLoading || !addFriendLoading ? (
         <article className='profile-view'>
           <h2 className="user-name">{getUserData.getUserStats.username}</h2>
 
@@ -78,7 +79,7 @@ const Profile = ({ profileView, logOut, userId }) => {
           {friendButton()}
         </article>) : <Loader />
       }
-      { getUserError && <Error /> }
+      { getUserError || addFriendError && <Error /> }
     </div>
   )
 }

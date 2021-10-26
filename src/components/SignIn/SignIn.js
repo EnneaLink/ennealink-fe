@@ -1,14 +1,14 @@
-import React, {useState, useEffect} from 'react';
 import './SignIn.css';
+import React, { useState } from 'react';
 import { LOGIN_USER } from '../../graphQL/mutations';
 import { useMutation } from '@apollo/client';
 import { useHistory } from "react-router-dom";
 
-const SignIn = ({toggleCreate, assignUser}) => {
+const SignIn = ({ toggleCreate, assignUser }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('')
-  const [loginUser, {error, loading, data}] =useMutation(LOGIN_USER);
+  const [loginUser, { data }] =useMutation(LOGIN_USER);
   const history = useHistory();
 
 
