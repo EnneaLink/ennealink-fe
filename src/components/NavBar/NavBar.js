@@ -21,7 +21,7 @@ const NavBar = ({logOut, id}) => {
       <li>
 
         <Link
-          to={'/friends'}
+          to={`/friends/${id}`}
           key='1'
         >
 

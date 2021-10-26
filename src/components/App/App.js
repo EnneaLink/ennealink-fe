@@ -47,9 +47,9 @@ function App() {
       }
       />
 
-      <Route exact path='/friends'
-        render={() =>
-          <UserDisplay friends={data.getUserStats.friends} logOut={logOut} id={id} />
+      <Route exact path='/friends/:id'
+        render={({match}) =>
+          <UserDisplay  currentUserId={match.params.id} logOut={logOut} id={id} />
         }
       />
 

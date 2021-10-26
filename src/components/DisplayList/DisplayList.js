@@ -2,9 +2,9 @@ import React from 'react';
 import Cards from '../Cards/Cards';
 import './DisplayList.css';
 
-const DisplayList = ({ friends, filteredUsers}) => {
+const DisplayList = ({ friends, filteredUsers, allFriends}) => {
 
-  const friendsCards = friends.map(friend => {
+  const friendsCards = allFriends.map(friend => {
     return (
       <Cards
         key={friend.id}
@@ -31,7 +31,7 @@ const DisplayList = ({ friends, filteredUsers}) => {
             {[allUsersCards]}
           </section> :
           <section className="show-friends">
-            <h3>{friends.length} friends</h3>
+            <h3>{allFriends.length} friends</h3>
             <section className="friends-cards">
               {[friendsCards]}
             </section>
