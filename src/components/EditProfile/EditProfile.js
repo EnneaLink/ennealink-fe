@@ -17,7 +17,6 @@ const EditProfile = ({updateTypes, id, username}) => {
 
   if (data) updateTypes(data)
 
-
   const handleSubmit = e => {
     e.preventDefault();
     if (!enneagramType || !mbtiType) {

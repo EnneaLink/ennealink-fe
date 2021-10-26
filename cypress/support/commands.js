@@ -8,6 +8,20 @@ Cypress.Commands.add('loadExistingUserPage', () => {
       .click()
 })
 
+Cypress.Commands.add('loadEditProfilePage', () => {
+  cy.visit('http://localhost:3000')
+  it('should allow typing in inputs', () => {
+    cy.get('input[class="login-input login-username"]')
+      .type('a')
+    .get('input[class="login-input password-1"]')
+      .type('b')
+    .get('input[class="login-input password-2"]')
+      .type('b')
+    .get('button[class="submit-btn next"]')
+      .click()
+  });  
+})
+
 // dynamic stubbing
 
 // Cypress.Commands.add('interceptAPI', (fixturePage, url) => {
