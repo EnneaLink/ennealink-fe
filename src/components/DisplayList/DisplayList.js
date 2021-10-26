@@ -1,8 +1,19 @@
 import React from 'react';
 import Cards from '../Cards/Cards';
+import { useQuery } from '@apollo/client';
+import { GET_USER } from '../../graphQL/queries';
 import './DisplayList.css';
 
-const DisplayList = ({ friends, filteredUsers}) => {
+const DisplayList = ({ filteredUsers, id}) => {
+  const {error: getUserError, loading: getUserLoading, data: getUserData} = useQuery(GET_USER, {
+    variables: {
+      id: id
+    }
+  })
+  
+  const friends = getUserData.getUserStats.friends;
+  
+  console.log('Display list user data', getUserData.getUserStats.friends)
 
   const friendsCards = friends.map(friend => {
     return (
@@ -26,7 +37,7 @@ const DisplayList = ({ friends, filteredUsers}) => {
             enneagram={user.enneagram ? user.enneagram.number : null}
           />
       )
-   }))
+    }))
 
   return (
     <>
