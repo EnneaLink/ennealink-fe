@@ -83,3 +83,18 @@ export const CREATE_USER = gql`
       }
     }
   `
+
+  export const DELETE_FRIEND = gql `
+  mutation deleteFriend(
+    $userId: ID!
+    $friendId: ID!
+  ){
+    deleteFriend(
+        userId: $userId
+        friendId: $friendId
+      )
+      {
+        success
+      }
+    }
+  `

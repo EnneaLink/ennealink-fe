@@ -1,16 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Header from '../Header/Header';
 import Loader from '../Loader/Loader';
 import Error from '../Error/Error';
 import './Profile.css';
 import { useQuery, useMutation } from '@apollo/client';
 import { GET_USER } from '../../graphQL/queries';
-import { ADD_FRIEND } from '../../graphQL/mutations';
+import { ADD_FRIEND, DELETE_FRIEND } from '../../graphQL/mutations';
 
 const Profile = ({ profileView, logOut, userId }) => {
   
+  const [friendIds, setFriendIds] = useState([]);
+  
   const {error: getUserError, loading: getUserLoading, data: getUserData} = useQuery(GET_USER, {
     variables: {id: profileView }
+  })
+
+  const {error: getMyError, loading: getMyLoading, data: getMyData} = useQuery(GET_USER, {
+    variables: {id: userId }
+  ,
+    onCompleted: getMyData => {
+      setFriendIds(getMyData.getUserStats.friends.map(friend => friend.id))
+    }
   })
 
   const [addFriend, { error: addFriendError, loading: addFriendLoading }] = useMutation(ADD_FRIEND, {
@@ -22,21 +32,50 @@ const Profile = ({ profileView, logOut, userId }) => {
     }]
   });
 
+  const [deleteFriend, { error: deleteFriendError, loading: deleteFriendLoading }] = useMutation(DELETE_FRIEND, {
+    refetchQueries: [{ 
+      query: GET_USER, 
+      variables: { 
+        id: userId
+      }
+    }]
+  });
+
+
   const friendButton = () => {
-    if (userId !== profileView){
+    if (profileView !== userId && friendIds.includes(profileView)) {
+      console.log(getUserData)
+      return (
+        <button
+        type="submit"
+        onClick={unfriendUser}
+        >
+          remove {getUserData.getUserStats.username} from friends
+        </button>
+      )
+    } else if (profileView !== userId && !friendIds.includes(profileView)){
       return (
         <button
         type="submit"
         onClick={friendUser}
         >
-          add {profileView} to friends
+          add {getUserData.getUserStats.username} to friends
         </button>
       )
-    } 
+    }
   }
 
   const friendUser = () => {
     addFriend({
+      variables: {
+        userId: userId,
+        friendId: profileView
+      }
+    })
+  }
+
+  const unfriendUser = () => {
+    deleteFriend({
       variables: {
         userId: userId,
         friendId: profileView
@@ -49,7 +88,7 @@ const Profile = ({ profileView, logOut, userId }) => {
     <div>
       <Header logOut={logOut} id={userId} />
 
-      { !getUserLoading || !addFriendLoading ? (
+      { !getUserLoading && !getMyLoading ? (
         <article className='profile-view'>
           <h2 className="user-name">{getUserData.getUserStats.username}</h2>
 
@@ -76,7 +115,7 @@ const Profile = ({ profileView, logOut, userId }) => {
             </div>
 
           </div>
-          {friendButton()}
+          {friendIds && friendButton()}
         </article>) : <Loader />
       }
       { getUserError || addFriendError && <Error /> }
