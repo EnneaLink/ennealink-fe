@@ -1,10 +1,10 @@
-import './SignUp.css';
+import './ExistingLogIn.css';
 import React, { useState } from 'react';
 import { LOGIN_USER } from '../../graphQL/mutations';
 import { useMutation } from '@apollo/client';
 import { useHistory } from "react-router-dom";
 
-const SignUp = ({ toggleCreate, assignUser }) => {
+const ExistingLogIn = ({ toggleCreate, assignUser }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('')
@@ -80,4 +80,4 @@ const SignUp = ({ toggleCreate, assignUser }) => {
   )
 }
 
-export default SignUp;
+export default ExistingLogIn;

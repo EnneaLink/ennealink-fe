@@ -26,7 +26,7 @@ Cypress.Commands.add('loadProfilePage', () => {
       .type('a')
     .get('input[class="login-input password"]')
       .type('b')
-    .get('button[class="create-btn"]')
+    .get('button[class="sign-in"]')
       .click()
 })
 
@@ -51,4 +51,3 @@ Cypress.Commands.add('loadUserDisplayPage', () => {
 //   cy.loadApp()
 //     .interceptAPI('profile', 'http://localhost:4500/graphql')
 // })
-

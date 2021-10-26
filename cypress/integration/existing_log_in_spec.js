@@ -1,4 +1,4 @@
-describe('Signup', () => {
+describe('Existing Log In', () => {
 
   beforeEach(() => {
     cy.loadExistingUserPage()
@@ -38,4 +38,5 @@ describe('Signup', () => {
     cy.get('button[class="create-btn"]')
       .should('be.visible')
   })
+
 })

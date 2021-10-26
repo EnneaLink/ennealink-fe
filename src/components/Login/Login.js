@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import {CREATE_USER, LOGIN_USER} from '../../graphQL/mutations';
 import {useMutation} from '@apollo/client';
 import EditProfile from '../EditProfile/EditProfile';
-import SignUp from '../SignUp/SignUp';
+import ExistingLogIn from '../ExistingLogIn/ExistingLogIn';
 import Error from '../Error/Error';
 
 const Login = ({assignUser, user, updateTypes}) => {
@@ -52,7 +52,7 @@ const Login = ({assignUser, user, updateTypes}) => {
   }
 
 
-  const signIn = <SignUp toggleCreate={toggleCreate} assignUser={assignUser} />
+  const signIn = <ExistingLogIn toggleCreate={toggleCreate} assignUser={assignUser} />
 
   const makeAccount = () => {
 
