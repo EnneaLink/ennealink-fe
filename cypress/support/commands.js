@@ -1,7 +1,11 @@
-/////////// HELPER FUNCTIONS /////////// 
-
 Cypress.Commands.add('loadApp', () => {
   cy.visit('http://localhost:3000')
+})
+
+Cypress.Commands.add('loadExistingUserPage', () => {
+  cy.visit('http://localhost:3000')
+    .get('button[class="create-btn"]')
+      .click()
 })
 
 // dynamic stubbing

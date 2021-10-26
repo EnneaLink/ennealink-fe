@@ -44,14 +44,14 @@ const SignIn = ({toggleCreate, assignUser}) => {
       <form className="sign-in-box">
 
         <input
-          className="login-input"
+          className="login-input login-username"
           type="text" value={username}
           onChange={(e) => setUsername(e.target.value)}
           placeholder="enter your username"
         />
 
         <input
-          className="login-input"
+          className="login-input password"
           type="password"
           value={password} onChange={(e) => setPassword(e.target.value)}
           placeholder="enter your password"

@@ -64,7 +64,7 @@ const Login = ({assignUser, user, updateTypes}) => {
         <form className="sign-in-box">
 
           <input
-            className="login-input"
+            className="login-input login-username"
             type="text"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
@@ -72,7 +72,7 @@ const Login = ({assignUser, user, updateTypes}) => {
           />
 
           <input
-            className="login-input"
+            className="login-input password-1"
             type="password"
             value={newPassword}
             onChange={(e) => setNewPassword(e.target.value)}
@@ -81,7 +81,7 @@ const Login = ({assignUser, user, updateTypes}) => {
           />
 
           <input
-            className="login-input password"
+            className="login-input password-2"
             type="password"
             value={passCheck}
             onChange={(e) => setPassCheck(e.target.value)}

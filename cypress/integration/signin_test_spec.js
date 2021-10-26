@@ -1,7 +1,7 @@
-describe('Login', () => {
+describe('Signin', () => {
 
   beforeEach(() => {
-    cy.loadApp()
+    cy.loadExistingUserPage()
   })
 
   it('should go to localhost', () => {
@@ -13,23 +13,20 @@ describe('Login', () => {
       .contains('EnneaLink')
   })
 
-  it('should render 3 input fields', () => {
+  it('should render 2 input fields', () => {
     cy.get('input')
       .should('be.visible')
     cy.get('input')
-      .should('have.length', 3)
+      .should('have.length', 2)
   })
 
   it('should allow typing in inputs', () => {
     cy.get('input[class="login-input login-username"]')
       .type('a')
         .should('have.value', 'a') 
-    cy.get('input[class="login-input password-1"]')
+    cy.get('input[class="login-input password"]')
       .type('b')
         .should('have.value', 'b') 
-    cy.get('input[class="login-input password-2"]')
-      .type('c')
-        .should('have.value', 'c') 
   });  
 
   it('should render create account button', () => {
