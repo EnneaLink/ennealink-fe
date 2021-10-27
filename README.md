@@ -1,6 +1,6 @@
-# Ennealink
-
 <img src="./public/ennealink.png" alt="EnneaLink Logo" align="right"/>
+
+# Ennealink
 
 [Access the launched application online here.](https://ennealink.herokuapp.com/)
 
