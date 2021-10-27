@@ -28,7 +28,9 @@ The topic was chosen because we thought that it would be useful to have and use 
 
 ## Examples
 
-![](https://user-images.githubusercontent.com/81891209/139143379-dc78b07b-ff21-4398-940f-fbe133438aeb.gif)
+![New User Signup And Profile View](https://user-images.githubusercontent.com/81891209/139144699-fcbef0db-3d1c-4f56-9bc4-467befbd8f74.gif)
+
+![Existing User Login And Friending](https://user-images.githubusercontent.com/81891209/139144196-d4a627a2-2585-456f-9e66-3106554ffe1b.gif)
 
 [gif goes here]()
 
