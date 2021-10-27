@@ -11,14 +11,17 @@ const UserDisplay = ({ logOut, id }) => {
   const [allUsers, setAllUsers] = useState([]);
   const [filteredUsers, setFilteredUsers] = useState(null)
   const [searchInput, setSearchInput] = useState('')
+  const [friends, setFriends] = useState([])
   const {error, loading, data} = useQuery(GET_ALL_USERS)
   const {error: getUserError, loading: getUserLoading, data: getUserData} = useQuery(GET_USER, {
     variables: {
       id: id
+    },
+    onCompleted: getUserData => {
+      setFriends(getUserData.getUserStats.friends);
     }
   })
 
-  const friends = getUserData.getUserStats.friends;
 
   useEffect(() => {
     (!loading && setAllUsers(data.getAllUsers));

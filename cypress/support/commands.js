@@ -31,14 +31,24 @@ Cypress.Commands.add('loadProfilePage', () => {
       .interceptUserStats()
 })
 
-// Cypress.Commands.add('loadUserDisplayPage', () => {
-//   cy.loadProfilePage()
-//     .get('button[class="nav-btn friends-btn"]')
-//       .click()
-//       .interceptUserStats()
-//       .wait(1000)
-//       .interceptGetAllUsers()
-// })
+Cypress.Commands.add('loadMarksProfilePage', () => {
+  cy.loadExistingUserPage()
+    .get('input[class="login-input login-username"]')
+      .type('MarkTC')
+    .get('input[class="login-input password"]')
+      .type('1')
+    .get('button[class="submit-btn"]')
+      .click()
+})
+
+Cypress.Commands.add('loadUserDisplayPage', () => {
+  cy.loadMarksProfilePage()
+    .get('button[class="nav-btn friends-btn"]')
+      .click()
+      // .interceptUserStats()
+      // .wait(1000)
+      // .interceptGetAllUsers()
+})
 
 Cypress.Commands.add('interceptUserStats', () => {
   cy.intercept(
