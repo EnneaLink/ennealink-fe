@@ -71,7 +71,7 @@ The main goals of this project were learning and implementing GraphQL from scrat
 
 * User can see how their type interacts with their friends’ types.
 
-* Edit can edit their username and types.
+* User can edit their username and types.
 
 ## Technologies Used
 
