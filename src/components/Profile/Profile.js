@@ -88,7 +88,7 @@ const Profile = ({ profileView, logOut, userId }) => {
 
   return (
 
-    <div>
+    <div className='profile-page'>
       <Header logOut={logOut} id={userId} />
 
       { !getUserLoading && !getMyLoading ? (
