@@ -102,7 +102,11 @@ const Profile = ({ profileView, logOut, userId }) => {
             <p>{getUserData.getUserStats.myersBrigg.description}</p>
 
             <div className="link-container">
-              <a className="type-link" href={getUserData.getUserStats.myersBrigg.link}>Learn More</a>
+              <a className="type-link" 
+                href={getUserData.getUserStats.myersBrigg.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                >Learn More</a>
             </div>
 
           </div>
@@ -114,7 +118,11 @@ const Profile = ({ profileView, logOut, userId }) => {
             <p>{getUserData.getUserStats.enneagram.description}</p>
 
             <div className="link-container">
-              <a className="type-link" href={getUserData.getUserStats.enneagram.link}>Learn More</a>
+              <a className="type-link" 
+                href={getUserData.getUserStats.enneagram.link}
+                target="_blank"
+                rel="noopener noreferrer"
+              >Learn More</a>
             </div>
 
           </div>
