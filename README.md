@@ -1,7 +1,8 @@
 # Ennealink
 
-[logo image goes here]()
-[Access the application online here.](https://ennealink.herokuapp.com/)
+<img src="./public/ennealink.png" alt="EnneaLink Logo" align="right"/>
+
+[Access the launched application online here.](https://ennealink.herokuapp.com/)
 
 ## Table Of Contents
 
@@ -111,4 +112,4 @@ Code stored on GitHub:
 - [GitHub](https://github.com/nataliemcintyre2021)
 - [LinkedIn](https://www.linkedin.com/in/nataliemcintyre1/)
 
-  [Return to top](#ennealink)
+[Return to top](#ennealink)
