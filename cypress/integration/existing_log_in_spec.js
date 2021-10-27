@@ -39,4 +39,26 @@ describe('Existing Log In', () => {
       .should('be.visible')
   })
 
+  it('should show error message when username is incorrect', () => {
+    cy.get('input[class="login-input login-username"]')
+      .type('incorrect')
+    .get('input[class="login-input password"]')
+      .type('correct')
+    .get('button[class="submit-btn"]')
+      .click()
+    .get('.message')
+      .contains('Check your login info, or create a new account!')
+  })
+
+  it('should show error message when password is incorrect', () => {
+    cy.get('input[class="login-input login-username"]')
+      .type('correct')
+    .get('input[class="login-input password"]')
+      .type('incorrect')
+    .get('button[class="submit-btn"]')
+      .click()
+    .get('.message')
+      .contains('Check your login info, or create a new account!')
+  })
+
 })
