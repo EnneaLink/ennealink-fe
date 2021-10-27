@@ -51,7 +51,7 @@ Run the following codes in the terminal, in this order.
 
 If it doesn't automatically open, navigate to [http://localhost:3000](http://localhost:3000) in your web browser.
   
-### Use App
+## Use App
 
 When a user first opens the application, they must create unique username and a password. Once they do that, they must select and save their Enneagram and MBTI types via dropdowns to create their profile. If the user does not yet know their types, there are links to take the respective tests that open in new tabs.
 
