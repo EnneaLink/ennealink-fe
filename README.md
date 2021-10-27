@@ -28,7 +28,7 @@ The topic was chosen because we thought that it would be useful to have and use 
 
 ## Examples
 
-[image goes here]()
+![](https://user-images.githubusercontent.com/81891209/139143379-dc78b07b-ff21-4398-940f-fbe133438aeb.gif)
 
 [gif goes here]()
 
