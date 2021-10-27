@@ -1,6 +1,7 @@
 import React from 'react';
 import './NavBar.css';
 import { Link } from 'react-router-dom';
+import { setState } from 'react';
 
 const NavBar = ({logOut, id}) => {
 
@@ -13,7 +14,11 @@ const NavBar = ({logOut, id}) => {
           key='1'
         >
 
-          <button className="nav-btn profile-btn">my profile</button>
+          <button
+            className="nav-btn profile-btn"
+          >
+            my profile
+          </button>
 
         </Link>
 
@@ -25,7 +30,11 @@ const NavBar = ({logOut, id}) => {
           key='1'
         >
 
-          <button className="nav-btn friends-btn">friends</button>
+          <button
+            className="nav-btn friends-btn"
+          >
+            friends
+          </button>
 
         </Link>
 
@@ -37,7 +46,12 @@ const NavBar = ({logOut, id}) => {
           key='1'
         >
 
-          <button className="nav-btn logout-btn" onClick={logOut}>log out </button>
+          <button
+            className="nav-btn logout-btn"
+            onClick={logOut}
+          >
+            log out
+          </button>
 
         </Link>
 

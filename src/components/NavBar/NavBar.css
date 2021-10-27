@@ -1,6 +1,6 @@
 .nav-bar {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   width: 80vw;
   padding: 0;
 }
@@ -13,6 +13,7 @@
   border: none;
   padding: 0 1em;
   box-shadow: 0 2px 7px #a9a9a9da;
+  margin: 0 1rem 0 1rem;
 }
 
 .nav-btn:hover {

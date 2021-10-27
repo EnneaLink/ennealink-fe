@@ -1,3 +1,7 @@
+.profile-page {
+  width: 100%;
+}
+
 .profile-view {
   margin: 2rem 2rem 0 2rem;
   padding: 1rem;
@@ -50,8 +54,4 @@
   color: white;
   border: none;
   box-shadow: 0 1px 3px #00000073;
-}
-
-.hidden {
-  display: none;
 }
