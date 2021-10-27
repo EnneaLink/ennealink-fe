@@ -28,7 +28,7 @@
 .sign-in-box {
   display: flex;
   flex-direction: column;
-  width: 70%;
+  width: 90%;
   height: 60%;
 }
 
@@ -67,4 +67,9 @@ h1 {
 
 .password-2 {
   margin-bottom: 1rem;
+}
+
+.message {
+  max-width: 60vw;
+  color: red;
 }
