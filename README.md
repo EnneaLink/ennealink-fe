@@ -24,7 +24,7 @@ This is a social media application where a user can create an account, view info
 
 This application was created as the final [Capstone Project](https://mod4.turing.edu/projects/capstone/) for [Turing School of Software & Design](https://turing.edu/).
 
-The topic was chosen, because we thought that it would be useful to have and use in our everyday lives.
+The topic was chosen because we thought that it would be useful to have and use in our everyday lives. Especially in our collaborative work at Turing and throughout our personal and professional lives, we recognized the value of having a tool where we can quickly learn about peoples' strengths and motivations. EnneaLink opens the door for meaningful conversations that can create inclusive interactions across interpersonal and collaborative work.
 
 ## Examples
 
@@ -50,7 +50,7 @@ Run the following codes in the terminal, in this order.
 * Run local host: `npm start`
 
 If it doesn't automatically open, navigate to [http://localhost:3000](http://localhost:3000) in your web browser.
-  
+
 ## Use App
 
 When a user first opens the application, they must create unique username and a password. Once they do that, they must select and save their Enneagram and MBTI types via dropdowns to create their profile. If the user does not yet know their types, there are links to take the respective tests that open in new tabs.
@@ -64,7 +64,7 @@ To follow that friend, the user can click the "follow" bottom on the bottom of t
 ## Learning Goals
 
 The main goals of this project were learning and implementing GraphQL from scratch, gaining more experience with hooks, and working with a backend team for the first time.
-  
+
 ## Future Features
 
 * User can access a list of other users who follow them.
@@ -85,10 +85,13 @@ Code stored on GitHub:
 
 * [Back-End Repository](https://github.com/EnneaLink/ennealink-be)
 
-[Project board on GitHub](https://github.com/orgs/EnneaLink/projects/1) 
-  
+[Project board on GitHub](https://github.com/orgs/EnneaLink/projects/1)
+
 ## Reflections And Wins
-  +
+  * With the tight turnaround of just over two weeks for the project deadline, our full-stack team of 6 (3 frontend and 2 backend team members) learned GraphQL to be implemented on both backend and frontend (Apollo Client). This required us to rapidly learn both independently and collaboratively as we successfully used this new stretch technology in our project.
+  * Our team thrived in paired programming as we all brought various strengths to the project, as well as divided tasks effectively to meet our strict deadlines.
+  * In our first full stack project working with the backend team, we were able to spend the first phase of the project communicating and collaborating about what data we would need from the backend, where we would make requests for that data, and utilize the benefits of GraphQL to prevent us from over or under-fetching data.
+
 
 ## Contributing
 
