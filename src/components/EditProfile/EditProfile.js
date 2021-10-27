@@ -9,7 +9,7 @@ const EditProfile = ({updateTypes, id, username}) => {
   const [enneagramType, setEnneagramType] = useState('')
   const [mbtiType, setMbtiType] = useState('');
   const [updateUser] = useMutation(UPDATE_USER);
-  const {error, loading, data} = useQuery(GET_USER, {
+  const { data } = useQuery(GET_USER, {
     variables: {id: id}
   })
 

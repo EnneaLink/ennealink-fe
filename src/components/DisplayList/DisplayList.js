@@ -5,7 +5,7 @@ import { GET_USER } from '../../graphQL/queries';
 import './DisplayList.css';
 
 const DisplayList = ({ filteredUsers, id}) => {
-  const {error: getUserError, loading: getUserLoading, data: getUserData} = useQuery(GET_USER, {
+  const { data: getUserData } = useQuery(GET_USER, {
     variables: {
       id: id
     }

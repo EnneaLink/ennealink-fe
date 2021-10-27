@@ -11,8 +11,8 @@ const UserDisplay = ({ logOut, id }) => {
   const [allUsers, setAllUsers] = useState([]);
   const [filteredUsers, setFilteredUsers] = useState(null)
   const [searchInput, setSearchInput] = useState('')
-  const {error, loading, data} = useQuery(GET_ALL_USERS)
-  const {error: getUserError, loading: getUserLoading, data: getUserData} = useQuery(GET_USER, {
+  const { loading, data } = useQuery(GET_ALL_USERS)
+  const { data: getUserData } = useQuery(GET_USER, {
     variables: {
       id: id
     }
