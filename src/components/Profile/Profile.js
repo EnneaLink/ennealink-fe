@@ -15,7 +15,7 @@ const Profile = ({ profileView, logOut, userId }) => {
     variables: {id: profileView }
   })
 
-  const {error: getMyError, loading: getMyLoading, data: getMyData} = useQuery(GET_USER, {
+  const { loading: getMyLoading } = useQuery(GET_USER, {
     variables: {id: userId }
   ,
     onCompleted: getMyData => {
@@ -23,7 +23,7 @@ const Profile = ({ profileView, logOut, userId }) => {
     }
   })
 
-  const [addFriend, { error: addFriendError, loading: addFriendLoading }] = useMutation(ADD_FRIEND, {
+  const [addFriend, { error: addFriendError }] = useMutation(ADD_FRIEND, {
     refetchQueries: [{ 
       query: GET_USER, 
       variables: { 
@@ -32,7 +32,7 @@ const Profile = ({ profileView, logOut, userId }) => {
     }]
   });
 
-  const [deleteFriend, { error: deleteFriendError, loading: deleteFriendLoading }] = useMutation(DELETE_FRIEND, {
+  const [deleteFriend] = useMutation(DELETE_FRIEND, {
     refetchQueries: [{ 
       query: GET_USER, 
       variables: { 
@@ -43,7 +43,6 @@ const Profile = ({ profileView, logOut, userId }) => {
 
   const friendButton = () => {
     if (profileView !== userId && friendIds.includes(profileView)) {
-      console.log(getUserData)
       return (
         <button
           type="submit"
@@ -129,7 +128,7 @@ const Profile = ({ profileView, logOut, userId }) => {
           {friendIds && friendButton()}
         </article>) : <Loader />
       }
-      { getUserError || addFriendError && <Error /> }
+      { (getUserError || addFriendError) && <Error /> }
     </div>
   )
 }

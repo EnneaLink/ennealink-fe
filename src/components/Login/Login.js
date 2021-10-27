@@ -1,23 +1,20 @@
 import './Login.css';
-import React, { useState, useEffect } from 'react';
-import {CREATE_USER, LOGIN_USER} from '../../graphQL/mutations';
-import {useMutation} from '@apollo/client';
+import React, { useState } from 'react';
+import { CREATE_USER } from '../../graphQL/mutations';
+import { useMutation } from '@apollo/client';
 import EditProfile from '../EditProfile/EditProfile';
 import ExistingLogIn from '../ExistingLogIn/ExistingLogIn';
 import Error from '../Error/Error';
 
 const Login = ({assignUser, user, updateTypes}) => {
   const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
   const [newUser, setNewUser] = useState(true);
   const [newPassword, setNewPassword] = useState('');
   const [passCheck, setPassCheck] = useState('');
   const [id, setId] = useState('');
   const [message, setMessage] = useState('');
 
-  const [createUser, { error, loading, data }] = useMutation(CREATE_USER);
-
-  if (error) console.log(error)
+  const [createUser, { error, data }] = useMutation(CREATE_USER);
 
   if (data) {assignUser(data.createUser.id)}
 
