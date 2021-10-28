@@ -94,7 +94,7 @@ const EditProfile = ({updateTypes, id, username}) => {
         <div className="link-container">
           <a className="test-link" href='https://www.idrlabs.com/cognitive-function/test.php' target="_blank"
           rel="noopener noreferrer">Take MBTI Test</a>
-          <a className="test-link" href='https://similarminds.com/cgi-bin/sminds2/similarminds3.pl' target="_blank"
+          <a className="test-link" href='https://similarminds.com/enneagram-test.html' target="_blank"
           rel="noopener noreferrer">Take Enneagram Test</a>
         </div>
 
